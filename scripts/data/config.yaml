@@ -1,0 +1,269 @@
+# Settings for the Blender scripts of the 3D presentation.
+# Paths: environment variables are expanded; paths without a root are relative to the presentation folder.
+
+blender:
+  # Folder without a version number; blender_run.py picks the highest installed version below it.
+  root: "%ProgramFiles%/Blender Foundation"
+
+render:
+  width: 1920
+  height: 1080
+  fps: 60   # at 60 fps fast pans no longer judder (stroboscopic stepping is visible at lower frame rates)
+  # Eevee samples per frame; more = smoother and slower.
+  samples: 32
+  # Seconds the last frame of every clip is repeated; otherwise PowerPoint may hold an earlier frame at the end of a clip.
+  hold_pad_seconds: 0.5
+
+# Direction of the timelines on the inner wall (rooms 2 and 4): walk = time runs in the walking direction, i.e. from right to
+# left when facing the wall, with the oldest year at the entrance; reading = left to right
+timeline_direction: walk
+
+probe:
+  # Test renders go to a scratch folder; render/ is for renders that are kept
+  output: _scratch/probe
+  eye_height: 1.6
+  # Stops after the title slide: position in m (x across, y into the depth), rotation in degrees
+  stops:
+    - name: wall
+      xy: [0, -1.5]
+    - name: room
+      xy: [0.6, -4.5]
+      yaw: 7
+  slide_image: ../../2026-10-09_SE2A_Science_Slam/assets/theme_background.jpg
+  figure_image: ../../2026-10-09_SE2A_Science_Slam/assets/Borgi_Neutral-1.png
+
+# First test (cut by hand; it breaks the rule that cuts sit only at camera stops, kept for comparison).
+# Test of the PowerPoint route: title slide as a still, then two clicks.
+probe_deck:
+  frames: render/probe
+  output: render/probe_deck
+  pptx: probe_deck.pptx
+  segments:
+    - still: 1
+      note: "Title slide (still, first frame of the ride)"
+    - start: 1
+      end: 24
+      note: "Click 1: the camera pulls back, the slide becomes the wall"
+    - start: 24
+      end: 48
+      note: "Click 2: on into the room"
+
+# Thresholds for check_motion.py and camera_moves.py (camera motion rules)
+motion_rules:
+  max_speed: 6.2                    # peak speed in m/s: 6 m/s with smooth acceleration and braking, plus the lateral sway of the walking profile (measured 6.16)
+  pan_seconds_per_frame_width: 0.65 # peak pan of about 120 deg/s at 22 mm, the middle of natural head turns (90 to 180 deg/s); slower pans felt mechanical
+  stop_speed: 0.05                  # m/s; below this the camera counts as resting (a cut is only allowed at rest)
+  stop_turn: 0.5                    # deg/s; below this the camera counts as resting
+  max_roll_degrees: 0.5             # keep the horizon level
+  max_height_drift: 0.3             # variation of eye height in m (warning only)
+  min_travel_seconds: 1.2           # shortest move, so that acceleration and braking stay visible
+
+# Walking like a human (scripts/ride_motion.py): constant strolling speed, braking only for a reason, gaze leads ahead,
+# gentle walking sway.
+# Reference values from gait research: walking 1.1 to 1.65 m/s, optimum 1.23 m/s; step frequency about 1.7 Hz at 1.2 m/s;
+# the head moves about 5 cm vertically and 3.6 cm laterally, the camera uses a fraction of that (VR guidelines advise against
+# head bob, so it stays subtle); gaze leads about 1.5 s ahead (Matthis et al.), the eyes turn 0.4 to 1 s before a turn;
+# natural head turns run at 90 to 180 deg/s. Speeds below are deliberately faster than walking, to fit a ten-minute talk.
+walk_profile:
+  speed: 6.0                 # m/s peak. Brisk walking is about 1.8 m/s; game characters move much faster (Unreal Engine default MaxWalkSpeed 600 cm/s, template character 3.75 m/s); architectural walkthroughs use about 0.9 m/s because viewers study the rooms
+  accel: 2.5                 # m/s² peak acceleration; starting follows an S-curve (mass has inertia): 6 m/s after 3.6 s and 10.8 m; braking spreads over the path with 80 % of this; short moves stay slow
+  look_first_max: 1.5        # s: the head turns for at most this long before the camera starts moving (look first, then walk)
+  track_max_m: 25            # the gaze glides from panel to panel when their look points are this close ...
+  track_max_degrees: 35      # ... and the panels face this similarly (timeline in room 2: the eyes stay on the timeline)
+  stride: 1.1                # m stride length for the walking profile; the step rate follows the speed (2 Hz at 2.2 m/s)
+  step_hz: 2.0               # steps per second (fallback only, without stride)
+  sway_lateral: 0.005        # m lateral sway, one cycle per double step; kept small so it feels like a smooth floor, not a rocky path
+  sway_vertical: 0.005       # m rise and fall, one cycle per step
+  sway_focus: 0.35           # fraction of the sway while the gaze rests on an exhibit (people steady their head when looking at something)
+  head_omega: 4.0            # 1/s natural frequency of the head (critically damped): a turn speeds up and slows down, 90 degrees in about 1.2 s; peak limited by pan_seconds_per_frame_width
+  lift_look_degrees: 55      # gaze tilted forward when riding straight up (axis tube, sunward)
+  side_look_degrees: 80      # how far the gaze may deviate from the walking direction (looking to the side while walking; larger values made side looks linger)
+  ease_seconds: 0.8          # acceleration after a stop and braking before a stop; no speed change at waypoints
+  corner_radius: 1.0         # m rounding at waypoints (no kink in the path)
+  look_lead_seconds: 1.2     # the gaze turns to the target this long before arrival (longer if the turn needs it)
+  look_release_seconds: 0.5  # after a stop the gaze stays on the old target briefly, then turns to the walking direction
+  ride_lens: 22              # one focal length for the whole ride (zooms look uncanny); closeness comes from position (fit), not zoom
+
+# Second test: cuts at the camera stops of the scene (stops.yaml), so cuts only happen at rest by construction
+probe_deck_v2:
+  frames: _scratch/probe
+  output: _scratch/probe_deck
+  pptx: probe_deck_v2.pptx
+  segments: from_stops
+
+# Quality levels of the ride through the station, chosen with station_scene.py --ride --quality <level>:
+# preview is fast, for checking path and pacing (scratch output); final is rendered once the storyboard is fixed.
+# Measured: preview 0.48 s per frame on a shared GPU (12 000 frames, about 1.5 h)
+ride_quality:
+  preview: {width: 640, height: 360, fps: 24, samples: 4, format: JPEG, output: _scratch/ride_station}
+  # final is lossless PNG (2.6 MB per frame, about 22 GB up to the lobby), so the final render is written to a separate
+  # media drive outside the synced folder (see station_final_deck.sources)
+  final: {width: 1920, height: 1080, fps: 30, samples: 16, format: PNG, output: render/station_ride}
+
+# Preview of the ride as a deck: station_scene.py --ride writes ride_check.json and master.mp4 to the ride_station folder;
+# one clip per click (panels with click: true), 24 fps like the preview
+station_ride_preview:
+  frames: _scratch/ride_station
+  output: _scratch/ride_station/deck
+  pptx: station_ride_preview.pptx
+  segments: from_ride
+  fps: 24
+
+# Deck of the final version, assembled from pieces per click (the final render was done in pieces to fit the available
+# render windows). For each piece the first run in sources that has it complete is used; boundaries come from panel names
+# in the run's ride_check.json. New runs go at the front; the low-resolution preview stays as the last source.
+station_final_deck:
+  output: _scratch/final_deck/station_final
+  pptx: station_final.pptx
+  segments: from_pieces
+  fps: 30
+  width: 1920
+  height: 1080
+  credits: true          # credits for third-party works shown above each clip (credit_ride.py); the clip without credits is kept as segment_NN_roh.mp4
+  credit_frames: _scratch/credit_frames/credit_frames.json   # visibility per frame (station_scene.py --ride --no-render --credit-frames); if missing, the credit shows from arrival at the panel
+  still_threshold: 1.0   # mean difference (0 to 255, greyscale 320 x 180) between arrival, middle and departure; below it a stop counts as still
+  sources:
+    # final render per click: one folder per piece, <from>_<to>/, finished pieces only
+    - {dir: _scratch/final, segments: true, fps: 30, quality: final}   # in the talk this folder lay on a separate media drive
+    - {dir: _scratch/full_ride_12fps, fps: 24, step: 2, quality: preview}   # preview 640 x 360, every second frame
+  # Loop = frames arrive to arrive + N - 1 of the last stop: one full turn of the globe in 20 s (map_room_funnel.globe.turn_seconds
+  # equals the dwell time of the last stop); in the old preview the globe is different, so the loop is not seamless there.
+  # 09.3 is the ending: the view from the handrail on the floor up to the globe, then just a loop
+  loop: {stop: "09.3", seconds: 20, seamless: true}
+  closing_overlay: {deck: Folien/Titelfolie.pptx, slide: 2, cutout: Oval 21}   # the ellipse of the template is the cutout; its "<" is dropped
+
+# Map room as a funnel: a lobby that uses the full height, with many tiers, widening upwards like a funnel. At the bottom the
+# honeycomb drum of the plan stays (star map, as high as the lobby), above it the funnel: profile = [depth below the collector
+# in m, radius in m] from bottom to top. Full height up to module_zone 130 m (planner: map_room depth 130), at the top a glass
+# ceiling to the stars, 10 m in front of the rotating spokes. Width from the plan's clearance check: from 20 m depth at most
+# 44 m (transmitter up to 40 m deep, transfer up to 140 m, 46 m away).
+map_room_funnel:
+  profile: [[10, 37], [20, 42], [40, 44], [100, 44], [130, 44]]   # straight up to the honeycomb ceiling, a huge disc (an earlier variant ended in a cone tip [130, 12])
+  ceiling_cell: 6.0          # edge length of the honeycomb cells of the glass ceiling in m
+  tiers_every: 10            # tiers (surrounding galleries) every 10 m
+  tiers_until: 100           # no tiers in the top section
+  tier_width: 4
+  pods_per_tier: 18          # floating platforms per tier, slightly in front of the gallery
+  globe: {depth: 28, radius: 10, turn_seconds: 20}   # globe in the middle, 28 m above the star map (higher placements looked too remote); one full turn in turn_seconds = length of the loop at the final stop
+  # Handrail along the path rather than a ring around the middle (it is something to hold on to beside you, not a barrier):
+  # points [x, y] relative to the middle of the room like the panels, from the cabin in the lobby (09.1b) through the opening
+  # (y 30.3) to just past the final position 09.2/09.3 (y 28), 0.9 m to the right of the path
+  railing: {path: [[2.4, 63.3], [2.4, 25.0]], height: 1.0, posts_every: 2.5, foot_z: -1.3}
+  # Outside of the funnel made of honeycomb cells in module size: columns around the circumference, each field 92 % of a cell,
+  # 0.4 m in front of the wall
+  outer_cells: {columns: 28, inset: 0.92, lift: 0.4}
+  links: 8                   # conduits from the globe to the nearest neighbouring modules (every line has a purpose)
+  link_radius: 80            # m, only modules within this distance of the room's middle
+  plants_per_tier: 8         # Poly Haven potted_plant_02 on every tier
+  light_watts: 150000        # area light (300000 overexposed the tiers); at mid height, shining towards the star map
+
+# Readable view of the storyboard (build_storyboard_view.py), using shared HTML components
+view:
+  design_dir: "Forschung_und_Entwicklung/GitLab/documentation/tools/design"
+  components_dir: "_meta/Scripts/html_components"
+
+# First ride through all stops: draft quality, output to a scratch folder
+ride:
+  output: _scratch/ride
+  font: "Kommunikation/Website/2026-10-15_Corporate_Design/_fonts_raw/OpenSans[wdth,wght].ttf"
+  lens: 35
+  width: 1280
+  height: 720
+  samples: 16
+
+# Deck of the first ride: cuts at the camera stops (the ride's stops.yaml)
+ride_deck:
+  frames: _scratch/ride
+  output: _scratch/ride_deck
+  pptx: ride_entwurf.pptx
+  segments: from_clips
+
+# Test of a third route in PowerPoint: the scene embedded as GLB (export_gltf.py), views connected with Morph transitions
+glb_deck:
+  # Dollhouse: exported without lawn, ceiling and roof edge (export_gltf.py --name dollhouse --hide Lawn,Ceiling,Parapet,Cornice,Background)
+  glb: _scratch/gltf/dollhouse.glb
+  pptx: _scratch/gltf/glb_probe_dollhouse.pptx
+  # Rotation of the model per slide in degrees (x tilts forward, y turns about the vertical axis); zoom enlarges the model
+  views:
+    - {name: Gesamtansicht, rx: 50, ry: 0, rz: 0, zoom: 1.0}
+    - {name: Schräg von links, rx: 45, ry: 35, rz: 0, zoom: 1.4}
+    - {name: Von oben, rx: 85, ry: 0, rz: 0, zoom: 1.6}
+    - {name: Von hinten, rx: 50, ry: 180, rz: 0, zoom: 1.4}
+
+# The same dollhouse with textures of at most 512 px (export_gltf.py --name dollhouse_512 --max-texture 512 ...)
+glb_deck_small:
+  glb: _scratch/gltf/dollhouse_512.glb
+  pptx: _scratch/gltf/glb_probe_dollhouse_512.pptx
+  views:
+    - {name: Gesamtansicht, rx: 50, ry: 0, rz: 0, zoom: 1.0}
+    - {name: Schräg von links, rx: 45, ry: 35, rz: 0, zoom: 1.4}
+    - {name: Von oben, rx: 85, ry: 0, rz: 0, zoom: 1.6}
+    - {name: Von hinten, rx: 50, ry: 180, rz: 0, zoom: 1.4}
+
+# A single piece with animation: the book of the hall turning its pages (export_gltf.py --name book --subtree Book --frames 4040:4460 --max-texture 1024)
+glb_book:
+  glb: _scratch/gltf/book.glb
+  pptx: _scratch/gltf/glb_probe_book.pptx
+  views:
+    - {name: Buch, rx: 40, ry: 0, rz: 0, zoom: 1.0}
+    - {name: Buch von der Seite, rx: 20, ry: 60, rz: 0, zoom: 1.3}
+
+# Playing the scene piece by piece: the scene lasts 7 s, page k turns from 0.15 + 1.2 k s to 1.35 + 1.2 k s; from/to are
+# fractions of the scene (0 start, 1 end), poster is the start frame in ms (unit unverified), loop: false stops the scene
+# after one run.
+# Test 1: one slide, every click turns one page
+glb_book_clicks:
+  glb: _scratch/gltf/book.glb
+  pptx: _scratch/gltf/glb_probe_book_clicks.pptx
+  views:
+    - name: Ein Klick je Seite
+      rx: 40
+      ry: 0
+      rz: 0
+      zoom: 1.0
+      loop: false
+      play:
+        - {from: 0.017, to: 0.193}
+        - {from: 0.193, to: 0.364}
+        - {from: 0.364, to: 0.536}
+        - {from: 0.536, to: 0.707}
+        - {from: 0.707, to: 0.879}
+
+# Test 2: one slide per page, Morph turns the book, each slide starts where the previous one ended
+glb_book_slides:
+  glb: _scratch/gltf/book.glb
+  pptx: _scratch/gltf/glb_probe_book_slides.pptx
+  views:
+    - {name: Seite 1, rx: 40, ry: 0, rz: 0, zoom: 1.0, loop: false, poster: 0, play: [{from: 0.017, to: 0.193, on: auto}]}
+    - {name: Seite 2, rx: 30, ry: 20, rz: 0, zoom: 1.1, loop: false, poster: 1350, play: [{from: 0.193, to: 0.364, on: auto}]}
+    - {name: Seite 3, rx: 45, ry: -20, rz: 0, zoom: 1.1, loop: false, poster: 2550, play: [{from: 0.364, to: 0.536, on: auto}]}
+    - {name: Seite 4, rx: 35, ry: 10, rz: 0, zoom: 1.2, loop: false, poster: 3750, play: [{from: 0.536, to: 0.707, on: auto}]}
+    - {name: Seite 5, rx: 40, ry: 0, rz: 0, zoom: 1.0, loop: false, poster: 4950, play: [{from: 0.707, to: 0.879, on: auto}]}
+
+# Test 3: unit of the start frame (posterFrame/@frame), nothing is played. Page 3 turns from 2.55 to 3.75 s; the book open at
+# page 3 would therefore be 3000 in ms, 180 in frames at 60 fps, 90 at 30 fps, 43 in percent of the scene (7 s). Question:
+# which slide shows the open book in the slide show.
+glb_book_poster:
+  glb: _scratch/gltf/book.glb
+  pptx: _scratch/gltf/glb_probe_book_poster.pptx
+  views:
+    - {name: "frame 0", rx: 40, ry: 0, rz: 0, zoom: 1.0, loop: false, poster: 0, play: []}
+    - {name: "frame 43 (Prozent?)", rx: 40, ry: 0, rz: 0, zoom: 1.0, loop: false, poster: 43, play: []}
+    - {name: "frame 90 (Bilder 30 fps?)", rx: 40, ry: 0, rz: 0, zoom: 1.0, loop: false, poster: 90, play: []}
+    - {name: "frame 180 (Bilder 60 fps?)", rx: 40, ry: 0, rz: 0, zoom: 1.0, loop: false, poster: 180, play: []}
+    - {name: "frame 3000 (ms?)", rx: 40, ry: 0, rz: 0, zoom: 1.0, loop: false, poster: 3000, play: []}
+# Result of test 3: no slide shows the book open.
+
+# Test 4: one model with five scenes, one per page (export_gltf.py --name book_scenes --subtree Book --frames 4040:4460
+# --max-texture 1024 --segments 0:81,81:153,153:225,225:297,297:369 --hold 12). Page k turns from frame 9 + 72 k to
+# 81 + 72 k; scene k starts exactly where scene k-1 ends and holds 0.2 s at the end.
+# Each slide selects its scene and plays it once with the slide.
+glb_book_scenes:
+  glb: _scratch/gltf/book_scenes.glb
+  pptx: _scratch/gltf/glb_probe_book_scenes.pptx
+  views:
+    - {name: Szene 1, rx: 40, ry: 0, rz: 0, zoom: 1.0, loop: false, scene: 1, play: [{from: 0, to: 1, on: auto}]}
+    - {name: Szene 2, rx: 30, ry: 20, rz: 0, zoom: 1.1, loop: false, scene: 2, play: [{from: 0, to: 1, on: auto}]}
+    - {name: Szene 3, rx: 45, ry: -20, rz: 0, zoom: 1.1, loop: false, scene: 3, play: [{from: 0, to: 1, on: auto}]}
+    - {name: Szene 4, rx: 35, ry: 10, rz: 0, zoom: 1.2, loop: false, scene: 4, play: [{from: 0, to: 1, on: auto}]}
+    - {name: Szene 5, rx: 40, ry: 0, rz: 0, zoom: 1.0, loop: false, scene: 5, play: [{from: 0, to: 1, on: auto}]}

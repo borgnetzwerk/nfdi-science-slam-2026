@@ -1,0 +1,1039 @@
+# Storyboard of the station for the NFDI Science Slam 2026.
+# The museum faces the foot of the spoke with its gate; the lift tower stands 9 m in front of the gate. The main door of the
+# middle hall is closed at the start (main_door: closed). The timeline in room 2 fills the wall without a frame; the screens
+# in room 3 and the timeline of the proposals in room 4 are large; the banner above the door hangs between lintel and
+# ceiling. Room 6 is the making-of room; the middle hall holds only the globe and the threads.
+# Open decisions are filled in with a proposal (field decision).
+#
+# Images: python scripts/blender_run.py station_scene.py --building --storyboard storyboard_station.yaml [--panels 01.1,05.3]
+#         [--museum-scale 1]   output to a scratch folder (960 x 540, kept small); sheet: python scripts/build_storyboard_sheet.py
+# Build the panel images first: scripts/make_timeline_wall.py, make_plaques.py --talk, make_proposal_timeline.py,
+# make_centaur_banner.py, make_making_of_boards.py, make_museum_plan_2d.py (all called from the presentation folder).
+#
+# Fields per panel: id (scene.shot), shot (EWS, WS, FS, MS, CU, ECU), angle (eye, low, high, bird, pov), move (how the camera
+# reaches this panel: static, dolly in, dolly out, track, pan, tilt, crane up, crane down, cut), click (true: stop, the ride
+# waits for the clicker here; false: key frame within a move), seconds (duration of the panel in the talk, stop with
+# speaking), camera, fit (ids of placeholders, or "book": must lie fully in the frame), main_door (closed: the main door of
+# the middle hall is shut), shows (what you should see), speech (stage text in English, from the dramaturgy or a placeholder
+# a bracketed placeholder for the speaker), missing (what the grey box does not show yet: the build list), decision (open decision,
+# proposal filled in), status (idea, discussed, fixed).
+#
+# All museum dimensions apply to scale 1 (diameter 100 m) and are reduced with museum_scale; the camera eye height, lectern,
+# furniture, Borgis, reading desks, room dividers and easels stay at human scale.
+# Camera (camera): frame ring: at/look = [along, depth, height] in m as in tour_station.yaml (along with the rotation from
+#   spoke 0, depth shadeward from the sun side of the ring, height above the floor; museum: centre at [0, 100], gate at depth
+#   125, foot of the spoke at [0, 140]); the top of the image points towards the axis.
+# frame room: at/look = [s, r, height] in room room (1 to 6) of the museum: r = distance from the museum centre (middle hall
+#   up to 36.4 at the middle of a side, rooms up to 50 = outer wall), s = m along the circle of radius r in the walking
+#   direction (to the left, room 1 to room 2) from the middle of the room; the partition walls are at s / r = ±30°. Room 1 is
+#   at the gate (shadow side, 90° in the plan).
+# frame wall: at/look = [x, d, height] at the flat inner wall of room room: x = m along the wall in the walking direction from
+#   the middle of the wall (wall 42 m long), d = m in front of the wall into the room (outer wall at d = 13.6 in the middle,
+#   8 at the corners). Panels there (facing out) get a back and a cable through the wall; in the middle hall their thread to
+#   the globe starts there.
+# frame hall: at/look = [dx, dy, height] in the middle hall from the museum centre (dx with the rotation, dy shadeward; the
+#   main door is at dy = +36, room 4 at dy < 0); panels there use facing_deg (direction of the normal in the plan: 0 with the
+#   rotation, 90 shadeward).
+# frame spoke: at/look = [distance, side, z] in spoke 0: distance = m from the axis (ring floor 286.5, ring ceiling 246.5),
+#   side = m across, z = m towards the sun from the middle of the spoke; up gives the direction at the top of the image
+#   (default: towards the sun).
+# frame hub: at/look = [x, y, z] as in station_scene.py (z towards the sun, collector z = 0); instead of numbers also
+#   {module: id, offset: [x, y, z]} with the centre of a module from hub_layout_cells.yaml.
+# lens in mm (not below 24 mm in rooms without a horizon; in the museum 18 to 24 mm for wide shots).
+
+talk: "NFDI Science Slam 2026: Going Wild with AI"
+target_minutes: 10
+aspect: "16:9"
+image: {width: 960, height: 540, samples: 16}
+status: idea
+# Grey-box objects hidden in the storyboard because a proposal moves them elsewhere
+hide_objects: []   # the globe in the map room is visible again, only hinted at; earlier ["Kugel im Kartenraum"]
+
+# Placeholders in the rooms (fixing the rooms). Kinds: board (panel with text or image; no_rim without a dark frame; backing
+# adds a dark carrier plate), box, shelves, lectern (book), flat (backdrop), table (table with stools), armchair, borgi
+# (cut-out figure from media/visual_design), rollup (roll-up banner), divider (room divider with front and back), plate
+# (reading desk, tilted), easel (easel with a panel at human scale). facing: out (from the inner wall into the room), in
+# (from the outer wall towards the centre), back (across, towards someone entering). mount (collision check): free (free in
+# the room, no intersection with walls), wall (back against the wall; default for frame wall with facing out and for
+# shelves), embedded (set into the wall, intersection intended).
+# above_passage: true hangs the panel directly above the passage (lower edge banner_gap above passage_height from building.yaml).
+placeholders:
+  # Room 1: in the middle of the inner wall the main door to the middle hall (x = -5.25 to 5.25), on the axis of the gate,
+  # visible from the start and closed at first; the title slide hangs to the left of the centre door: +x points in the
+  # walking direction towards room 2, i.e. to the left for someone looking from the gate at the inner wall.
+  # Centre at 1.9 m (3.8 at scale 1): seen head-on from eye height like a slide, not distorted from below (01.1)
+  - {id: r1_title, kind: board, frame: wall, room: 1, at: [12, 0.05, 3.8], facing: out, size: [9.2, 5.2], image: _scratch/storyboard/title/title_slide.png}   # the speaker's title slide (Folien/Titelfolie.pptx, slide 1, via slide_boards.yaml), refreshed before every run
+  # Above the passage, the banner of today's exhibition, between the door lintel (4 m) and the ceiling (6 m at half scale),
+  # in front of the partition wall (not inside the door opening).
+  # Height from the lintel (above_passage): lower edge banner_gap above passage_height from building.yaml; the 10.2 applies only without that field
+  # Fabric instead of a carrier plate (fabric; a plate looked like a TV screen): folds, cords, a rod on two brackets to the wall
+  - {id: r1_banner, kind: board, frame: room, room: 1, at: [22.9, 46, 10.2], above_passage: true, facing: back, size: [6, 3.4], no_back: true, fabric: true, image: _scratch/ride/cards/foyer_banner.png}
+  # Room 2: the timeline of the talks fills the inner wall (42 x 12 m at scale 1), without a frame (a framed version was far
+  # too small); generated by scripts/make_timeline_wall.py from videos.yaml (own_talks)
+  - {id: r2_timeline, kind: board, frame: wall, room: 2, at: [0, 0.05, 6.0], facing: out, size: [36, 9], segments: 8, seamless: true, no_rim: true, image: _scratch/storyboard/timeline_wall.png}   # seamless: avoids vertical lines at the strip joints (takes effect in the next render)
+  # Room 3: three large TVs in front of the wall (12 x 6.75 m, box with frame); centred in front of each a wide reading desk
+  # on a solid pedestal (3 x 0.8 m at human scale, 30° tilt) that carries everything: title, creator, metadata (no separate
+  # title plate below the screen; scripts/make_plaques.py, <id>_lectern.png)
+  # Screens 0.25 m higher than before (z 7.4 instead of 6.9, lower edge 2.01 m): from eye height the top edge of the desk
+  # (1.71 m) otherwise covered the bottom of the picture and seemed to poke into it; top edge 5.39 m below the ceiling
+  - {id: r3_s1, kind: board, frame: wall, room: 3, at: [-14, 0.35, 7.4], facing: out, size: [12, 6.75], image: _scratch/storyboard/stills/ultralativ_youtube_de.jpg, video: media/videos/ultralativ_youtube_de_000440_000500.mp4, credit: ultralativ_youtube_de}   # video: plays during the ride
+  # Desks: d scales with the museum scale (3.0 becomes 1.5 m), the plate does not; at 55° it reaches 0.92 m back, rear edge
+  # 0.58 m in front of the wall (with d 2.6 and 38° it was 4 cm, i.e. clipping into the screen); top edge 0.4 + 1.31 = 1.71 m,
+  # below the lower edge of the screen at 1.76 m. Not oversized.
+  - {id: r3_s1_plate, kind: plate, frame: wall, room: 3, at: [-14, 3.0, 0.4], facing: out, size: [4.8, 1.6], tilt: 55, pedestal: true, image: _scratch/storyboard/plaques/ultralativ_youtube_de_lectern.png}
+  - {id: r3_s2, kind: board, frame: wall, room: 3, at: [0, 0.35, 7.4], facing: out, size: [12, 6.75], image: _scratch/storyboard/stills/not_david_nerds.jpg, video: media/videos/not_david_nerds_000510_000530.mp4, credit: not_david_nerds}
+  - {id: r3_s2_plate, kind: plate, frame: wall, room: 3, at: [0, 3.0, 0.4], facing: out, size: [4.8, 1.6], tilt: 55, pedestal: true, image: _scratch/storyboard/plaques/not_david_nerds_lectern.png}
+  - {id: r3_s3, kind: board, frame: wall, room: 3, at: [14, 0.35, 7.4], facing: out, size: [12, 6.75], image: _scratch/storyboard/stills/adumb_wikipedia_graph.jpg, video: media/videos/adumb_wikipedia_graph_000100_000120.mp4, credit: adumb_wikipedia_graph}
+  - {id: r3_s3_plate, kind: plate, frame: wall, room: 3, at: [14, 3.0, 0.4], facing: out, size: [4.8, 1.6], tilt: 55, pedestal: true, image: _scratch/storyboard/plaques/adumb_wikipedia_graph_lectern.png}
+  # Room 4: timeline of drafts and proposals across most of the inner wall without a frame (scripts/make_proposal_timeline.py
+  # from proposal_timeline.yaml), ending in the vision; glass roof. 9 m high, in strips along the curvature like room 2.
+  # Time runs in the walking direction (timeline_direction: walk in scripts/config.yaml): 2021 at the entrance at -x,
+  # "today" at +x, then the vision.
+  # Wider, to use more of the wall and spread the content: the left edge stays at -20.5, the right goes to 14.5 (wall up to 21)
+  - {id: r4_timeline, kind: board, frame: wall, room: 4, at: [-3.0, 0.05, 6.0], facing: out, size: [35, 9], segments: 9, seamless: true, no_rim: true, image: _scratch/storyboard/proposal_wall.png}   # seamless: strips without overlap, corners on the same wall points (prevents flicker)
+  # A separate vision wall was dropped: the end of the timeline is the vision.
+  # Room 5: a library with life in it; the lectern with the book stands in the walking axis, in the way, and is read from the
+  # shelf side; tables and Borgis near the inner wall, the walking axis (r 42 to 46) stays free; in front of the exit the
+  # room divider with the cover of the reverse centaur, passage only on the outside along the shelves
+  - {id: r5_shelves, kind: shelves, frame: room, room: 5, at: [-22, 49.2, 0], to: 22, unit: 4.0, height: 3.2}
+  - {id: r5_lectern, kind: lectern, frame: room, room: 5, at: [-12, 45, 0], facing: out, left: _scratch/book/spread_title_left.png, image: _scratch/book/spread_title_right.png}
+  - {id: r5_table_1, kind: table, frame: wall, room: 5, at: [-11, 3.0, 0], facing: out, turn: 20}
+  - {id: r5_table_2, kind: table, frame: wall, room: 5, at: [5, 3.5, 0], facing: out, turn: 50}   # x 5 instead of 8: keeps clear of the room divider
+  - {id: r5_borgi_1, kind: borgi, frame: wall, room: 5, at: [-12.4, 2.2, 0], facing: back, image: media/visual_design/borgi_question.png}
+  - {id: r5_borgi_2, kind: borgi, frame: wall, room: 5, at: [-9.8, 4.0, 0], facing: back, image: media/visual_design/borgi_exclaim.png}
+  - {id: r5_borgi_3, kind: borgi, frame: wall, room: 5, at: [6.3, 2.5, 0], facing: back, image: media/visual_design/borgi_thinking.png}
+  - {id: r5_borgi_4, kind: borgi, frame: wall, room: 5, at: [3.8, 4.6, 0], facing: back, image: media/visual_design/borgi_pointing.png}
+  # Wall lettering on the right of the straight inner wall of the lessons-learned room. Wording by Joseph Browning, quoted
+  # verbatim with attribution (source: https://twitter.com/Joseph_Browning/status/1811022092176933325); credit: the chat
+  # credit names the wall as soon as it is in the frame
+  - {id: r5_wall_text, kind: board, decal: true, frame: wall, room: 5, at: [-2, 0.02, 6.2], facing: out, size: [15, 6.0], font: "Kommunikation/Website/2026-10-15_Corporate_Design/_fonts_raw/OpenSans[wdth,wght].ttf", weight: 0.006, text: "The underlying purpose of AI\nis to allow wealth\nto access skill\nwhile removing from skill\nthe ability to access wealth.", attribution: "Joseph Browning, 2024", credit: browning_ai_purpose}
+  # Armchairs removed (they had no purpose in the room); earlier r5_chair_1 to 3 at s 14 to 16.8, r 47.8
+  # Wall pictures r5_pic_1 and r5_pic_2 dropped (the book carries the examples); kept as a template:
+  # - {id: r5_pic_1, kind: board, frame: wall, room: 5, at: [-12, 0.05, 4.2], facing: out, size: [4, 5.4], text: "MURAL\n(well-known example\nof an AI failure)"}
+  # - {id: r5_pic_2, kind: board, frame: wall, room: 5, at: [0, 0.05, 4.4], facing: out, size: [6, 3.6], text: "MURAL\n(placeholder)"}
+  # Room divider free in the room: at s = 15 the straight inner wall is already at r = 39, so a divider at r 37.6 to 44.4 sat
+  # inside it; at s = 10 (inner wall r 37.4), 3 m wide from r 39.4 to 45.4, it has 1 m clearance to the inner wall and a
+  # 1.5 m passage on the outside along the shelves.
+  # s 12 instead of 10: moved further back, at s 10 it intersected the table r5_table_2
+  - {id: r5_divider, kind: divider, frame: room, room: 5, at: [12, 42.4, 0], facing: back, size: [3.0, 1.94], image: _scratch/storyboard/centaur_front.png, back_image: _scratch/storyboard/centaur_back.png, credit: doctorow_reverse_centaur, back_credit: doctorow_speech_image}
+  # Chair station modelled on the video "Hyperoptimized Engineer 2026" (it adds a touch of dystopia): the reclining person
+  # looks towards the inner wall (facing in), backrest at r 42 at the edge of the walking axis; on the left the AI window, in
+  # the middle the video, on the right a terminal. The second video plays on a tablet on the table r5_table_1.
+  # Placed in the back inner corner, behind the room divider, in its shadow; at s 16, r 46.6 it stood directly in front of
+  # the passage to room 6 and left no room behind the divider. Now it is seen from the walking path on the outside, over the
+  # headrest. Content goes on the straight inner wall, decoration on the round outer wall.
+  # The video plays on the middle screen: on the right screen it was half outside the frame during the ride (22 mm), the
+  # middle screen is fully and freely visible from there
+  - {id: r5_station, kind: station_chair, frame: room, room: 5, at: [16.8, 43.4, 0], facing: in, mount: free, left: _scratch/storyboard/station_chair/ai_window.png, image: _scratch/storyboard/station_chair/video_middle.png, video: media/videos/hyperoptimized_engineer_000000_000020.mp4, video_screen: image, video_from: "05.1a", right: _scratch/storyboard/station_chair/terminal.png, credit: hyperoptimized_engineer}   # video_from: the clip starts at 0 when the ride sets off towards 05.1a, not on entering room 5; video: excerpt 0:46 to 1:06, plays during the ride
+  - {id: r5_tablet, kind: tablet, frame: wall, room: 5, at: [-11, 3.4, 0.76], facing: out, mount: free, image: _scratch/storyboard/station_chair/video_tablet.png, video: media/videos/kurzgesagt_ai_000130_000150.mp4, face_toward: [-19, 44.5], credit: kurzgesagt_ai}   # the video plays, the tablet is turned towards camera 05.1
+  # Room 6, the making-of room: along the inner wall, in the walking direction, the story of mistakes, the screen with the
+  # Blender window, the plan versions with the hand-drawn sketches; along the outer wall the shelf with the book of words on
+  # a reading table, easels with the numbers, the first ride, the decisions and the credits; in the middle a table with a
+  # Borgi. Dropped: separate text panels, a wall of sketches, a wall of dictation notes, the code and rules easels.
+  # Images from scripts/count_making_of.py and scripts/make_room6_boards.py
+  - {id: r6_mistakes, kind: board, frame: wall, room: 6, at: [-12.5, 0.05, 5.6], facing: out, size: [16, 8], segments: 8, seamless: true, no_rim: true, image: _scratch/storyboard/making_of/mistakes_story.png}   # seamless: joints as in room 4
+  # GPU hours as a counter sign next to the Blender screen; image from make_room6_boards.py (gpu_meter.png, number from
+  # count_making_of.py)
+  # Screen and counter beside the door r6_door (the ride goes through it; the screen was only 0.07 m from the path). Heights
+  # in at and size apply to scale 1 and are halved: above the door (3 m) the centre would have to be at 8.4.
+  # So they go on the free wall pieces at the sides: screen between door (0.8) and r6_plans (5.5), counter between
+  # r6_mistakes (-4.5) and door (-0.8); screen 4.4 x 2.48 instead of 6.4 x 3.6 (16:9 kept)
+  - {id: r6_gpu_meter, kind: board, frame: wall, room: 6, at: [-2.65, 0.05, 4.4], facing: out, size: [3.0, 1.48], image: _scratch/storyboard/making_of/gpu_meter.png}
+  # Screenshot of Blender with this very scene, 2560 x 1380, height matching the image format, cropped without the title bar
+  # with the file path: 2560 x 1350.
+  # Flat against the wall (d 0.06 instead of 0.35): with 35 cm clearance the dark box was visible from the side during the
+  # ride and looked bulky
+  - {id: r6_blender_screen, kind: board, frame: wall, room: 6, at: [3.15, 0.06, 4.4], facing: out, size: [4.4, 2.32], image: media/blender_window_cropped.png}
+  # r6_plans shortened to x = 15.5: the door into the middle hall is behind it; earlier at x 12.5, width 14
+  - {id: r6_plans, kind: board, frame: wall, room: 6, at: [10.5, 0.05, 5.6], facing: out, size: [10, 7], segments: 6, seamless: true, no_rim: true, image: _scratch/storyboard/making_of/plan_story.png}   # seamless: joints as in room 4
+  # Not the same shelf and lectern as in room 5: a shorter shelf, the book of words lies on a reading table (lectern with
+  # base: table)
+  - {id: r6_shelf, kind: shelves, frame: room, room: 6, at: [-22, 49.2, 0], to: -13, unit: 4.0, height: 2.2}
+  # Continuous paper as a stack instead of a book (fanfold, running from top to bottom): 9.5 x 11 inch portrait; height from
+  # the number of prompts (count_making_of.py, thickness: prompts): every prompt is its own print job on a new sheet, 500
+  # words per sheet, 0.1 mm per sheet (e.g. 490 prompts, 54 958 words, 522 sheets = 5.2 cm); fanfold: the paper web arches out
+  # of the back of the stack and falls over the rear edge of the table
+  - {id: r6_book, kind: lectern, base: table, stack: true, thickness: prompts, sheet: [0.241, 0.279], fanfold: _scratch/storyboard/making_of/fanfold_blank.png, frame: room, room: 6, at: [-15, 45.3, 0], facing: out, image: _scratch/storyboard/making_of/prompts_sheet.png}
+  - {id: mo_numbers, kind: easel, frame: room, room: 6, at: [-5, 47.5, 0], facing: in, size: [3.0, 2.0], image: _scratch/storyboard/making_of/numbers_room6.png}
+  - {id: mo_ride, kind: easel, frame: room, room: 6, at: [2, 47.5, 0], facing: in, size: [3.0, 2.0], image: _scratch/storyboard/making_of/first_ride.png}
+  - {id: mo_decisions, kind: easel, frame: room, room: 6, at: [9, 47.5, 0], facing: in, size: [3.0, 2.0], image: _scratch/storyboard/making_of/decisions.png}
+  - {id: mo_credits, kind: easel, frame: room, room: 6, at: [16, 47.5, 0], facing: in, size: [3.0, 1.7], image: _scratch/ride/cards/credits.png}
+  # Door from room 6 into the middle hall: the graphic on the door leaf is r6_door; station_scene.py builds the door itself,
+  # here only the image (image, picture area 2.16 x 2.86 m on the flush leaf, portrait). In the middle hall, right behind the
+  # door, the second graphic on an easel, facing the door (the actual chart is inside)
+  # mount embedded: the graphic sits on the leaf in the wall opening, the intersection with "Museum Wände mit Durchgang" is intended
+  - {id: r6_door, kind: board, frame: room, room: 6, at: [0, 42, 0], mount: embedded, image: _scratch/storyboard/making_of/rebound_years_door.png, above: _scratch/storyboard/making_of/rebound_years_door_above.png}
+  # Images from scripts/make_rebound_chart.py (years_chart: years, axes 1 to 10, resources through the ceiling):
+  # door 2170 x 2915, plus the line on the lintel (above), easel 3200 x 1800
+  # Easel straight in front of the door, 5 m into the middle hall, facing the door: at the earlier spot (-17.8, 27.3,
+  # facing 123) it was in line with the open door leaf (95°), whose edge stood 1.4 m in front of its centre; door (middle of
+  # the last wall piece before the corner to room 1) at hall (-22.5, 33.8), normal into the middle hall (0.866, -0.5)
+  - {id: r7_open_curve, kind: easel, frame: hall, at: [-13.84, 28.8, 0], facing_deg: 150, size: [3.2, 1.8], image: _scratch/storyboard/making_of/rebound_years_hall.png}
+  - {id: r6_table, kind: table, frame: wall, room: 6, at: [2, 7, 0], facing: out, turn: 10}
+  - {id: r6_borgi, kind: borgi, frame: wall, room: 6, at: [3.5, 5.8, 0], facing: back, image: media/visual_design/borgi_greeting.png}   # beside the path to the door (earlier x 0.5, only 0.4 m from the path)
+  # Signs per room, across, under the ceiling, facing whoever enters, accent colour per room from Okabe-Ito; stage language
+  # English. Signs 2 to 6 sat just below the ceiling (5.4 m) and closer to the outer wall: at 3.75 m and r 44 they hung
+  # between camera and inner wall and intruded into 02.1, 02.2 and 03.3.
+  # Switched off: all room signs were removed from the scene. The lines stay as a template.
+  # - {id: sign_1, kind: board, frame: room, room: 1, at: [0, 49.5, 9.0], facing: in, size: [9, 1.6], no_back: true, color: [0.7913, 0.3467, 0.0], text: "1  Opening"}
+  # - {id: sign_2, kind: board, frame: room, room: 2, at: [2, 45, 10.8], facing: back, size: [9, 1.6], no_back: true, color: [0.09306, 0.45641, 0.81485], text: "2  Where I come from"}
+  # - {id: sign_3, kind: board, frame: room, room: 3, at: [2, 45, 10.8], facing: back, size: [9, 1.6], no_back: true, color: [0.0, 0.34191, 0.17144], text: "3  Three screens"}
+  # - {id: sign_4, kind: board, frame: room, room: 4, at: [-17, 45, 10.8], facing: back, size: [9, 1.6], no_back: true, color: [0.87137, 0.77582, 0.05448], text: "4  Vision"}
+  # - {id: sign_5, kind: board, frame: room, room: 5, at: [2, 45, 10.8], facing: back, size: [9, 1.6], no_back: true, color: [0.66539, 0.11193, 0.0], text: "5  Lessons learned"}
+  # - {id: sign_6, kind: board, frame: room, room: 6, at: [2, 45, 10.8], facing: back, size: [9, 1.6], no_back: true, color: [0.60383, 0.1912, 0.38643], text: "6  Making of"}
+
+scenes:
+  - scene: 1
+    title: "Titelfolie"
+    place: "Room 1"
+    feeling: "arriving (3)"
+    panels:
+      # The talk starts head-on in front of the title slide; the door need not be seen at first, at most out of the corner of
+      # the eye. From the slide the path goes left to the banner (01.4).
+      - id: "01.1"
+        shot: CU
+        angle: eye
+        move: static
+        click: true
+        seconds: 15
+        camera: {frame: wall, room: 1, at: [12, 9, 1.65], look: [12, 0, 3.8], lens: 32}
+        fit: [r1_title]
+        fill: true   # the dimensions of the title slide match the camera frame exactly
+        main_door: closed
+        shows: "Head-on in front of the title slide on the inner wall of room 1: it fills the frame like a slide"
+        speech: "[speaker: welcome, what today is about]"
+        missing: ["title slide"]
+        status: idea
+      - id: "01.4"
+        shot: MS
+        angle: low
+        move: track
+        click: true
+        seconds: 8
+        camera: {frame: room, room: 1, at: [16, 46, 1.7], look: [23.4, 46, 9.0], lens: 26}   # look 9.0 instead of 5.2 (heights halved: 4.5 m), looking higher so the banner is not filling the whole view
+        fit: [r1_banner]
+        fit_limit: 0   # do not back off: fitting placed the camera 2.3 m behind 01.1, so the ride went backwards
+        shows: "The banner 'Today's exhibition' above the passage, between door lintel and ceiling; we walk underneath it"
+        speech: "[speaker: topic of the evening]"
+        missing: ["wording of the banner"]
+        status: idea
+
+  - scene: 2
+    title: "Woher ich komme"
+    place: "Room 2, timeline of the talks"
+    feeling: "momentum (2)"
+    panels:
+      # Three head-on views instead of one oblique view from the corner: each about a third of the wall (9 m), camera 5 m in
+      # front of the wall at eye height, level, image shifted up with shift_y (verticals stay vertical)
+      - id: "02.1"
+        shot: WS
+        angle: eye
+        move: track
+        click: true
+        seconds: 8
+        camera: {frame: wall, room: 2, at: [-10, 10, 1.7], look: [-10, 0, 3.4], lens: 20, shift_y: 0.144}   # walking direction: start at the entrance (-x)
+        shows: "After the banner: start of the timeline of the talks on the inner wall of room 2 (2024 to mid 2025), a line in the middle, branches up and down to the stills"
+        credits: [gpn23_2025]   # cards with recordings uploaded by third parties in the frame (reading direction: walking direction)
+        speech: "[speaker: where I come from]"
+        missing: ["image Hannover 2025 (panel)", "date of GPN24 (day open)"]
+        status: idea
+      - id: "02.2"
+        shot: WS
+        angle: eye
+        move: track
+        click: false
+        seconds: 6
+        camera: {frame: wall, room: 2, at: [0, 10, 1.7], look: [0, 0, 3.4], lens: 20, shift_y: 0.144}
+        shows: "Walking along the wall: middle of the timeline (2025, NFDI 2025, 39C3)"
+        credits: [gpn23_2025, nfdi_slam_2025]
+        speech: ""
+        missing: []
+        status: idea
+      - id: "02.3"
+        shot: WS
+        angle: eye
+        move: track
+        click: true
+        seconds: 6
+        camera: {frame: wall, room: 2, at: [10, 10, 1.7], look: [10, 0, 3.4], lens: 20, shift_y: 0.144}   # end ("today") at the exit (+x)
+        credits: [gpn24_2026]
+        shows: "End of the timeline: 2026 to 'today', the card for tonight"
+        speech: ""
+        missing: ["image SE2A 2026 (panel)"]
+        status: idea
+
+  - scene: 3
+    title: "Was wir tun"
+    place: "Room 3, three screens"
+    feeling: "curiosity, three small laughs (3)"
+    panels:
+      - id: "03.1"
+        shot: WS
+        angle: eye
+        move: track
+        click: true
+        seconds: 10
+        camera: {frame: wall, room: 3, at: [-20, 9, 1.7], look: [0, 0, 5], lens: 18}
+        # Dwell times: stand still for a while at each video, then only move on to the left: 5 s overview, 15 s per screen;
+        # desks in the walking direction (x -14, 0, 14), no going back
+        dwell_seconds: 5
+        shows: "Establishing: three large TVs in front of the inner wall, each with a wide reading desk in front whose slanted top carries title, creator and metadata, as in a museum"
+        speech: "[speaker: three videos, three thoughts]"
+        missing: []
+        status: idea
+      - id: "03.2"
+        shot: MS
+        angle: eye
+        move: track
+        click: true
+        seconds: 30
+        camera: {frame: wall, room: 3, at: [-14, 10, 1.7], look: [-14, 0, 5.2], lens: 24}
+        fit: [r3_s1, r3_s1_plate]
+        dwell_seconds: 15
+        shows: "TV 1 plays (Ultralativ), in front the reading desk with title, creator, description and the video in the knowledge graph"
+        speech: "\"We don't actually keep the video. We keep the label. This is the emptiest museum in the world: it's all labels.\""
+        missing: []   # the video plays (field video on r3_s1), description from the YouTube metadata
+        decision: "Start time of the video clip (proposal: start of the downloaded excerpt)"
+        status: idea
+      - id: "03.3"
+        shot: MS
+        angle: eye
+        move: track
+        click: true
+        seconds: 30
+        camera: {frame: wall, room: 3, at: [0, 10, 1.7], look: [0, 0, 5.2], lens: 24}
+        fit: [r3_s2, r3_s2_plate]
+        dwell_seconds: 15
+        shows: "TV 2 (Not David, Blender): reading desk with the old and the new title"
+        speech: "\"Even this video changed its name since last year. Metadata is alive.\" / \"Built with Blender. Like this talk.\""
+        missing: []   # the video plays from 5:10
+        decision: "Start time of the video clip (proposal: start of the downloaded excerpt)"
+        status: idea
+      # One shot on the text below the screen, showing how the metadata is represented in the data model: first briefly the
+      # whole desk (03.3a, 3 s without a click), then a zoom onto the graph (03.3b)
+      - id: "03.3a"
+        shot: MS
+        angle: high
+        move: tilt
+        click: false
+        seconds: 3
+        camera: {frame: wall, room: 3, at: [0, 6.2, 1.75], look: [0, 3.0, 1.15], lens: 24}
+        fit: [r3_s2_plate]
+        fill: true   # the slanted surface of the desk fills the frame, camera perpendicular to it (like the title slide)
+        fill_axis: surface
+        fill_margin: 0.04
+        dwell_seconds: 2.5
+        shows: "The whole reading desk below TV 2: title, description, the graph on the right"
+        speech: ""
+        missing: []
+        status: idea
+      - id: "03.3b"
+        shot: CU
+        angle: high
+        move: track
+        click: true
+        seconds: 15
+        camera: {frame: wall, room: 3, at: [0, 6.2, 1.75], look: [0, 3.0, 1.15], lens: 24}
+        fit: [r3_s2_plate]
+        fill: true
+        fill_axis: surface
+        fill_part: [0.38, 0.99, 0.24, 0.56]   # only the graph on the right of the desk; with the current data model three boxes in a row in the middle band
+        dwell_seconds: 15
+        shows: "Close on the graph on the desk below TV 2: the video as work, expression, manifestation, channel and platform in the data model"
+        speech: "[speaker: this is what a video looks like in our data model]"
+        missing: []
+        status: idea
+      - id: "03.4"
+        shot: MS
+        angle: eye
+        move: track
+        click: true
+        seconds: 30
+        camera: {frame: wall, room: 3, at: [14, 10, 1.7], look: [14, 0, 5.2], lens: 24}
+        fit: [r3_s3, r3_s3_plate]
+        dwell_seconds: 15
+        shows: "TV 3 (MediaWiki, graph of Wikipedia): we stand on MediaWiki"
+        speech: "[speaker]"
+        missing: []   # the video plays from 1:00
+        decision: "Start time of the video clip (proposal: start of the downloaded excerpt)"
+        status: idea
+
+  - scene: 4
+    title: "Vision"
+    place: "Room 4, under the glass roof"
+    feeling: "longing, curiosity (3)"
+    panels:
+      - id: "04.1"
+        shot: WS
+        angle: eye
+        move: track
+        click: true
+        seconds: 12
+        # three views from 9.8 m (from 8.5 m the top event row and the year labels were cut off); both strands and both
+        # edges in the frame
+        # no shift_y: fill sets the shift in the still to 0 anyway, but in the ride it tilted the camera up by another
+        # 17 degrees (applies to 04.1 to 04.3)
+        camera: {frame: wall, room: 4, at: [-15.5, 9.8, 1.7], look: [-15.5, 0, 3.4], lens: 20}   # walking direction: start at the entrance
+        # Ride: top and bottom edges of the timeline flush with the frame (applies to 04.1 to 04.3)
+        fit: [r4_timeline]
+        fill: true
+        fill_height: true
+        shows: "Head-on in front of the start of the timeline: 2021 BorgNetzWerk, from which two strands grow, research above (pilot video, weekly series, first partners, ORKG, Open Science Bridge), association below (channels, founding with 12 members, charitable status) (in short: we talk about ourselves quickly)"
+        decision: "Reading direction as in room 2: panels in reading order, 04.1 shows 2021"
+        speech: "[speaker: vision]"
+        missing: []
+        status: idea
+      - id: "04.2"
+        shot: MS
+        angle: eye
+        move: track
+        click: true
+        seconds: 8
+        pass: true   # keep walking without an odd stop; the stop comes at "Accepted" (04.3)
+        camera: {frame: wall, room: 4, at: [-5.5, 9.8, 1.7], look: [-5.5, 0, 3.4], lens: 20}
+        fit: [r4_timeline]
+        fill: true
+        fill_height: true
+        shows: "In passing: 2023 to 2025, the dead ends of the rejections (DATI, startsocial 2024 and 2025, PHINEO, NLnet)"
+        speech: "[speaker: where the money comes from and where it does not]"
+        missing: []
+        status: idea
+      - id: "04.3"
+        shot: MS
+        angle: eye
+        move: track
+        click: true
+        seconds: 10
+        # where "Accepted" appears, decelerate and stop briefly
+        camera: {frame: wall, room: 4, at: [4.5, 9.8, 1.7], look: [4.5, 0, 3.4], lens: 20}
+        fit: [r4_timeline]
+        fill: true
+        fill_height: true
+        travel_seconds: 20   # glide from 04.1 via 04.2 to here, a full 20 seconds rather than just half speed
+        shows: "Stop at 'ACCEPTED, Jan 2026' and 'GRANTED, 2026-10-15': the two lines widen and flow on the left into the banners FDM-NDS (top) and startsocial (bottom)"
+        speech: ""
+        missing: []
+        status: idea
+      - id: "04.4"   # before 04.3a: here we look up and see the vision, life paths through the ceiling
+        shot: MS
+        angle: low
+        move: tilt
+        click: true
+        seconds: 8
+        camera: {frame: wall, room: 4, at: [5.0, 7.0, 1.7], look: [5.5, 0.5, 14], lens: 22}   # at the banners (earlier the middle of the room, room [-2, 44]); the lines on the wall at the bottom of the frame
+        shows: "Looking up at the banners: the green lines climb the wall, above them the glass roof of room 4 (the only room that has one), the torus and the hub"
+        speech: "\"We'll take the lift later.\""
+        missing: []
+        decision: "Museum lift and the view upwards"
+        status: idea
+      # 04.3a (vision wall) dropped: the end of the timeline is the vision, so 04.4 at the banners ends room 4
+
+  - scene: 5
+    title: "Wo es schiefgeht"
+    place: "Room 5, library with the book"
+    feeling: "laugh 4, then shock 5"
+    panels:
+      - id: "05.1"
+        shot: WS
+        angle: eye
+        move: track
+        click: true
+        seconds: 10
+        camera: {frame: room, room: 5, at: [-19, 44.5, 1.7], look: [0, 44, 1.6], lens: 20}
+        shows: "Establishing: right at the front the lectern with the book in front of the shelves, on the right the tables with Borgis and the tablet, at the back the room divider; the chair station stands at the back in the shadow"
+        speech: "[speaker]"
+        missing: ["wall pictures (a well-known example of an AI failure)", "Borgis as 3D figures (cut-outs for now)"]
+        status: idea
+      - id: "05.2"
+        shot: CU
+        angle: high
+        move: track
+        click: true
+        seconds: 6
+        # Like a person at a lectern: approach, stand, look into the book (waypoint), then lean over the book: gaze
+        # perpendicular to the pages, framing exactly the open book; no cut; look height 2.5 scales to 1.25 m (lectern at
+        # human scale)
+        camera: {frame: room, room: 5, at: [-12, 45.95, 1.6], look: [-12, 45, 2.5], lens: 22}
+        via:   # stand at the lectern and look into the book, then lean forward (otherwise the camera turned at 321 deg/s on arrival)
+          - {frame: room, room: 5, at: [-12, 46.6, 1.65], look: [-12, 45, 2.5]}
+        fit: [book]
+        fill: true
+        fill_margin: 0.1   # cover and book block in the frame, nothing else
+        fill_axis: surface   # perpendicular to the pages, top edge at the top (outline exactly around the book)
+        approach_look: true   # ride: walk up while looking at the book, as one naturally would
+        book: [_scratch/book/spread_title_left.png, _scratch/book/spread_title_right.png]
+        shows: "Up to the lectern: standing in front of the book, the title page 'Lessons learned' fills the frame"
+        speech: ""
+        missing: []
+        status: idea
+      - id: "05.3"
+        shot: ECU
+        angle: high
+        move: static   # same position as 05.2: only the page changes, per click (no cut, no jump)
+        click: true
+        seconds: 30
+        camera: {frame: room, room: 5, at: [-12, 45.95, 1.6], look: [-12, 45, 2.5], lens: 22}   # as 05.2: stay, turn the page
+        fit: [book]
+        fill: true   # the book fills the frame (ride: one focal length, closeness from position)
+        fill_margin: 0.1   # cover and book block in the frame, nothing else
+        fill_axis: surface   # perpendicular to the pages, top edge at the top (outline exactly around the book)
+        book: [_scratch/book/spread_reset_left.png, _scratch/book/spread_reset_right.png]
+        shows: "Page 1: my own reset (my story, own account); the whole double page in the frame"
+        speech: "[speaker]"
+        missing: []
+        decision: "Which book pages and texts room 5 shows"
+        status: idea
+      - id: "05.4"
+        shot: ECU
+        angle: high
+        move: static
+        click: true
+        seconds: 30
+        camera: {frame: room, room: 5, at: [-12, 45.95, 1.6], look: [-12, 45, 2.5], lens: 22}   # as 05.2: stay, turn the page
+        fit: [book]
+        fill: true   # the book fills the frame (ride: one focal length, closeness from position)
+        fill_margin: 0.1   # cover and book block in the frame, nothing else
+        fill_axis: surface   # perpendicular to the pages, top edge at the top (outline exactly around the book)
+        book: [_scratch/book/spread_replit_left.png, _scratch/book/spread_replit_right.png]
+        shows: "Page 2: Replit (internet, reported)"
+        speech: "[speaker]"
+        missing: []
+        decision: "Which book pages and texts room 5 shows"
+        status: idea
+      - id: "05.5"
+        shot: ECU
+        angle: high
+        move: static
+        click: true
+        seconds: 25
+        camera: {frame: room, room: 5, at: [-12, 45.95, 1.6], look: [-12, 45, 2.5], lens: 22}   # as 05.2: stay, turn the page
+        fit: [book]
+        fill: true   # the book fills the frame (ride: one focal length, closeness from position)
+        fill_margin: 0.1   # cover and book block in the frame, nothing else
+        fill_axis: surface   # perpendicular to the pages, top edge at the top (outline exactly around the book)
+        book: [_scratch/book/spread_doge_a_left.png, _scratch/book/spread_doge_a_right.png]
+        credits: [skidmore_musk_cpac]   # photo on page V; the other thumbnails on the book pages 05.3 to 05.6 are our own drawings
+        shows: "Page 3: Musk with the chainsaw, 'We will make mistakes.', 'continues on the next page'"
+        speech: "[speaker]"
+        missing: []
+        decision: "Which book pages and texts room 5 shows"
+        status: idea
+      - id: "05.6"
+        shot: ECU
+        angle: high
+        move: static
+        click: true
+        seconds: 30
+        camera: {frame: room, room: 5, at: [-12, 45.95, 1.6], look: [-12, 45, 2.5], lens: 22}   # as 05.2: stay, turn the page
+        fit: [book]
+        fill: true   # the book fills the frame (ride: one focal length, closeness from position)
+        fill_margin: 0.1   # cover and book block in the frame, nothing else
+        fill_axis: surface   # perpendicular to the pages, top edge at the top (outline exactly around the book)
+        book: [_scratch/book/spread_doge_b_left.png, _scratch/book/spread_doge_b_right.png]
+        shows: "Page 4: 'Very briefly.', 14 million, 'Actions have consequences.': the loudest moment"
+        speech: "[speaker]"
+        missing: ["Lancet article not yet retrieved and read"]
+        decision: "Which book pages and texts room 5 shows"
+        status: idea
+      - id: "05.8"
+        shot: WS
+        angle: eye
+        move: dolly out
+        click: true
+        seconds: 15
+        camera: {frame: room, room: 5, at: [3, 47, 1.7], look: [12, 42.4, 1.2], lens: 24}   # room divider at s 12
+        # no waypoint above the book any more: at the lectern the camera is already upright, the gaze only rises and moves to
+        # the room divider (earlier a perpendicular gaze, turning and straightening up tilted the horizon by 34 degrees)
+        via:   # away from the lectern: first a step in the walking direction while the gaze rises (the turn is spread over the path)
+          - {frame: room, room: 5, at: [-8, 46.6, 1.65], look: [4, 44.5, 3.2]}
+        fit: [r5_divider]
+        shows: "Away from the book towards the exit: the room divider with the cover of the reverse centaur, Doctorow's image in our words, the question to the audience and two QR codes (speech, German translation) blocks the way; the ride passes on the outside along the shelves"
+        speech: "[speaker: asks the audience who is the head in their own work]"
+        missing: ["source of the image on the back"]
+        status: idea
+      # Panel 05.9 (back of the room divider in passing) removed: the back is not needed in passing
+      - id: "05.1a"   # the chair station at the end of the room, behind the room divider in its shadow
+        shot: MS
+        angle: high
+        move: track
+        click: true
+        seconds: 15
+        camera: {frame: room, room: 5, at: [17.1, 47.8, 1.85], look: [16.8, 42.0, 3.0], lens: 18}   # from the walking path on the outside, to the right over the headrest to the screens
+        via:   # ride: past the room divider on the outside along the shelves (passage only on the outside along the shelves)
+          - {frame: room, room: 5, at: [12, 47.7, 1.6], look: [17, 44.5, 2.6]}
+        fit_limit: 0.5
+        dwell_seconds: 15   # the video stays in the frame longer; like the screens in room 3
+        shows: "In the back corner, behind the reverse centaur, the chair station: red recliner, a table top over the lap, three screens in an arc in front of the face (agents on the left, the video 'Hyperoptimized Engineer 2026' in the middle, the terminal on the right); on the table at the entrance the tablet with the second video"
+        speech: "[speaker: a sentence on the chair station, dystopia]"
+        missing: ["video in the middle and on the tablet (download pending approval)"]
+        status: idea
+
+  - scene: 6
+    title: "Making-of: im Offenen gebaut"
+    place: "Room 6, the making-of room"
+    feeling: "understanding, gratitude (3)"
+    panels:
+      - id: "06.1"
+        shot: WS
+        angle: eye
+        move: track
+        click: true
+        seconds: 12
+        camera: {frame: room, room: 6, at: [-19, 46, 1.7], look: [6, 43, 2.8], lens: 18}   # earlier s -22, r 43: on the partition wall
+        via:   # ride: after 05.9, turn towards the passage while still in room 5, instead of close to the outer wall
+          - {frame: room, room: 5, at: [20, 46, 1.6], look: [25, 45.5, 1.6], gaze: false}   # gaze false: path only, the gaze glides to the passage (the turn was too abrupt); continues on the outside to the passage; the chair station is in the inner corner
+        shows: "Establishing: on the left along the inner wall the story of mistakes, behind it the Blender screen and the plan versions; on the right along the outer wall the shelf with the book of words and the easels; in the middle a table with a Borgi"
+        speech: "\"My agent built this station.\" / [speaker: thanks to Blender and Poly Haven]"
+        missing: []   # Blender window and GPU counter are there; folders on the shelf are dropped (background only)
+        status: idea
+      # Order follows the path, one pass without going back, walking slowly and glancing left and right: on the right the
+      # book of words (s -15), on the left the story of mistakes (-12.5), on the right the easels (-5 to 9), on the left the
+      # plan versions (12.5), then out
+      - id: "06.3"
+        shot: MS
+        angle: high
+        move: track
+        click: true
+        seconds: 10
+        camera: {frame: room, room: 6, at: [-16.0, 46.6, 1.4], look: [-15, 44.9, 1.7], lens: 22}   # in front of the stack, slightly to the side: cover sheet in front, behind it the paper web arching over the rear edge of the table; standing at the shelf side of the reading table, looking into the book towards the inner wall (look 1.75 scales to 0.88 m), so the pan to the story of mistakes stays small
+        shows: "Right at the entrance on the right: the book of words on a reading table in front of a short shelf, the sum of the words dictated by the speaker, per day"
+        speech: "[speaker]"
+        missing: ["folders on the shelf instead of books"]
+        status: idea
+      - id: "06.2"
+        shot: MS
+        angle: eye
+        move: track
+        click: true
+        seconds: 15
+        camera: {frame: wall, room: 6, at: [-12.5, 7.5, 1.7], look: [-12.5, 0, 5.6], lens: 18}   # closer to the wall: the easels stand further back
+        fit: [r6_mistakes]
+        shows: "The story of mistakes: eight real mistakes of this build, each before and after with one sentence, as a picture story on the wall"
+        speech: "[speaker: how this came about, what went wrong]"
+        missing: []
+        status: idea
+      - id: "06.3a"
+        shot: MS
+        angle: eye
+        move: track
+        click: false
+        seconds: 8
+        # Two look points instead of one, so every easel is fully visible at least once: the four easels span 24 m, the ride
+        # (22 mm) shows only 10 m from 6 m away; 06.3a the first two, 06.3b the last two, the move glides through both
+        camera: {frame: room, room: 6, at: [-1.5, 41.5, 1.7], look: [-1.5, 47.5, 1.5], lens: 20}
+        fit: [mo_numbers, mo_ride]
+        fit_limit: 1.0
+        shows: "The easels: what it took (words, dictations, Blender hours, commits), the first ride and today"
+        speech: ""
+        missing: []
+        status: idea
+      - id: "06.3b"
+        shot: MS
+        angle: eye
+        move: track
+        click: false
+        seconds: 6
+        camera: {frame: room, room: 6, at: [12.5, 41.5, 1.7], look: [12.5, 47.5, 1.5], lens: 20}
+        fit: [mo_decisions, mo_credits]
+        fit_limit: 1.0
+        shows: "The easels: the decisions and the credits"
+        speech: ""
+        missing: []
+        status: idea
+      - id: "06.2a"
+        shot: MS
+        angle: eye
+        move: track
+        click: true
+        seconds: 10
+        camera: {frame: wall, room: 6, at: [11.0, 7.0, 1.7], look: [11.0, 0, 5.6], lens: 18}   # at 9.5 m an easel hid the picture; 11.0 instead of 12.5: r6_plans now spans x 5.5 to 15.5, at 12.5 its left edge was cut off
+        fit_limit: 0.8   # ride with 22 mm: fitting would otherwise pull the camera 2.5 m back into the easel mo_decisions
+        fit: [r6_plans]
+        shows: "How the plan changed: the first hand-drawn floor plan, the sketches up to this room"
+        speech: ""
+        missing: []
+        status: idea
+      # Through the door from room 6 into the middle hall, rather than back through room 1 and the main door; the main door
+      # only on the way back (07.3).
+      # Stop in front of the closed door, one step to the left, look at the image on the door; after the click the door
+      # swings open and we walk through. The door sits in the last wall piece before the corner to room 1 (x 15.75 to 21,
+      # picture centre x 18.0). Camera at an angle from the right, one step left of 06.2a: head-on (x 18) it would stand in
+      # the easel mo_credits
+      - id: "06.4"
+        opens_door_on_leave: r6   # the door swings open after the click (station_scene.py, doors in the ride)
+        shot: MS
+        angle: eye
+        move: track
+        click: true
+        seconds: 8
+        camera: {frame: wall, room: 6, at: [15.0, 6.6, 1.7], look: [18.0, 0, 3.4], lens: 22}
+        shows: "In front of the closed door of room 6, left of the plan versions: the rebound chart on the door leaf, its line runs over the lintel up to the ceiling"
+        speech: ""
+        missing: []
+        status: idea
+
+  - scene: 7
+    title: "Alles hängt zusammen"
+    place: "Middle hall through the main door, then backwards through room 1 and out through the gate"
+    feeling: "understanding (3)"
+    # Take in the room rather than stare at the globe: walk in and let the gaze sweep. Coming in from the right, the natural
+    # gaze sequence goes left first, then across the globe to the middle, then briefly slightly to the right: behind the
+    # door to the left (hall dx > 0, looking sunward, top towards the axis), then a few steps in, the gaze has passed over the
+    # globe and rests slightly right of the middle (dx < 0). Stills only; the motion in between belongs to the ride.
+    panels:
+      # Through the open door from room 6 straight to the easel r7_open_curve, which faces the door: look at it, then one more
+      # click to look around the room. Camera on the door normal, 2.6 m in front of the easel, the open leaf edge 1.3 m to the right
+      - id: "07.0"
+        shot: MS
+        angle: eye
+        move: track
+        click: true
+        seconds: 8
+        camera: {frame: hall, at: [-18.34, 31.4, 1.7], look: [-13.84, 28.8, 3.6], lens: 22}
+        via:   # straight in front of the door (1 m inside room 6, on the middle of the opening), then through along the normal
+          - {frame: wall, room: 6, at: [18.0, 2.0, 1.7], look: [18.0, -6.0, 3.4]}
+        shows: "Right behind the door in the middle hall the easel with the second chart: the curve when we climb the mountain once and then share"
+        speech: ""
+        missing: []
+        status: idea
+      - id: "07.1"
+        shot: WS
+        angle: eye
+        move: pan
+        click: false
+        pass: true   # ride: no stop, only a look point
+        seconds: 8
+        camera: {frame: hall, at: [0, 28, 1.7], look: [24, 8, 2.6], lens: 22}   # behind the open leaves (2.6 m deep)
+        # Earlier waypoints through the door from room 6 are gone since 07.0: they lay on the middle of the wall, not at the door.
+        # From the easel around its lower end (smaller shadeward): straight to 07.1 went through its stand (0.03 m)
+        via:
+          - {frame: hall, at: [-17.5, 22.5, 1.7], look: [0, 0, 2.6], gaze: false}
+        shows: "Behind the centre door, the gaze goes left first: the inner walls of the rooms from behind, 80 % transparent, showing the backs of the exhibits; their threads run out of the frame to the right towards the globe"
+        speech: "[speaker]"
+        missing: []
+        status: idea
+      - id: "07.2"
+        opens_door: main   # the main door opens before the way back, while we are still in the middle hall (07.3 is already behind it)
+        shot: WS
+        angle: eye
+        move: pan
+        click: true
+        seconds: 8
+        camera: {frame: hall, at: [3, 24, 1.7], look: [-9, 0, 2.6], lens: 22}
+        shows: "A few steps in, the gaze has swept over the globe to the middle and rests briefly slightly to the right: the globe on the left of the frame, behind it the inner walls on the other side with their threads"
+        speech: "\"Told you.\""
+        missing: []
+        status: idea
+      - id: "07.3"
+        shot: WS
+        angle: eye
+        move: dolly out
+        click: false
+        pass: true   # ride: waypoint without a stop (an unexplained stop here was removed)
+        seconds: 5
+        camera: {frame: hall, at: [0, 45, 1.7], look: [0, 0, 2.5], lens: 22}
+        shows: "Backwards out of the middle hall through the main door into room 1: the globe stays in front of us, the room recedes"
+        speech: ""
+        missing: []
+        status: idea
+      - id: "07.4"
+        shot: WS
+        angle: eye
+        move: dolly out
+        click: false
+        pass: true   # ride: waypoint without a stop; an earlier position put the camera inside the glass wall of the hall
+        seconds: 5
+        camera: {frame: ring, at: [0, 135, 1.7], look: [0, 100, 3.4], lens: 22}   # further back and higher: the canopy was cut off at the top
+        shows: "Backwards through room 1 and the gate onto the square: through gate and centre door the globe is still visible in the depth, above it the canopy with the name, the facade closes around the frame"
+        speech: ""
+        missing: []
+        status: idea
+      # Never turn around: keep walking backwards across the square into the cabin at the foot of the spoke, the gaze stays
+      # on the museum; in front of us the cabin door closes (the museum gate stays open), then up without a cut (08.1)
+      - id: "07.5"
+        shot: WS
+        angle: eye
+        move: dolly out
+        click: false
+        pass: true   # waypoint in the tower in front of the cabin door (depth 137; door at 138.1), the gaze already tilts on the way as in 07.5a
+        # (otherwise the gaze snapped downwards: 07.5 used to stand where 07.5a is, looking at 3.0, and the camera tilted by
+        # 12 degrees during the stop)
+        seconds: 5
+        camera: {frame: ring, at: [0, 137.0, 1.7], look: [0, 110, -3.0], lens: 22}
+        cabin_door: open   # open while we move in; in 07.5a it slides shut (we glide through the glass lift door)
+        shows: "Backwards across the square through the opening of hall and tower towards the glass cabin at the foot of the spoke: in front of us the museum with its open gate, the glass leaves of the cabin door stand open; struts of tower and hall frame the shot"
+        speech: ""
+        missing: []
+        status: idea
+      - id: "07.5a"
+        shot: WS
+        angle: eye
+        move: dolly out   # ride: target of the whole way back from 07.2 (07.3 to 07.5 are waypoints), backwards allowed; with static the
+        # camera turned around and back (2745 deg/s at frame 6921, way back 70 instead of 19 s)
+        click: true
+        seconds: 4
+        camera: {frame: ring, at: [0, 139.2, 1.7], look: [0, 110, -3.0], lens: 22}   # looking down a little (earlier 3.0, then 0)
+        dwell_seconds: 2   # the glass door closes within 1 to 1.5 s of arrival, then the cabin lifts off
+        cabin_view: lock   # from here a fixed attitude until 09.1: forward only, slightly tilted down, onto the same point of the glass lift door; since 08.1 no longer stops, the way in the lift starts here
+        cabin_door: closed
+        shows: "The cabin door is shut: through the glass the museum lies before us, we stand in the cabin"
+        speech: "[speaker: a farewell sentence to the museum]"
+        missing: []
+        status: idea
+
+  - scene: 8
+    title: "Aufstieg"
+    place: "Lift tower at the foot of spoke 0"
+    feeling: "setting off, lightness (2 to 3, carried)"
+    decision: "Which hub rooms the talk shows, in which order, and how it ends"
+    panels:
+      - id: "08.1"
+        shot: WS
+        angle: high
+        move: crane up
+        click: false
+        pass: true   # ride: no stop after lift-off (an odd pause here was removed); the attitude stays (cabin_view)
+        seconds: 6
+        camera: {frame: ring, at: [0, 140, 18], look: [0, 104, 2], lens: 22}
+        cabin_door: closed
+        cabin_frame: true
+        overlay: "1.00 g"
+        shows: "From the cabin during the ascent in the tower: the museum falls away below us, the gate we came out of, the square and the city behind"
+        speech: ""
+        missing: ["gravity display as an instrument in the cabin"]
+        decision: "Museum lift and the view upwards"
+        status: idea
+      - id: "08.2"
+        shot: EWS
+        angle: high
+        move: crane up
+        click: true
+        seconds: 15
+        camera: {frame: spoke, at: [143, 3, 0], look: [286, 0, 40], lens: 20, up: [0, 0, 1]}
+        pass: true   # the lift simply rides through; no stop halfway up, only a look point
+        max_speed: 15
+        max_speed_reason: "lift in the spoke, not a walk: 15 m/s instead of 4"
+        cabin_frame: true
+        overlay: "0.50 g"
+        shows: "Halfway up: below the museum and the city, the ring curves; display 0.5 g"
+        speech: "[speaker: a sentence about oversight: the higher we go, the less the ground holds us]"
+        missing: []
+        status: idea
+      - id: "08.3"
+        shot: WS
+        angle: low
+        move: tilt
+        click: false
+        pass: true   # ride: no stop in the spoke (0.3 s), the cabin rides through
+        seconds: 4
+        camera: {frame: spoke, at: [60, 3, 0], look: [0, 0, 40], lens: 20, up: [0, 0, 1]}
+        max_speed: 15
+        max_speed_reason: "lift in the spoke, not a walk: 15 m/s instead of 4"
+        via:   # ride: half a turn in two quarters, gaze to the side in between (otherwise the horizon tilted)
+          - {frame: spoke, at: [100, 3, 0], look: [100, 80, 20], up: [0, 0, 1], lens: 20}
+        cabin_frame: true
+        overlay: "0.21 g"
+        shows: "Above, the bearing ring approaches, behind it the standing hub; display 0.2 g"
+        speech: "[speaker: oversight, conclusion: what holds us then is saying clearly what we want]"
+        missing: []
+        status: idea
+      - id: "08.4"
+        shot: WS
+        angle: eye
+        move: static
+        click: false
+        seconds: 9
+        camera: {frame: spoke, at: [0, 0, 0], look: [0, 150, 65], lens: 22, up: [0, 0, 1]}   # stop on the axis in the bearing ring, right at the transition, the last moment we are turned about the rotation axis; earlier the cabin stopped 30 m further, behind the distribution mirror, and the hub kept circling; in the ride the attitude of 07.5a applies (cabin_view)
+        max_speed: 15
+        max_speed_reason: "cabin in spoke and axis tube, not a walk: 15 m/s"
+        dwell_seconds: 3.5   # time in which the cabin is taken out of the rotation (spin_station: 2.5 s without the half second at each end)
+        despin: true       # once the cabin reaches the axis tube, the rest runs automatically
+        face_module: spacebar   # the hub comes to rest with the bar in the viewing direction
+        overlay: "0.00 g"
+        shows: "The cabin has arrived on the axis through the opening in the bearing ring and stops briefly. Until now the modules of the hub have been circling around us outside; the cabin is taken out of the rotation, the circling slows and stops, and now the spokes and the ring keep turning below"
+        speech: ""
+        missing: ["cabin around the camera (frame, handrail) in the ride", "display showing that the cabin undocks"]
+        status: idea
+
+  - scene: 9
+    title: "Ankunft: das Licht"
+    place: "Hub: transfer, corridor, map room"
+    feeling: "floating, then wonder (4)"
+    panels:
+      - id: "09.1"
+        shot: WS
+        angle: eye
+        move: crane down   # the cabin sinks through the ceiling onto the floor of the lobby
+        click: true
+        seconds: 8
+        camera: {frame: hub, at: [0, 0, -3.0], look: {module: spacebar, offset: [0, 0, -3.5]}, lens: 22, up: [0, 0, -1]}   # eye height 1.7 m above the floor on the sun side (the floor is always the sun side), top shadeward; looking towards the bar; the hub stands so that this is the viewing direction at undocking (08.4): nothing turns on the way, since the axis is fixed
+        cabin_view: release   # ride: up to here the attitude of 08.1, the position of this panel applies only to the still
+        cabin_turn: steady    # from the stop at 08.4 to here one even turn from the cabin attitude into the position of this panel, preparing to look forward (earlier the turn happened only just before the lobby)
+        max_speed: 15
+        max_speed_reason: "cabin in the axis tube, not a walk"
+        overlay: "0.00 g"
+        shows: "The same cabin rides sunward in the axis tube past the undersides of the modules (looking forward) and comes up through the floor of the lobby: transfer and Space Bar as one large open room without hatches"
+        speech: ""
+        missing: ["furnishing of the lobby (later)"]
+        status: idea
+      - id: "09.1b"
+        shot: WS
+        angle: eye
+        move: track
+        click: false
+        seconds: 4
+        camera: {frame: hub, at: [1, -8, -3.0], look: {module: spacebar, offset: [0, 0, -3.5]}, lens: 22, up: [0, 0, -1]}
+        zero_g: true   # hub without gravity: floating instead of walking, no walking profile
+        shows: "Out of the cabin, turning to the Space Bar: counter on the right, job board on the left"
+        speech: ""
+        missing: []
+        status: idea
+      - id: "09.2"
+        shot: WS
+        angle: eye
+        move: track   # path from the lobby past the bar into the map room, no cut: both floors lie on the sun side
+        click: false
+        seconds: 5
+        # Ending on the floor, no more lifting off: along the handrail (something to hold on to beside you) from the lobby
+        # (map_room_funnel.railing, 0.9 m to the right) through the opening (y 30.3) to just past it; gaze straight ahead and
+        # slightly up, so that handrail and room are in the frame (with the gaze on the globe while entering, the railing was
+        # never visible); eye height 1.7 m above the map (z -2.9)
+        camera: {frame: hub, at: {module: map_room, offset: [1.5, 28.6, -2.9]}, look: {module: map_room, offset: [1.5, -20, -9]}, lens: 22, up: [0, 0, -1]}
+        dwell_seconds: 1.0   # hold on to the handrail, then look up (09.3)
+        zero_g: true   # pull along the handrail and float evenly, no steps
+        max_speed: 6
+        max_speed_reason: "60 m room, floating in zero g"
+        shows: "From the lobby along the handrail through the opening into the map room; ahead the star map, the tiers, and the handrail at the bottom edge of the frame"
+        speech: ""
+        missing: []
+        decision: "Which hub rooms the talk shows, in which order, and how it ends"
+        status: idea
+      - id: "09.3"
+        shot: WS
+        angle: low
+        move: tilt up
+        click: true
+        seconds: 20
+        # Ending: hold on to the handrail and look up at the globe, pulled 0.6 m closer to the handrail; the globe (centre 28 m
+        # above the map, offset z -29.2, rings 13 m) with a margin inside the elliptical cutout of the closing overlay (slide 2
+        # of the title deck), checked with an overlay script; 38 m from the globe centre. Stop = one turn = loop
+        # (station_final_deck.loop). The earlier ending (push off, float, backwards onto a tier) is kept below.
+        camera: {frame: hub, at: {module: map_room, offset: [1.8, 28.0, -2.9]}, look: {module: map_room, offset: [0, 0, -28.6]}, lens: 22, up: [0, 0, -1]}
+        travel_seconds: 6   # look up calmly
+        zero_g: true
+        dwell_seconds: 20   # = map_room_funnel.globe.turn_seconds: one full turn of the globe, a seamless loop in the deck
+        max_speed: 6
+        max_speed_reason: "60 m room, floating in zero g"
+        shows: "Ending: holding on to the handrail and looking up at the rotating globe, above it the honeycomb ceiling, all around the tiers; the view stays, the globe turns in a loop under the closing overlay (www.wisskomm.wiki, name)"
+        speech: "\"This is what we keep: not the videos, the knowledge about them.\""
+        missing: []
+        decision: "Which hub rooms the talk shows, in which order, and how it ends"
+        status: idea
+
+# Removed from the ride: the earlier ending with pushing off, floating to the globe and moving backwards onto a tier. Ride,
+# deck and checks read only scenes. The speech texts of 09.4 and 09.5 (old) are dropped with it.
+removed_from_ride_2026_11_04:
+  - scene: 9
+    title: "Ankunft: das Licht (alter Schluss)"
+    panels:
+      - id: "09.3 alt"
+        shot: WS
+        angle: high
+        move: dolly in
+        click: true
+        seconds: 15
+        camera: {frame: hub, at: {module: map_room, offset: [6, 14, -14]}, look: {module: map_room, offset: [0, 0, -29.2]}, lens: 22, up: [0, 0, -1]}   # pushed off the railing and floated 11 m up, below the globe, looking up at it (a shot like the one in the lift); inside the platforms of the first tier (radius 23 to 24.5 m)
+        travel_seconds: 10   # calm floating instead of 6 m/s
+        max_speed: 6
+        max_speed_reason: "60 m room, floating in zero g"
+        shows: "Pushing off the railing and floating up, the gaze stays on the rotating globe; the floor falls away below us"
+        speech: "\"This is what we keep: not the videos, the knowledge about them.\""
+        missing: []
+        decision: "Globe and star map in the map room"
+        status: idea
+      - id: "09.4 alt"
+        shot: CU
+        angle: high
+        move: dolly in
+        click: true
+        seconds: 15
+        camera: {frame: hub, at: {module: map_room, offset: [14.17, 11.89, -25]}, look: {module: map_room, offset: [0, 0, -29.2]}, lens: 22, up: [0, 0, -1]}   # close to the globe, 19 m from its centre (outside the aura, 13.5 m), azimuth 40 degrees like 09.5 (at 60 degrees the path to 09.5 ran through the light beam to the transmitter, 0.01 m); earlier close to galaxy 0 on the floor (the floor is not revisited later)
+        travel_seconds: 9
+        max_speed: 6
+        max_speed_reason: "60 m room, floating in zero g"
+        shows: "Close to the globe: networks, channel marks, rings with points of light; light beams to the neighbouring modules and to the star map"
+        speech: "\"It's still mostly dark. That's where you come in.\""
+        missing: []
+        decision: "Globe and star map in the map room"
+        status: idea
+      - id: "09.5 alt"
+        shot: WS
+        angle: eye
+        move: dolly out
+        click: true
+        seconds: 15
+        # End of the ride in the map room of the hub: backwards out onto the second tier (z -21.2, edge at 38 m), eye height
+        # above the tier, 40 m from the globe; between two floating platforms (30 and 50 degrees), 20 degrees beside the light
+        # beam to the transmitter (60 degrees). Distance and gaze chosen so that the globe with its rings lies fully inside
+        # the elliptical cutout of the closing overlay at 22 mm (slide 2 of the title deck): rings about 76 % of the image
+        # height; globe centre just above the image centre, with a margin at the top (with the gaze at z -27.0 the aura was
+        # 5 % below the top edge; better somewhat lower in the frame, with a margin to the ellipse), checked with an overlay script
+        camera: {frame: hub, at: {module: map_room, offset: [30.64, 25.71, -23.2]}, look: {module: map_room, offset: [0, 0, -28.6]}, lens: 22, up: [0, 0, -1]}
+        travel_seconds: 12   # move dolly out: backwards, the gaze stays on the globe
+        dwell_seconds: 20   # = map_room_funnel.globe.turn_seconds: one full turn of the globe, a seamless loop in the deck (station_final_deck.loop; no need to render 120 s)
+        max_speed: 6
+        max_speed_reason: "60 m room, floating in zero g"
+        shows: "Ending: from the tier the whole rotating globe, above it the honeycomb ceiling, the tiers opposite; the view stays, the globe turns in a loop under the closing overlay (www.wisskomm.wiki, name)"
+        speech: "\"To get what we mean, we have to say what we know.\""
+        missing: []
+        decision: "Which hub rooms the talk shows, in which order, and how it ends"
+        status: idea
+
+# Not in the ride: the talk ends in the map room of the hub, with no flight outside afterwards. Scene 10 stays here for
+# reference; ride, deck and checks read only scenes. The speech texts of scene 10 were placeholder drafts and are not
+# carried over into the map room.
+scenes_not_in_ride:
+  - scene: 10
+    title: "Schluss: der Leuchtturm"
+    place: "Hub, looking back; station from outside"
+    feeling: "applause (4)"
+    decision: "Which hub rooms the talk shows, in which order, and how it ends"
+    panels:
+      - id: "10.1"
+        shot: EWS
+        angle: eye
+        move: cut
+        click: true
+        seconds: 20
+        camera: {frame: hub, at: [40, 170, -30], look: [-200, -150, -140], lens: 22, up: [0, 0, 1]}
+        shows: "Looking back at the circling ring; the museum passes every 34 seconds: only now the museum from outside"
+        speech: "\"Down there, most people don't care about the lighthouse. That's fine.\""
+        missing: ["window of the map room as a frame in the foreground"]
+        status: idea
+      - id: "10.2"
+        shot: EWS
+        angle: eye
+        move: dolly out
+        click: true
+        seconds: 15
+        camera: {frame: hub, at: [640, 460, -820], look: [0, 0, -60], lens: 45, up: [0, 0, 1]}   # up as in 10.1 (otherwise the ride rolled by 8 degrees)
+        max_speed: 120   # ride: about 1 km in open space; at 4 m/s (a limit meant for rooms) it would take seven minutes
+        max_speed_reason: "exterior shot in open space, the station is 600 m across; speed looks calm from a distance"
+        shows: "The whole station from the shadow side, city lights in the ring, the hub glows"
+        speech: "\"Someone has to keep the light on.\""
+        missing: ["light in the hub stronger than in the ring (lighthouse)"]
+        status: idea
+      - id: "10.3"
+        shot: EWS
+        angle: eye
+        move: static
+        click: true
+        seconds: 10
+        camera: {frame: hub, at: [520, -760, 820], look: [0, 0, -60], lens: 45, up: [0, 0, 1]}
+        max_speed: 150   # ride: about 2 km around the station to the sun side
+        max_speed_reason: "exterior shot in open space, arc around the whole station"
+        overlay: "Thank you\n[QR: target to be named]"
+        shows: "Final image: station from the sun side, collector; thanks and a QR code to the website (no live demo)"
+        speech: "[speaker: thanks]"
+        missing: ["closing card with QR code as overlay"]
+        status: idea

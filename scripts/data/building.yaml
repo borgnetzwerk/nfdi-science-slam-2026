@@ -1,0 +1,870 @@
+# The building of the WissKomm Wiki as a 3D library: floor plan, rooms, fittings.
+# Independent of any single talk, built to be reused for a long time; each talk is a guided tour through this building
+# (its own tour.yaml in the talk folder).
+#
+# Version 3 of the library building: the balcony connects only the left and right halls, with a construction fence and
+# banners; the middle room has no doors to the balcony and is reached through a barely visible door from the right hall;
+# a staircase leads from the middle room under the balcony into the great hall; timeline on 2/3 of the left wall, slanted
+# banner along the stairs; middle wall with a portal and construction elements; a floor with a dome above the great hall
+# (game). Earlier versions: Git history.
+# View: python scripts/build_plan.py -> plan.html; edit: python scripts/plan_pptx.py export -> plan.pptx.
+#
+# Coordinates in metres: x to the right (east, when entering), y into the building (north), z up.
+# Origin: middle of the threshold of the main portal. rect: [x0, y0, x1, y1]. Levels: z of the floor.
+# status: built (in the scene), planned (from the plan or review), idea (proposal, not agreed), superseded (replaced, kept
+# as derivation). All rooms under rooms are superseded: the museum in the ring (station.museum) replaces the library
+# building; zones, stairs, openings and features belong to those rooms and are superseded with them; what lives on is
+# listed in station.museum (old).
+# Per room and zone (the hub is the WissKomm Wiki, and so is the library): story (what the room tells in the slam), game
+# (which module of the game hub it is, see the game's narrative), stage (finished, fitting out, shell), feasibility (effort
+# until the slam). Build once, use for both.
+# Narrative: under construction, shown like a renovation, i.e. the intermediate state.
+
+name: "WissKomm Wiki"
+subtitle: "Library for scientific videos and podcasts"
+
+# Station in which the building stands (game). Three variants were compared (status idea). Shared: radius (for A the
+# inradius), rotation rate, rim thickness and rim depth; the long axis of the building is parallel to the rotation axis.
+# "Up" means towards the axis. Sources: the game icon brief, the game's narrative.
+station:
+  status: idea
+  radius: 286.48         # m, ring floor: 180 flat panels of 2° each, circumference 1800 m, 10 m per panel at the floor (earlier 225)
+  rpm: 1.77              # revolutions per minute for 1 g at this radius (2.0 at 225 m)
+  panels: 180            # flat panels around the ring, 2° each; slope at the panel edge 1°, on every floor (angle rule, station.floor)
+  gravity_ring: 1.0      # g at the ring floor, follows from radius and rpm
+  rim_thickness: 40      # m radial: floor to inner boundary (dome 34 m plus services)
+  rim_depth: 150         # m along the rotation axis: at least the building length (120 m) plus margin
+  axis: y                # long axis of the building (portal to dome) is parallel to the rotation axis
+  axes:                  # direction words; use only these
+    up: "oben: zur Drehachse (leichter)"
+    down: "unten: von der Drehachse weg (Boden, Außenhülle)"
+    spinward: "mit der Drehung"
+    antispinward: "gegen die Drehung"
+    sunward: "sonnenwärts: zur beleuchteten Seite des Kollektors"
+    shadeward: "schattenwärts: zur Schattenseite des Kollektors"
+    note: "No clockwise/counterclockwise: that depends on the side you look from. Spinward/antispinward have been common since Niven's Ringworld (1970)."
+  floor:                 # floor of the station
+    max_slope: 0.02      # at most 2 % slope at the edge of a flat surface, otherwise split it into two elements
+    rule: "ebene Fläche höchstens L = 2 * r * max_slope lang (mit der Drehung), r = Abstand zur Achse; bei 225 m rund 9 m, in höheren Geschossen weniger"
+    spinward: "folgt dem Kreis (gekrümmt oder Platten bis L)"
+    sunward: "gerade: Linien sonnenwärts verlaufen gerade, der Boden ist ein Zylinderband"
+    grid: "Rechtecke im Ring, keine Sechsecke; Sechsecke nur im Solarpanel der Mitte"
+  spokes: 6              # each spoke has a lift and a ladder; the spokes rotate with the ring
+  spokes_depth: 140      # m behind the sun side of the ring: spokes at the shadow-side edge; transfer only at the axis tube
+  centre: standing       # the centre stands still on a bearing, the ring rotates around it; antennas and map room are there
+  terms:                 # same wording as in the game's narrative
+    station: "the whole: hub, ring and six spokes"
+    hub: "the standing core, zero g: fusion collector (hexagonal solar cells), hangar, industry sector, star map, antennas, Space Bar with straps, everything for the WissKomm Wiki; work and technology only, nobody lives there"
+    ring: "rotates around the hub, 1 g; home to a civilisation that cares little about the hub (source of the NPCs); housing at the foot of the spokes, a proper bar, outposts such as the museum of the slam"
+  variants_superseded: "superseded by later decisions (round ring, hexagon as the collector in the hub; 180 panels, 286.48 m); variants, alternatives and comparison stay as derivation, plan_pptx.py exports them as an archive at the end of plan.pptx"
+  variants_basis: {radius: 225, rpm: 2.0}   # dimensions the variants were calculated for (the archive slides show them this way)
+  variants:
+    - id: hexagon
+      label: "A: Sechseck mit sechs Randmodulen (nach einer Ikonen-Skizze)"
+      recommended: true
+      source: "Game icon brief, page 7"
+    - id: ring_of_hexes
+      label: "B: runder Ring aus hexagonalen Modulen (Narrative)"
+      source: "Game narrative, section on the hub"
+      module_width: 28       # m width across flats of the modules, core width of the building
+      modules_per_ring: 50   # 2 pi r / module_width, rounded
+      module_rows: 5         # rows along the axis, about 250 modules
+    - id: drum
+      label: "C: Trommel mit durchgehendem Boden (Stadt im Ring)"
+      source: "Proposal; models: Stanford torus, Halo ring"
+  hub:                   # collector and honeycomb cells (proposal)
+    collector_radius: 240  # m circumradius of the hexagonal collector
+    cell_width: 10         # m width across flats of one cell; round pressure hull inside, corners for conduits and water
+    module_zone: 130       # m greatest depth of the modules behind the collector, 10 m in front of the rotating spokes (spokes_depth 140)
+  topology:              # slide "Hub" (editable): view from the sun onto the collector, middle = axis, window in m
+    around: [-250, 250]
+  # Modules in the hub (everything that is the WissKomm Wiki goes into the hub first); positions follow the game's narrative:
+  # at = [x, y] in m on the collector surface, seen from the sun, axis at [0, 0]; cells = number of cells (1, 3, 7 rosette,
+  # 19 double rosette, row); size = outline on the slide; stage: fertig (active), Ausbau (next), Rohbau (dormant).
+  # Arranged by hand in plan.pptx.
+  # What the station planner sets (cell positions, start, depth, processes, fixtures) is in station_plan.json; readers get
+  # both combined through scripts/station_source.py (load_station). Only human decisions are kept here.
+  modules:
+    - {id: transfer, label: "Transfer: axis tube, arrival from the ring", at: [0, 0], size: [30, 30], cells: 7, stage: fertig, role: "transition between ring and hub"}
+    - {id: spacebar, label: "Space Bar: job board, straps", at: [28, 16], size: [20, 20], cells: 3, stage: fertig, role: "people and requests"}
+    - {id: workshop, label: "Workshop: the receiver", at: [-28, 16], size: [20, 20], cells: 3, stage: fertig, role: "tools"}
+    - {id: map_room, label: "Map Room: star map, still dark", at: [0, -35], size: [30, 30], cells: 7, stage: fertig, role: "the graph itself"}
+    - {id: event_log, label: "Oscillograph: event log", at: [0, 28], size: [10, 10], cells: 1, stage: Ausbau, role: "history of the station"}
+    - {id: lab, label: "Laboratory: commissioning analyses", at: [70, -20], size: [50, 50], cells: 19, stage: Ausbau, role: "analyses and statements"}
+    - {id: archive, label: "Archive Chamber", at: [-70, -20], size: [50, 50], cells: 19, stage: Ausbau, role: "objects"}
+    - {id: portal, label: "Portal Room: external platforms", at: [70, 50], size: [30, 30], cells: 7, stage: Ausbau, role: "sources and platforms"}
+    - {id: text_chamber, label: "Text Chamber: full texts", at: [-70, 50], size: [50, 50], cells: 19, stage: Rohbau, role: "transcripts"}
+    - {id: hangar, label: "Hangar band: berths along the bottom edge", at: [0, -160], size: [130, 30], cells: 84, stage: fertig, role: "arrival by ship: twelve modules along the bottom edge"}
+    # From here: copies made in the plan as separate modules, then further proposals (stage Rohbau, positions in hub_layout.yaml)
+    - {id: knowledge_cluster, label: "Knowledge Cluster: see everything", at: [0, 80], size: [80, 80], cells: 61, stage: Ausbau, role: "overview of all knowledge, seen from high above; place for the globe"}
+    - {id: text_chamber_2, label: "Text Chamber 2: annotation", at: [-70, 69], size: [50, 50], cells: 19, stage: Rohbau, role: "annotating transcripts (curation)"}
+    - {id: user_interface, label: "User Interface: tools for users", at: [-30, -17], size: [30, 30], cells: 7, stage: Ausbau, role: "interfaces and tools (development)"}
+    - {id: viewing_room, label: "Viewing Room: ships and the ring", at: [0, -122], size: [30, 30], cells: 7, stage: Ausbau, role: "view out"}
+    - {id: screening_room, label: "Screening Room: watch and listen", at: [45, -110], size: [30, 30], cells: 7, stage: Rohbau, role: "watching and listening"}
+    - {id: recording_studio, label: "Recording Studio: podcasts and videos", at: [80, -45], size: [50, 50], cells: 19, stage: Rohbau, role: "content creators"}
+    - {id: coding_room, label: "Coding Room", at: [-80, -45], size: [50, 50], cells: 19, stage: Rohbau, role: "development"}
+    - {id: server_hall, label: "Server Hall: Wikibase and pipelines", at: [-135, -80], size: [50, 50], cells: 19, stage: Rohbau, role: "computing"}
+    - {id: meeting_rooms, label: "Meeting Rooms: modelling together", at: [80, 45], size: [50, 50], cells: 19, stage: Rohbau, role: "research"}
+    - {id: reading_room, label: "Reading Room: the digital library", at: [135, 80], size: [30, 30], cells: 7, stage: Rohbau, role: "reading (formerly library_corner)"}
+    - {id: hall_of_memories, label: "Hall of Memories: lessons learned", at: [45, 135], size: [50, 50], cells: 19, stage: Ausbau, role: "lessons-learned database"}
+    - {id: transmitter, label: "Transmitter: antennas", at: [165, 95], size: [30, 30], cells: 7, stage: Rohbau, role: "antennas and queries"}
+    - {id: industry, label: "Industry Sector", at: [-150, -90], size: [50, 50], cells: 19, stage: Rohbau, role: "manufacturing in zero g"}
+  transitions:           # kind: door (hatch between neighbouring modules), tube (standing path in the hub, tube with a rail car), spoke (spoke, only at the transfer)
+    - {from: transfer, to: spacebar, kind: door}
+    - {from: transfer, to: workshop, kind: door}
+    - {from: transfer, to: map_room, kind: door}
+    - {from: transfer, to: event_log, kind: door}
+    - {from: spacebar, to: lab, kind: tube}
+    - {from: workshop, to: archive, kind: tube}
+    - {from: lab, to: portal, kind: tube}
+    - {from: archive, to: text_chamber, kind: tube}
+    - {from: map_room, to: hangar, kind: tube}
+    - {from: portal, to: transmitter, kind: tube}
+    - {from: archive, to: industry, kind: tube}
+  ring_places:           # places in the ring: housing at the foot of the spokes, a bar, outposts; spoke = number of the spoke (0 to 5, 60° apart)
+    - {id: museum, label: "Museum (outpost, slam): round, hexagonal middle hall, lift to the hub", spoke: 0}   # floor plan: station.museum
+    - {id: bar, label: "Bar in the ring, reached from the Space Bar via spoke 1", spoke: 1}
+    - {id: housing_2, label: "Housing at the foot of spoke 2", spoke: 2}
+    - {id: housing_3, label: "Housing at the foot of spoke 3", spoke: 3}
+    - {id: housing_4, label: "Housing at the foot of spoke 4", spoke: 4}
+    - {id: housing_5, label: "Housing at the foot of spoke 5", spoke: 5}
+  # Museum at the foot of spoke 0: round outside, hexagonal middle hall inside, six rooms, a circular tour, then the middle
+  # hall with threads leading to the lift; replaces the library building (rooms, zones below, status superseded).
+  # Plan seen from above onto the ring floor: x with the rotation, y shadeward from the sun side of the ring (y = 0), sun
+  # side at the bottom of the plan; hexagons with an edge at the bottom. Placement conflict: the spoke comes down at y = 140
+  # (spokes_depth), the ring is 150 m deep; a round building of 100 m cannot stand around the spoke.
+  # Solution: back wall flush with the ring edge (centre at y = 100); the cabin departs in the middle hall, rolls 40 m
+  # horizontally in a glass tube under the ceiling above room 4 (vision) to the spoke and rises there.
+  museum:
+    status: planned
+    spoke: 0
+    centre: [0, 100]       # m, x along the rotation (spoke 0 at x = 0), y shadeward
+    diameter: 100          # m, round outside
+    hall_circumradius: 42  # m, hexagonal middle hall, edge at the bottom (towards the sun side); inradius 36.4 m
+    pinch: 8               # m passage at the corners of the hexagon (50 - 42), separates the six rooms
+    room_depth: 13.6       # m at the middle of a side, between hexagon and outer wall
+    height: 12             # m room height of the six rooms; middle hall up to 30 m, with the glass tube inside it
+    floor_rise: 4.4        # m: the floor follows the ring (10 m panels, 2° each), so over 100 m it rises this much spinward and antispinward
+    # Openings at human scale: not reduced with museum_scale. Gate and centre door 3.5 m high, passages 3 m high, 2.5 m wide
+    # (an earlier 4.5 m looked too wide). Variants via blender_run.py --doors gate_height=3.0,passage_width=2.2. The widths
+    # of gate and centre door follow the wall division.
+    doors: {gate_height: 3.5, main_height: 3.5, passage_width: 2.5, passage_height: 3.0,
+            banner_gap: 0.3,   # m between the lintel of the passage and the lower edge of the banner (placeholder above_passage)
+            entrance_style: logo}   # entrance: sign, none, canopy, letters, logo; logo uses the project logo as it is
+            # (image from scripts/make_entrance_logo.py)
+    entrance: {side: 1, at: [0, 50], note: "Door in the outer wall facing the sun side, from the square in front"}
+    # Interior of the rooms (a more human, less grey look): style selects an entry from styles; plain = grey box (single
+    # colour). Per style: wall and floor as a Poly Haven texture (folders under media/polyhaven/, CC0), tile size in m, tint
+    # (factor on the texture), light of the rooms (colour, factor on museum_room_watts). Compared per run with the field
+    # interior in the storyboard.
+    # Facade: the colour is a name from scripts/wkw_palette.py (generated from the corporate design tokens), e.g. PAPER,
+    # WKW.700, STEEL.300; graubox = the earlier orange (0.84, 0.37, 0.0), which is not a corporate design value. Compared per
+    # run with the field facade in the storyboard.
+    # texture: Poly Haven folder, structure only (relief, roughness, share of light and dark detail), the colour stays color;
+    # entrance_color: a whiter area at the entrance up to entrance_half_deg on both sides of the gate and above it. Default
+    # stays graubox without texture until a variant is chosen.
+    # Chosen: white with texture and one uniform outer wall (no separate area at the entrance, it made an odd cut at the front)
+    facade: {color: WKW.50, texture: painted_plaster_wall, tile: 3.0, relief: 0.3, detail: 0.3}
+    interior:
+      style: cd_plaster   # plaster walls in corporate design colours, with the dark carpet kept for contrast
+      styles:
+        plain: {}
+        warm: {wall: white_plaster_02, wall_tile: 4.0, wall_tint: [1.55, 1.5, 1.4], wall_relief: 0.25, floor: wood_floor, floor_tile: 2.5,
+               light_color: [1.0, 0.86, 0.7], light_factor: 1.15}   # tint above 1: the plaster map is grey-brown (the first test looked like a cave)
+        concrete: {wall: concrete_wall_004, wall_tile: 4.0, wall_tint: [1.6, 1.6, 1.6], wall_relief: 0.25, floor: concrete_floor_worn_001,
+                   floor_tile: 3.0, light_color: [1.0, 0.95, 0.88], light_factor: 1.3}
+        # Colours from the corporate design, only structure from the texture (our colour scheme, their texture); colour
+        # names from scripts/wkw_palette.py
+        cd_plaster: {wall: white_plaster_02, wall_color: WKW.50, wall_detail: 0.35, wall_tile: 4.0, wall_relief: 0.3}   # the floor stays
+        # the dark carpet (WKW.700), which gives strong contrast; the wooden floor in PARCHMENT from the comparison was dropped
+        cd_concrete: {wall: concrete_wall_004, wall_color: STEEL.100, wall_detail: 0.35, wall_tile: 4.0, wall_relief: 0.3,
+                      floor: concrete_floor_worn_001, floor_color: STEEL.300, floor_detail: 0.4, floor_tile: 3.0, floor_relief: 0.3}
+    route: "links herum durch die Engstellen an den Ecken: 1, 2, 3, 4, 5, 6, dann durch die Tür in Raum 6 in den Mittelraum"
+    lift: {at: [0, 140], start: [0, 100], run: 40, rise: 286, status: idea,
+           note: "The cabin departs in the middle hall, runs 40 m horizontally in a glass tube above room 4, then up the spoke to the transfer; you become lighter"}
+    rooms:                 # side k: side of the hexagon, room 1 at the bottom edge (towards the door), continuing to the left (the walking direction); old = superseded library parts whose content lives on here
+      - {id: m1_opening, side: 1, label: "1 Entrance and opening", story: "opening: who I am, what today is about", old: [plaza, entrance_hall]}
+      - {id: m2_timeline, side: 2, label: "2 Timeline and today's topic", story: "timeline of the talks, topic of the evening", old: [timeline_wall, theme_banner]}
+      - {id: m3_screens, side: 3, label: "3 Three screens", story: "three videos, three thoughts", old: [left_hall, exhibit_1, exhibit_2, exhibit_3]}
+      - {id: m4_vision, side: 4, label: "4 Vision", story: "where it is heading; overhead the glass tube runs to the spoke"}
+      - {id: m5_lessons, side: 5, label: "5 Lessons learned", story: "what we learned", old: [right_hall, memory_shelves]}
+      - {id: m6_open, side: 6, label: "6 (open)", story: "open; door to the middle hall"}
+      - {id: middle_hall, side: 0, label: "Middle hall: threads to the lift", story: "threads from the screens and the lessons learned run to the cabin; departure to the hub", old: [centre_hall, knowledge_threads]}
+  rim_modules: ["Spacebar (unten): Bibliothek, Hangar, Werkstatt", "Nachbar rechts: reaktiviert als Zweites", "außen rechts: als Drittes",
+                "oben: zuletzt (gegenüber)", "außen links: als Drittes", "Nachbar links: reaktiviert als Zweites"]
+  alternatives:          # sizes for comparison, dashed on the hexagon slide
+    - {label: "klein, 1 g", radius: 100, rpm: 3.0, gravity_ring: 1.0, note: "Nausea (above 2 rpm), floor tilts by 8 degrees"}
+    - {label: "Mars-Schwerkraft", radius: 85, rpm: 2.0, gravity_ring: 0.38, note: "comfortable, but no longer 'close to 1 g'"}
+    - {label: "weit", radius: 300, rpm: 1.7, gravity_ring: 1.0, note: "calmer, one third more station"}
+  comparison:            # rows of the comparison slide; per variant one field keyed by the variant id
+    - label: "Bild von außen"
+      hexagon: "clear hexagon, collector as a surface; close to an icon sketch by Gerrit Hansen (not included)"
+      ring_of_hexes: "round ring, honeycomb pattern on the hull; new icon needed"
+      drum: "wide round ring; any look from outside"
+    - label: "Boden und Schwerkraft"
+      hexagon: "1 g at the middle of each side, 1.15 g and 30° slope at the corners; the building stays level (3.6°), corners become stairs, services, shell"
+      ring_of_hexes: "1 g everywhere; each module has a flat floor with 3.6° at the edge"
+      drum: "1 g everywhere; the street visibly curves upwards, buildings level"
+    - label: "Passt zur Narrative (hunderte Module, Reaktivierung)"
+      hexagon: "six large modules, reactivation in four stages (bottom, neighbours, outer, top); the hundreds of hexagons are the collector"
+      ring_of_hexes: "literally: hundreds of modules, reactivated one by one"
+      drum: "houses instead of modules; reactivation house by house"
+    - label: "Was der Slam davon sieht"
+      hexagon: "nothing new: interiors as planned; the dome looks at the back of the collector"
+      ring_of_hexes: "nothing new; the dome looks through the station"
+      drum: "the forecourt shows the street in the sky: a strong image, but more sky"
+    - label: "Aufwand im Game"
+      hexagon: "low: one hexagon, six modules, collector as a surface"
+      ring_of_hexes: "medium: honeycomb hull and 250 module rooms, most of them empty"
+      drum: "high: a city as backdrop"
+    - label: "Risiken"
+      hexagon: "rim modules 260 m long: much empty space next to the library in the Space Bar"
+      ring_of_hexes: "departs from the icon sketch; many small rooms"
+      drum: "sky in the opening; the city distracts from the library"
+  verdict: "Recommendation A: the icon sketch it follows was already agreed, and the numbers support it (225 m inradius, 2 rpm, 1 g, 1.15 g at the corners). B remains the fallback reading of the narrative, C an image for later (map room, looking up)."
+
+levels:
+  - id: ground
+    label: Erdgeschoss
+    z: 0
+  - id: gallery
+    label: Ausstellungsebene
+    z: 4
+  - id: dome
+    label: Kuppelgeschoss (Game, angeteasert)
+    z: 22
+
+rooms:
+  - id: plaza
+    label: Vorplatz
+    level: ground
+    rect: [-20, -24, 20, 0]
+    height: 0
+    status: superseded
+    purpose: "opening right in front of the facade, hardly any sky"
+    story: "opening: looks like a title slide, is a building"
+    game: "arrival of the guests (corresponds to docking in the hangar)"
+    stage: "fertig"
+    feasibility: "easy"
+  - id: entrance_hall
+    label: Eingangshalle
+    level: ground
+    rect: [-14, 0, 14, 18]
+    height: 12
+    status: superseded
+    purpose: "timeline on 2/3 of the left wall, slanted banner along the stairs; middle wall with portal and construction elements as a preview of what is being built behind it"
+    story: "who I am: timeline of the talks; the portal in the middle wall announces the construction site"
+    game: "reception of the hub; the timeline is the visible history of the station"
+    stage: "fertig"
+    feasibility: "medium (videos on the timeline)"
+  - id: left_hall
+    label: "Linke Halle: drei Videos"
+    level: gallery
+    rect: [-14, 18, -3.5, 39]
+    height: 8
+    status: superseded
+    purpose: "three exhibits with name plates, node model, title change, MediaWiki hint"
+    story: "three videos, three thoughts: metadata, Blender, MediaWiki"
+    game: "portal room in miniature: videos as planets with signal and entry (node model)"
+    stage: "fertig"
+    feasibility: "medium"
+  - id: centre_hall
+    label: "Mittelraum: Making-of, Transparenz"
+    level: gallery
+    rect: [-3.5, 18, 3.5, 39]
+    height: 8
+    status: superseded
+    look: wireframe
+    purpose: "inner walls without surface; fine threads in the walls connect the lessons learned and the three exhibits, bundled in a miniature of the globe, and lead into the great hall; no door to the balcony; access only through the hidden door from the right hall; stairs down, passing under the balcony"
+    story: "behind the scenes: everything is connected, threads to the knowledge base"
+    game: "oscillograph and event log, core of the knowledge base"
+    stage: "fertig"
+    feasibility: "medium (wireframe, threads)"
+  - id: right_hall
+    label: "Rechte Halle: Halle der Erinnerungen"
+    level: gallery
+    rect: [3.5, 18, 14, 39]
+    height: 8
+    status: superseded
+    purpose: "densely filled: shelves on all walls, the book right behind the entrance from the balcony; when walking out, a barely visible door to the middle room on the right"
+    story: "hall of memories: book of lessons learned, reverse centaur"
+    game: "text chamber and archive chamber: the only full texts, the lessons of the station"
+    stage: "fertig"
+    feasibility: "elaborate (book pages)"
+  - id: balcony
+    label: Balkon
+    level: gallery
+    rect: [-14, 39, 14, 42]
+    height: 5
+    status: superseded
+    purpose: "connects only the left and right halls; construction fence with banners at the railing towards the great hall, with views down in between; in the bend at the end the topic of the slam"
+    story: "setting expectations: fence banners, views down, slam topic in the bend"
+    game: "transition into the module ring, view into the fit-out"
+    stage: "Ausbau"
+    feasibility: "easy"
+  - id: construction_nave
+    label: Große Halle (im Aufbau)
+    level: ground
+    rect: [-14, 42, 14, 96]
+    height: 20
+    status: superseded
+    purpose: "many elements, but ordered in zones; the closer to the visitor (arrival in the south), the more finished, the further north, the more shell; the globe hangs in the middle, with conduits to the portals of the four wings"
+    story: "goal half visible: much under construction, but orderly"
+    game: "ring of modules: few active, many still dormant; zones are modules"
+    stage: "Ausbau"
+    feasibility: "elaborate"
+  - id: wing_wikimedia
+    label: "Flügel Wikidata, Wikipedia, Commons"
+    level: ground
+    rect: [-42.5, 56.5, -14, 69]
+    height: 12
+    status: superseded
+    purpose: "connected source; transition to Wikipedia via walkways on two levels"
+    story: "transition to Wikipedia"
+    game: "portal room: catalogues of external platforms, flight to planets"
+    stage: "Ausbau"
+    feasibility: "easy (portal), interior later"
+  - id: wing_rwth
+    label: "Flügel RWTH Aachen"
+    level: ground
+    rect: [-42.5, 82.5, -14, 95]
+    height: 12
+    status: superseded
+    purpose: "connected source, under construction"
+    story: "connected source"
+    game: "portal to a platform"
+    stage: "Rohbau"
+    feasibility: "easy (portal)"
+  - id: wing_mediaccc
+    label: "Flügel media.ccc"
+    level: ground
+    rect: [14, 56.5, 42.5, 69]
+    height: 12
+    status: superseded
+    purpose: "connected source"
+    story: "connected source"
+    game: "portal room (media.ccc is named in the game concept)"
+    stage: "Ausbau"
+    feasibility: "easy (portal)"
+  - id: wing_wisspod
+    label: "Flügel WissPod"
+    level: ground
+    rect: [14, 82.5, 42.5, 95]
+    height: 12
+    status: superseded
+    purpose: "connected source, under construction"
+    story: "connected source"
+    game: "portal to a platform"
+    stage: "Rohbau"
+    feasibility: "easy (portal)"
+  - id: dome_hall
+    label: "Kuppel: Kartenraum mit Sternkarte"
+    level: dome
+    rect: [-9, 66, 9, 84]
+    height: 12
+    status: superseded
+    purpose: "open dome above the globe like a planetarium; the floor is the star map, dark at first, like a quiet promise (game: map room); visible from the great hall through a round opening in the roof"
+    story: "looking up: where the game is heading"
+    game: "map room with star map, dark, like a quiet promise"
+    stage: "Rohbau"
+    feasibility: "easy as a hint"
+  - id: antenna_ring
+    label: "Antennenring um die Kuppel"
+    level: dome
+    rect: [-14, 84, 14, 96]
+    height: 5
+    status: superseded
+    purpose: "antennas permanently aimed at sources (game: antennas instead of local storage); teased"
+
+    story: "outlook"
+    game: "antennas permanently aimed at planets"
+    stage: "Rohbau"
+    feasibility: "easy as a hint"
+zones:
+  # Zones of the great hall: order through a grid and floor markings; the closer to the visitor, the more finished.
+  # stage: finished (cosy), fitting (interior work), raw (shell). Arranged by hand in plan.pptx.
+  - id: zone_interface
+    label: "Interface und Bibliothek (Konsum)"
+    rect: [2, 44, 14, 58]
+    stage: "fertig"
+    purpose: "dashboard as the main access with workstation and tablet, reading corner, shelves; right at arrival"
+    story: "interface and consumption: dashboard with tablet, reading corner"
+    game: "Space Bar: meeting place and workplace, bulletin board with jobs"
+    feasibility: "medium (zielbild.py exists)"
+  - id: zone_workshop
+    label: "Werkstatt und Lager"
+    rect: [-14, 44, -2, 56]
+    stage: "Ausbau"
+    purpose: "material, crates, workbenches; excavation pit"
+    story: "workshop and storage"
+    game: "workshop: our own receiver, overwhelmed by signal noise"
+    feasibility: "easy"
+  - id: zone_wikipedia
+    label: "Übergang Wikipedia"
+    rect: [-14, 56, -3, 70]
+    stage: "Ausbau"
+    purpose: "walkways on two levels to the portal Wikidata/Wikipedia/Commons, Borgis carry data back and forth"
+    story: "walkways to the wikiverse, Borgis carry data"
+    game: "antennas and portals, data back and forth"
+    feasibility: "medium (zielbild.py exists)"
+  - id: zone_exchange
+    label: "Austausch, Kommunikation, Kuration"
+    rect: [3, 60, 14, 76]
+    stage: "Ausbau"
+    purpose: "meeting islands, curation tables, bulletin board; Borgis in conversation"
+    story: "spaces for exchange, communication, curation"
+    game: "laboratory: commissioning, recording and compiling analyses"
+    feasibility: "medium"
+  - id: zone_globe
+    label: "Globus"
+    rect: [-4, 70, 4, 82]
+    stage: "Ausbau"
+    purpose: "the data tree hangs here, above it the opening to the dome"
+    story: "the globe, above it the opening to the dome"
+    game: "core of the knowledge base, supplies everything (as the collector supplies the station)"
+    feasibility: "exists (globe script not included in this repository)"
+  - id: zone_raw
+    label: "Rohbau"
+    rect: [-14, 82, 14, 96]
+    stage: "Rohbau"
+    purpose: "scaffolding, crane, material, portals RWTH Aachen and WissPod under construction"
+
+    story: "something big is still being built here"
+    game: "dormant modules waiting to be unlocked"
+    feasibility: "easy"
+stairs:
+  - id: stair_left
+    label: Treppe links hinauf
+    from: [-9.5, 12, 0]
+    to: [-9.5, 20, 4]
+    width: 4
+    status: planned
+    note: "from the entrance hall up into the left hall; should become more expressive and match its surroundings"
+  - id: stair_right
+    label: Treppe rechts
+    from: [9.5, 20, 4]
+    to: [9.5, 12, 0]
+    width: 4
+    status: planned
+    note: "from the right hall down into the entrance hall"
+  - id: stair_centre
+    label: Treppe in die große Halle
+    from: [0, 34, 4]
+    to: [0, 46, 0]
+    width: 3
+    status: planned
+    note: "from the middle room down, passing under the balcony into the great hall (down, not through the wall); opening in the floor of the middle room"
+
+openings:
+  - id: main_portal
+    label: Hauptportal
+    level: ground
+    at: [0, 0]
+    width: 5
+    height: 5
+    wall: south
+    doors: double
+  - id: teaser_portal
+    label: Portal in der Mittelwand (Ausblick auf die Baustelle)
+    level: ground
+    at: [0, 18]
+    width: 4
+    height: 3.5
+    wall: north
+    note: "below and in front: construction elements (fence with banner, scaffolding parts); behind it light and movement"
+  - id: left_hall_entry
+    label: Eingang linke Halle (oben an der Treppe)
+    level: gallery
+    at: [-9.5, 18]
+    width: 7
+    height: 4
+    wall: south
+  - id: right_hall_entry
+    label: Ausgang rechte Halle (oben an der Treppe)
+    level: gallery
+    at: [9.5, 18]
+    width: 7
+    height: 4
+    wall: south
+  - id: left_hall_north
+    label: Linke Halle zum Balkon
+    level: gallery
+    at: [-9.5, 39]
+    width: 5
+    height: 4
+    wall: north
+  - id: right_hall_north
+    label: Balkon zur rechten Halle
+    level: gallery
+    at: [9, 39]
+    width: 5
+    height: 4
+    wall: north
+  - id: hidden_door
+    label: Verborgene Tür rechte Halle zum Mittelraum
+    level: gallery
+    at: [3.5, 27]
+    width: 1.2
+    height: 2.4
+    wall: west
+    note: "barely visible, closed, set into the wall panelling; on the right when walking out"
+  - id: under_balcony
+    label: Durchgang unter dem Balkon
+    level: ground
+    at: [0, 42]
+    width: 3
+    height: 3.6
+    wall: north
+    note: "the stairs from the middle room lead into the great hall here"
+  - id: roof_oculus
+    label: Öffnung im Dach zur Kuppel
+    level: dome
+    at: [0, 75.5]
+    width: 12
+    height: 1
+    wall: floor
+    note: "round; looking up from the globe into the dome"
+
+features:
+  - id: facade_lettering
+    label: "Inschrift WISSKOMM WIKI"
+    kind: lettering
+    level: ground
+    at: [0, -0.6, 13]
+    width: 22
+    text: ["WISSKOMM WIKI", "LIBRARY FOR SCIENTIFIC VIDEOS AND PODCASTS"]
+    status: planned
+  - id: banner_talk
+    label: Fassadenbanner Vortrag
+    kind: banner
+    level: ground
+    at: [-7, -0.3, 6]
+    width: 3.2
+    height: 7
+    content: "talk_title"
+    status: planned
+  - id: banner_logos
+    label: Fassadenbanner Logos
+    kind: banner
+    level: ground
+    at: [7, -0.3, 6]
+    width: 3.2
+    height: 7
+    content: "logos"
+    status: planned
+  - id: entrance_stele
+    label: "Stele 'Today's exhibition' mit Borgi"
+    kind: stele
+    level: ground
+    at: [0.3, 5]
+    width: 2.5
+    status: planned
+    note: "banner of today's exhibition, next to it a Borgi showing the way"
+  - id: timeline_wall
+    label: Zeitleiste der Auftritte
+    kind: timeline
+    level: ground
+    from: [-13.6, 0.5]
+    to: [-13.6, 12]
+    height: 4.5
+    faces: east
+    content: "talks"
+    status: planned
+    note: "only 2/3 of the left wall, up to the start of the stairs; oldest at the front, newest at the back"
+  - id: stair_banner
+    label: "Banner die Treppe hinauf"
+    kind: banner
+    level: ground
+    from: [-13.8, 12]
+    to: [-13.8, 18]
+    rise: [0.8, 4.8]
+    height: 2.6
+    faces: east
+    status: planned
+    note: "slightly angled, accompanies the last third of the wall up the stairs: NFDI 2025, SE2A 2026, today"
+  - id: centre_wall_banner
+    label: "Mittelwand: großes Wandbild"
+    kind: banner
+    level: ground
+    at: [0, 17.8, 8.5]
+    width: 9
+    height: 5
+    faces: south
+    status: idea
+    note: "use the middle wall; proposal: 'Today's exhibition: Going Wild with AI' large above the portal"
+  - id: teaser_construction
+    label: "Bauelemente vor dem Portal"
+    kind: installations
+    level: ground
+    rects:
+      - [-3.5, 16.2, -1.8, 17.6]
+      - [1.8, 16.4, 3.2, 17.6]
+    status: planned
+    note: "construction fence with banner, crates, scaffolding part in front of the portal in the middle wall"
+  - id: exhibit_1
+    label: "Exponat 1: Ultralativ"
+    kind: screen
+    level: gallery
+    at: [-4.7, 22.5]
+    faces: west
+    width: 4.2
+    content: "video:ultralativ_youtube_de"
+    status: planned
+    note: "metadata, linking"
+  - id: exhibit_1_plate
+    label: "Namensschild Ultralativ (Titel, Kanal, Jahr, Link)"
+    kind: board
+    level: gallery
+    at: [-4.9, 25.2, 5.3]
+    faces: west
+    width: 0.9
+    height: 0.6
+    status: planned
+  - id: node_model
+    label: "Knotenmodell: Video als Knoten mit Eigenschaften"
+    kind: plinth
+    level: gallery
+    at: [-7.5, 24.5]
+    width: 1.4
+    status: planned
+    note: "plinth in front of exhibit 1: the node and its properties in space"
+  - id: exhibit_2
+    label: "Exponat 2: Not David"
+    kind: screen
+    level: gallery
+    at: [-4.7, 28.5]
+    faces: west
+    width: 4.2
+    content: "video:not_david_nerds"
+    status: planned
+  - id: exhibit_2_plate
+    label: "Namensschild Not David: alter Titel durchgestrichen"
+    kind: board
+    level: gallery
+    at: [-4.9, 31.2, 5.3]
+    faces: west
+    width: 0.9
+    height: 0.6
+    status: planned
+  - id: blender_tease
+    label: "Blender: wie dieses Video entstand"
+    kind: plinth
+    level: gallery
+    at: [-7.5, 30.5]
+    width: 1.2
+    status: idea
+    note: "monitor showing the Blender interface: Not David uses Blender, and so does this talk"
+  - id: exhibit_3
+    label: "Exponat 3: adumb"
+    kind: screen
+    level: gallery
+    at: [-4.7, 34.5]
+    faces: west
+    width: 4.2
+    content: "video:adumb_wikipedia_graph"
+    status: planned
+  - id: exhibit_3_plate
+    label: "Namensschild adumb, Hinweis MediaWiki"
+    kind: board
+    level: gallery
+    at: [-4.9, 37.2, 5.3]
+    faces: west
+    width: 0.9
+    height: 0.6
+    status: planned
+  - id: mediawiki_tease
+    label: "MediaWiki: die Software hinter Wikipedia"
+    kind: plinth
+    level: gallery
+    at: [-7.5, 36.5]
+    width: 1.2
+    status: idea
+  - id: balcony_fence
+    label: "Bauzaun am Balkon"
+    kind: fence
+    level: gallery
+    from: [-12.5, 41.7]
+    to: [12.5, 41.7]
+    height: 2.0
+    faces: south
+    status: planned
+    note: "construction fence at the railing towards the great hall, with gaps for looking down (reference: construction fence with printed banners)"
+  - id: fence_banner_1
+    label: "Bauzaunbanner 1: Wir bauen eine Bibliothek für Videos und Podcasts"
+    kind: banner
+    level: gallery
+    at: [-7.5, 41.6, 5.0]
+    faces: south
+    width: 3.4
+    height: 1.8
+    status: planned
+    note: "content is a proposal; in the style of the reference image"
+  - id: fence_banner_2
+    label: "Bauzaunbanner 2: Was hier entsteht"
+    kind: banner
+    level: gallery
+    at: [-1.5, 41.6, 5.0]
+    faces: south
+    width: 3.4
+    height: 1.8
+    status: planned
+  - id: fence_banner_3
+    label: "Bauzaunbanner 3: Wer mitbaut"
+    kind: banner
+    level: gallery
+    at: [4.5, 41.6, 5.0]
+    faces: south
+    width: 3.4
+    height: 1.8
+    status: planned
+  - id: theme_banner
+    label: "Thema des Slams: Going Wild with AI"
+    kind: banner
+    level: gallery
+    at: [13.8, 40.5, 6.0]
+    faces: west
+    width: 2.6
+    height: 3.0
+    status: planned
+    note: "in the bend at the end of the balcony, sets the expectation before the hall of memories"
+  - id: memory_shelves
+    label: "Regale der Erinnerungen"
+    kind: shelf
+    level: gallery
+    from: [13.7, 19]
+    to: [13.7, 38]
+    faces: west
+    height: 4
+    status: planned
+    note: "densely filled; plus a shelf on the west wall with the hidden door"
+  - id: memory_shelves_west
+    label: "Regale West"
+    kind: shelf
+    level: gallery
+    from: [3.8, 31]
+    to: [3.8, 38]
+    faces: east
+    height: 4
+    status: planned
+  - id: memory_book
+    label: Buch auf dem Sockel
+    kind: plinth
+    level: gallery
+    at: [9.0, 35.0]
+    width: 1.6
+    status: planned
+    note: "right behind the entrance from the balcony"
+  - id: knowledge_threads
+    label: "Fäden in den Wänden"
+    kind: links_visual
+    level: gallery
+    status: planned
+    note: "fine glowing threads in the walls of the middle room, from the exhibits (left) and from the book (right) to the miniature and on into the great hall"
+  - id: knowledge_base
+    label: "Miniatur des Globus (zentrale Wissensbasis)"
+    kind: sphere
+    level: gallery
+    at: [0, 27]
+    width: 1.6
+    status: planned
+    note: "bundles the threads"
+  - id: wkw_hub
+    label: "Globus: Datenbaum des WissKomm Wiki"
+    kind: hub
+    level: ground
+    at: [0, 76]
+    width: 8
+    status: planned
+    reference: "data tree illustration of the WissKomm Wiki (not included in this repository)"
+  - id: dashboard_station
+    label: "Dashboard: Hauptzugang mit Arbeitsplatz und Tablet"
+    kind: board
+    level: ground
+    at: [8, 50, 2.5]
+    faces: south
+    width: 3.6
+    height: 3.0
+    status: planned
+  - id: library_corner
+    label: "Leseecke und Regale (fertig, gemütlich)"
+    kind: shelf
+    level: ground
+    from: [3, 57.5]
+    to: [13.5, 57.5]
+    faces: south
+    height: 3.4
+    status: planned
+  - id: wikiverse_walkways
+    label: "Stege zum Wikiversum (zwei Ebenen)"
+    kind: installations
+    level: ground
+    rects:
+      - [-13.5, 60.5, -3, 62.3]
+      - [-13.5, 64.0, -3, 65.8]
+    status: planned
+    note: "z 3.5 and 7.0; Borgis with data packets and speech bubbles"
+  - id: exchange_pods
+    label: "Inseln für Austausch und Kuration"
+    kind: installations
+    level: ground
+    rects:
+      - [4, 62, 8, 66]
+      - [9.5, 62, 13.5, 66]
+      - [4, 69, 8, 73]
+      - [9.5, 69, 13.5, 73]
+    status: planned
+  - id: raw_scaffolds
+    label: "Rohbau: Gerüste, Material"
+    kind: installations
+    level: ground
+    rects:
+      - [-12, 84, -6, 88]
+      - [-4, 86, 4, 90]
+      - [6, 84, 12, 88]
+      - [-11, 91, -5, 95]
+      - [5, 91, 11, 95]
+    status: planned
+  - id: sign_wikidata
+    label: "Schild Wikidata, Wikipedia, Commons"
+    kind: sign
+    level: ground
+    at: [-27.4, 63]
+    width: 8
+    status: planned
+  - id: sign_rwth
+    label: "Schild RWTH Aachen"
+    kind: sign
+    level: ground
+    at: [-28, 89]
+    width: 8
+    status: planned
+  - id: sign_mediaccc
+    label: "Schild media.ccc"
+    kind: sign
+    level: ground
+    at: [28, 63]
+    width: 8
+    status: planned
+  - id: sign_wisspod
+    label: "Schild WissPod"
+    kind: sign
+    level: ground
+    at: [28, 89]
+    width: 8
+    status: planned
+
+links:
+  - {from: wkw_hub, to: wing_wikimedia}
+  - {from: wkw_hub, to: wing_rwth}
+  - {from: wkw_hub, to: wing_mediaccc}
+  - {from: wkw_hub, to: wing_wisspod}
+  - {from: knowledge_base, to: exhibit_1}
+  - {from: knowledge_base, to: exhibit_2}
+  - {from: knowledge_base, to: exhibit_3}
+  - {from: knowledge_base, to: memory_book}
+  - {from: knowledge_base, to: wkw_hub}
+
+unplaced:
+  - id: exhibition_overview
+    label: Übersicht der Ausstellung
+    note: "not yet drawn in the floor plan"

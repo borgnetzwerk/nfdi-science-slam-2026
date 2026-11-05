@@ -1,0 +1,9 @@
+# local run files of the tools (hold local paths)
+tools/_work/
+# render output, previews and logs of the pipeline tools
+_scratch/
+# third-party files are never part of this repository; see assets/README.md
+station/textures/
+station/withheld/
+__pycache__/
+*.blend1

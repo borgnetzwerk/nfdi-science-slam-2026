@@ -1,0 +1,2170 @@
+{
+ "format": 1,
+ "note": "State of the station planner; written as a whole by the tool, do not edit by hand. Decisions and dimensions: building.yaml.",
+ "modules": {
+  "transfer": {
+   "depth": 140,
+   "cells": [
+    [
+     -1,
+     0
+    ],
+    [
+     -1,
+     1
+    ],
+    [
+     0,
+     -1
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     -1
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     -1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     -1,
+     2
+    ],
+    [
+     -2,
+     1
+    ],
+    [
+     -1,
+     -1
+    ],
+    [
+     2,
+     -2
+    ],
+    [
+     0,
+     -2
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     -2,
+     2
+    ],
+    [
+     -2,
+     0
+    ],
+    [
+     1,
+     -2
+    ]
+   ],
+   "fixtures": [
+    {
+     "id": "lobby_cabin_shaft",
+     "kind": "Kabinenschacht",
+     "frame": "module",
+     "module": "transfer",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "facing_deg": 90,
+     "size": [
+      5.6,
+      5.6
+     ],
+     "note": "Hole in the floor, 2.8 m radius, glass railing 1.1 m: here the cabin comes up from the axis tube (arrival at 49.8 s)",
+     "origin": {
+      "by": "agent",
+      "via": "taken over from station_scene.py and probe_kartenraum.py",
+      "when": "2026-11-02"
+     }
+    },
+    {
+     "id": "lobby_note_fittings",
+     "kind": "notiz",
+     "frame": "module",
+     "module": "transfer",
+     "at": [
+      0,
+      -14.9,
+      0
+     ],
+     "facing_deg": 90,
+     "note": "Handrail on all outer walls at 1 m; one warm light per honeycomb cell 2.5 m below the ceiling; room 10 m high",
+     "origin": {
+      "by": "agent",
+      "via": "taken over from station_scene.py and probe_kartenraum.py",
+      "when": "2026-11-02"
+     }
+    },
+    {
+     "id": "door_lobby_map_room",
+     "kind": "Tür",
+     "frame": "module",
+     "module": "transfer",
+     "at": [
+      -2.5,
+      -30.3,
+      0
+     ],
+     "facing_deg": -60,
+     "size": [
+      2,
+      0.3
+     ],
+     "note": "Door from the lobby into the map room; position provisional, at the nearest wall",
+     "origin": {
+      "by": "agent",
+      "via": "taken over from station_scene.py and probe_kartenraum.py",
+      "when": "2026-11-02"
+     }
+    }
+   ]
+  },
+  "spacebar": {
+   "depth": 10,
+   "processes": [
+    "queue_einreihung",
+    "auftrag_aushängen"
+   ],
+   "cells": [
+    [
+     1,
+     -3
+    ],
+    [
+     2,
+     -3
+    ],
+    [
+     1,
+     -4
+    ],
+    [
+     2,
+     -4
+    ],
+    [
+     3,
+     -4
+    ]
+   ],
+   "fixtures": [
+    {
+     "id": "spacebar_counter",
+     "kind": "Tresen",
+     "frame": "module",
+     "module": "spacebar",
+     "at": [
+      7.4,
+      -2.9,
+      0
+     ],
+     "facing_deg": 180,
+     "size": [
+      5,
+      0.8
+     ],
+     "note": "Counter with a lit edge; six foot loops in front of it (zero g: you hold on with your feet)",
+     "origin": {
+      "by": "agent",
+      "via": "taken over from station_scene.py and probe_kartenraum.py",
+      "when": "2026-11-02"
+     }
+    },
+    {
+     "id": "spacebar_shelf",
+     "kind": "Regal",
+     "frame": "module",
+     "module": "spacebar",
+     "at": [
+      9.8,
+      -2.9,
+      0
+     ],
+     "facing_deg": 180,
+     "size": [
+      4.6,
+      0.4
+     ],
+     "note": "three shelves with bottles in clamps, on the wall behind the counter",
+     "origin": {
+      "by": "agent",
+      "via": "taken over from station_scene.py and probe_kartenraum.py",
+      "when": "2026-11-02"
+     }
+    },
+    {
+     "id": "spacebar_job_board",
+     "kind": "Anschlagbrett",
+     "frame": "module",
+     "module": "spacebar",
+     "at": [
+      -9.9,
+      -2.9,
+      0
+     ],
+     "facing_deg": 90,
+     "size": [
+      4,
+      0.1
+     ],
+     "note": "Job board, 4 x 2.5 m, with notes: requests to the WissKomm Wiki",
+     "origin": {
+      "by": "agent",
+      "via": "taken over from station_scene.py and probe_kartenraum.py",
+      "when": "2026-11-02"
+     }
+    }
+   ]
+  },
+  "workshop": {
+   "depth": 20,
+   "processes": [
+    "erfassung",
+    "erfassungs_bestandsabgleich",
+    "empfänger_einstellen"
+   ],
+   "cells": [
+    [
+     -11,
+     1
+    ],
+    [
+     -10,
+     1
+    ],
+    [
+     -11,
+     2
+    ],
+    [
+     -10,
+     2
+    ],
+    [
+     -12,
+     2
+    ],
+    [
+     -12,
+     1
+    ],
+    [
+     -9,
+     1
+    ]
+   ]
+  },
+  "map_room": {
+   "depth": 130,
+   "processes": [
+    "publikation",
+    "sternkarte_erkunden",
+    "suche"
+   ],
+   "cells": [
+    [
+     1,
+     -8
+    ],
+    [
+     1,
+     -7
+    ],
+    [
+     1,
+     -6
+    ],
+    [
+     1,
+     -5
+    ],
+    [
+     2,
+     -9
+    ],
+    [
+     2,
+     -8
+    ],
+    [
+     2,
+     -7
+    ],
+    [
+     2,
+     -6
+    ],
+    [
+     2,
+     -5
+    ],
+    [
+     3,
+     -10
+    ],
+    [
+     3,
+     -9
+    ],
+    [
+     3,
+     -8
+    ],
+    [
+     3,
+     -7
+    ],
+    [
+     3,
+     -6
+    ],
+    [
+     3,
+     -5
+    ],
+    [
+     4,
+     -11
+    ],
+    [
+     4,
+     -10
+    ],
+    [
+     4,
+     -9
+    ],
+    [
+     4,
+     -8
+    ],
+    [
+     4,
+     -7
+    ],
+    [
+     4,
+     -6
+    ],
+    [
+     4,
+     -5
+    ],
+    [
+     5,
+     -11
+    ],
+    [
+     5,
+     -10
+    ],
+    [
+     5,
+     -9
+    ],
+    [
+     5,
+     -8
+    ],
+    [
+     5,
+     -7
+    ],
+    [
+     5,
+     -6
+    ],
+    [
+     6,
+     -11
+    ],
+    [
+     6,
+     -10
+    ],
+    [
+     6,
+     -9
+    ],
+    [
+     6,
+     -8
+    ],
+    [
+     6,
+     -7
+    ],
+    [
+     7,
+     -11
+    ],
+    [
+     7,
+     -10
+    ],
+    [
+     7,
+     -9
+    ],
+    [
+     7,
+     -8
+    ]
+   ],
+   "fixtures": [
+    {
+     "id": "map_room_box_1",
+     "kind": "box",
+     "frame": "module",
+     "module": "map_room",
+     "at": [
+      14.2,
+      26.1,
+      0
+     ],
+     "facing_deg": 90,
+     "size": [
+      2,
+      2
+     ],
+     "origin": {
+      "by": "human",
+      "via": "station planner",
+      "when": "2026-11-02"
+     }
+    },
+    {
+     "id": "map_room_data_globe",
+     "kind": "Datenkugel",
+     "frame": "module",
+     "module": "map_room",
+     "at": [
+      0,
+      0,
+      10.5
+     ],
+     "facing_deg": 90,
+     "size": [
+      12,
+      12
+     ],
+     "note": "Data globe, 6 m radius, floating 10.5 m above the star map; handrail ring around it; conduits to the hatches",
+     "origin": {
+      "by": "agent",
+      "via": "taken over from station_scene.py and probe_kartenraum.py",
+      "when": "2026-11-02"
+     }
+    },
+    {
+     "id": "map_room_note_star_map",
+     "kind": "notiz",
+     "frame": "module",
+     "module": "map_room",
+     "at": [
+      -14,
+      12,
+      0
+     ],
+     "facing_deg": 90,
+     "note": "The floor is the star map: almost dark, one sun with three planets is lit, a second one in another galaxy, connected",
+     "origin": {
+      "by": "agent",
+      "via": "taken over from station_scene.py and probe_kartenraum.py",
+      "when": "2026-11-02"
+     }
+    },
+    {
+     "id": "map_room_note_ceiling",
+     "kind": "notiz",
+     "frame": "module",
+     "module": "map_room",
+     "at": [
+      -14,
+      -14,
+      0
+     ],
+     "facing_deg": 90,
+     "note": "Ceiling at 20 m (six steps of 3.33 m) with windows to the stars, light falling at an angle from the distribution mirror",
+     "origin": {
+      "by": "agent",
+      "via": "taken over from station_scene.py and probe_kartenraum.py",
+      "when": "2026-11-02"
+     }
+    },
+    {
+     "id": "map_room_borgi_pointing",
+     "kind": "borgi",
+     "frame": "module",
+     "module": "map_room",
+     "at": [
+      8,
+      -10,
+      0.6
+     ],
+     "facing_deg": 37,
+     "note": "Borgi floats above the map and points at the lit sun (for scale)",
+     "origin": {
+      "by": "agent",
+      "via": "taken over from station_scene.py and probe_kartenraum.py",
+      "when": "2026-11-02"
+     }
+    },
+    {
+     "id": "door_map_room_lobby",
+     "kind": "Tür",
+     "frame": "module",
+     "module": "map_room",
+     "at": [
+      -4,
+      34.8,
+      0
+     ],
+     "facing_deg": 120,
+     "size": [
+      2,
+      0.3
+     ],
+     "note": "Counterpart of the door from the lobby; position provisional, at the edge towards the lobby",
+     "origin": {
+      "by": "agent",
+      "via": "taken over from station_scene.py and probe_kartenraum.py",
+      "when": "2026-11-02"
+     }
+    }
+   ]
+  },
+  "event_log": {
+   "depth": 10,
+   "processes": [
+    "query_inventar",
+    "ereignis_aufzeichnen"
+   ],
+   "cells": [
+    [
+     -9,
+     10
+    ]
+   ]
+  },
+  "lab": {
+   "depth": 30,
+   "processes": [
+    "analyse"
+   ],
+   "cells": [
+    [
+     1,
+     12
+    ],
+    [
+     1,
+     13
+    ],
+    [
+     1,
+     14
+    ],
+    [
+     2,
+     11
+    ],
+    [
+     2,
+     12
+    ],
+    [
+     2,
+     13
+    ],
+    [
+     2,
+     14
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     3,
+     11
+    ],
+    [
+     3,
+     12
+    ],
+    [
+     3,
+     13
+    ],
+    [
+     3,
+     14
+    ],
+    [
+     4,
+     10
+    ],
+    [
+     4,
+     11
+    ],
+    [
+     4,
+     12
+    ],
+    [
+     4,
+     13
+    ],
+    [
+     5,
+     10
+    ],
+    [
+     5,
+     11
+    ],
+    [
+     5,
+     12
+    ]
+   ]
+  },
+  "archive": {
+   "depth": 30,
+   "processes": [
+    "medien_beschaffung",
+    "merkmals_normalisierung",
+    "kandidaten_suche",
+    "treffer_entscheidung",
+    "neuanlage",
+    "verknüpfungsanlage",
+    "zusammenführung",
+    "abgleich_protokollierung"
+   ],
+   "cells": [
+    [
+     -13,
+     14
+    ],
+    [
+     -13,
+     15
+    ],
+    [
+     -13,
+     16
+    ],
+    [
+     -12,
+     13
+    ],
+    [
+     -12,
+     14
+    ],
+    [
+     -12,
+     15
+    ],
+    [
+     -12,
+     16
+    ],
+    [
+     -11,
+     12
+    ],
+    [
+     -11,
+     13
+    ],
+    [
+     -11,
+     14
+    ],
+    [
+     -11,
+     15
+    ],
+    [
+     -11,
+     16
+    ],
+    [
+     -10,
+     12
+    ],
+    [
+     -10,
+     13
+    ],
+    [
+     -10,
+     14
+    ],
+    [
+     -10,
+     15
+    ],
+    [
+     -9,
+     12
+    ],
+    [
+     -9,
+     13
+    ],
+    [
+     -9,
+     14
+    ]
+   ]
+  },
+  "portal": {
+   "depth": 20,
+   "processes": [
+    "metadaten_harvesting",
+    "kanal_auflösung",
+    "playlist_auflösung",
+    "video_metadaten_snapshot",
+    "plattform_untertitel_übernahme"
+   ],
+   "cells": [
+    [
+     -3,
+     4
+    ],
+    [
+     -3,
+     5
+    ],
+    [
+     -2,
+     3
+    ],
+    [
+     -2,
+     4
+    ],
+    [
+     -2,
+     5
+    ],
+    [
+     -1,
+     3
+    ],
+    [
+     -1,
+     4
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     -4,
+     5
+    ]
+   ]
+  },
+  "text_chamber": {
+   "depth": 60,
+   "processes": [
+    "nlp_anreicherung",
+    "lexikalische_vorverarbeitung",
+    "pdf_text_extraktion",
+    "übersetzung"
+   ],
+   "cells": [
+    [
+     -9,
+     -3
+    ],
+    [
+     -9,
+     -2
+    ],
+    [
+     -9,
+     -1
+    ],
+    [
+     -8,
+     -4
+    ],
+    [
+     -8,
+     -3
+    ],
+    [
+     -8,
+     -2
+    ],
+    [
+     -8,
+     -1
+    ],
+    [
+     -7,
+     -4
+    ],
+    [
+     -7,
+     -3
+    ],
+    [
+     -7,
+     -2
+    ],
+    [
+     -7,
+     -1
+    ],
+    [
+     -6,
+     -4
+    ],
+    [
+     -6,
+     -3
+    ],
+    [
+     -6,
+     -2
+    ],
+    [
+     -5,
+     -4
+    ],
+    [
+     -5,
+     -3
+    ],
+    [
+     -4,
+     -4
+    ],
+    [
+     -3,
+     -4
+    ],
+    [
+     -4,
+     -3
+    ],
+    [
+     -5,
+     -2
+    ],
+    [
+     -6,
+     -1
+    ],
+    [
+     -5,
+     -1
+    ],
+    [
+     -4,
+     -2
+    ],
+    [
+     -3,
+     -3
+    ],
+    [
+     -10,
+     -1
+    ],
+    [
+     -10,
+     -2
+    ],
+    [
+     -10,
+     -3
+    ],
+    [
+     -9,
+     -4
+    ]
+   ]
+  },
+  "hangar": {
+   "depth": 30,
+   "cells": [
+    [
+     1,
+     -20
+    ],
+    [
+     1,
+     -19
+    ],
+    [
+     1,
+     -18
+    ],
+    [
+     1,
+     -17
+    ],
+    [
+     2,
+     -20
+    ],
+    [
+     2,
+     -19
+    ],
+    [
+     2,
+     -18
+    ],
+    [
+     2,
+     -17
+    ],
+    [
+     3,
+     -20
+    ],
+    [
+     3,
+     -19
+    ],
+    [
+     3,
+     -18
+    ],
+    [
+     3,
+     -17
+    ],
+    [
+     4,
+     -20
+    ],
+    [
+     4,
+     -19
+    ],
+    [
+     4,
+     -18
+    ],
+    [
+     4,
+     -17
+    ],
+    [
+     5,
+     -20
+    ],
+    [
+     5,
+     -19
+    ],
+    [
+     5,
+     -18
+    ],
+    [
+     5,
+     -17
+    ],
+    [
+     6,
+     -20
+    ],
+    [
+     6,
+     -19
+    ],
+    [
+     6,
+     -18
+    ],
+    [
+     6,
+     -17
+    ],
+    [
+     7,
+     -20
+    ],
+    [
+     7,
+     -19
+    ],
+    [
+     7,
+     -18
+    ],
+    [
+     7,
+     -17
+    ],
+    [
+     8,
+     -20
+    ],
+    [
+     8,
+     -19
+    ],
+    [
+     8,
+     -18
+    ],
+    [
+     8,
+     -17
+    ],
+    [
+     9,
+     -20
+    ],
+    [
+     9,
+     -19
+    ],
+    [
+     9,
+     -18
+    ],
+    [
+     9,
+     -17
+    ],
+    [
+     10,
+     -20
+    ],
+    [
+     10,
+     -19
+    ],
+    [
+     10,
+     -18
+    ],
+    [
+     10,
+     -17
+    ],
+    [
+     11,
+     -20
+    ],
+    [
+     11,
+     -19
+    ],
+    [
+     11,
+     -18
+    ],
+    [
+     11,
+     -17
+    ],
+    [
+     12,
+     -20
+    ],
+    [
+     12,
+     -19
+    ],
+    [
+     12,
+     -18
+    ],
+    [
+     12,
+     -17
+    ],
+    [
+     13,
+     -20
+    ],
+    [
+     13,
+     -19
+    ],
+    [
+     13,
+     -18
+    ],
+    [
+     13,
+     -17
+    ],
+    [
+     14,
+     -20
+    ],
+    [
+     14,
+     -19
+    ],
+    [
+     14,
+     -18
+    ],
+    [
+     14,
+     -17
+    ],
+    [
+     15,
+     -20
+    ],
+    [
+     15,
+     -19
+    ],
+    [
+     15,
+     -18
+    ],
+    [
+     15,
+     -17
+    ],
+    [
+     16,
+     -20
+    ],
+    [
+     16,
+     -19
+    ],
+    [
+     16,
+     -18
+    ],
+    [
+     16,
+     -17
+    ],
+    [
+     17,
+     -20
+    ],
+    [
+     17,
+     -19
+    ],
+    [
+     17,
+     -18
+    ],
+    [
+     18,
+     -20
+    ],
+    [
+     18,
+     -19
+    ],
+    [
+     19,
+     -20
+    ]
+   ]
+  },
+  "knowledge_cluster": {
+   "depth": 40,
+   "processes": [
+    "dashboard_chart_export",
+    "gesamtüberblick_ansehen"
+   ],
+   "cells": [
+    [
+     -8,
+     9
+    ],
+    [
+     -8,
+     10
+    ],
+    [
+     -8,
+     11
+    ],
+    [
+     -8,
+     12
+    ],
+    [
+     -8,
+     13
+    ],
+    [
+     -7,
+     8
+    ],
+    [
+     -7,
+     9
+    ],
+    [
+     -7,
+     10
+    ],
+    [
+     -7,
+     11
+    ],
+    [
+     -7,
+     12
+    ],
+    [
+     -7,
+     13
+    ],
+    [
+     -6,
+     7
+    ],
+    [
+     -6,
+     8
+    ],
+    [
+     -6,
+     9
+    ],
+    [
+     -6,
+     10
+    ],
+    [
+     -6,
+     11
+    ],
+    [
+     -6,
+     12
+    ],
+    [
+     -6,
+     13
+    ],
+    [
+     -5,
+     6
+    ],
+    [
+     -5,
+     7
+    ],
+    [
+     -5,
+     8
+    ],
+    [
+     -5,
+     9
+    ],
+    [
+     -5,
+     10
+    ],
+    [
+     -5,
+     11
+    ],
+    [
+     -5,
+     12
+    ],
+    [
+     -5,
+     13
+    ],
+    [
+     -4,
+     6
+    ],
+    [
+     -4,
+     7
+    ],
+    [
+     -4,
+     8
+    ],
+    [
+     -4,
+     9
+    ],
+    [
+     -4,
+     10
+    ],
+    [
+     -4,
+     11
+    ],
+    [
+     -4,
+     12
+    ],
+    [
+     -3,
+     6
+    ],
+    [
+     -3,
+     7
+    ],
+    [
+     -3,
+     8
+    ],
+    [
+     -3,
+     9
+    ],
+    [
+     -3,
+     10
+    ],
+    [
+     -3,
+     11
+    ],
+    [
+     -2,
+     6
+    ],
+    [
+     -2,
+     7
+    ],
+    [
+     -2,
+     8
+    ],
+    [
+     -2,
+     9
+    ],
+    [
+     -2,
+     10
+    ],
+    [
+     -1,
+     6
+    ],
+    [
+     -1,
+     7
+    ],
+    [
+     -1,
+     8
+    ],
+    [
+     -1,
+     9
+    ]
+   ]
+  },
+  "text_chamber_2": {
+   "depth": 30,
+   "processes": [
+    "entitäten_verknüpfung",
+    "transkript_korrektur",
+    "menschliche_edit_erhaltung",
+    "editierrechte_prüfung"
+   ],
+   "cells": [
+    [
+     -18,
+     -1
+    ]
+   ],
+   "removed": "2026-11-02T18:14"
+  },
+  "user_interface": {
+   "depth": 20,
+   "processes": [
+    "rückmeldung_geben"
+   ],
+   "cells": [
+    [
+     -3,
+     -2
+    ],
+    [
+     -3,
+     -1
+    ],
+    [
+     -2,
+     -3
+    ],
+    [
+     -2,
+     -2
+    ],
+    [
+     -2,
+     -1
+    ],
+    [
+     -1,
+     -3
+    ],
+    [
+     -1,
+     -2
+    ],
+    [
+     -4,
+     -1
+    ]
+   ]
+  },
+  "viewing_room": {
+   "depth": 10,
+   "cells": [
+    [
+     1,
+     -15
+    ],
+    [
+     1,
+     -14
+    ],
+    [
+     2,
+     -16
+    ],
+    [
+     2,
+     -15
+    ],
+    [
+     2,
+     -14
+    ],
+    [
+     3,
+     -16
+    ],
+    [
+     3,
+     -15
+    ]
+   ]
+  },
+  "screening_room": {
+   "depth": 10,
+   "processes": [
+    "untertitel_generierung",
+    "medium_abspielen"
+   ],
+   "cells": [
+    [
+     10,
+     -13
+    ],
+    [
+     10,
+     -12
+    ],
+    [
+     11,
+     -14
+    ],
+    [
+     11,
+     -13
+    ],
+    [
+     11,
+     -12
+    ],
+    [
+     12,
+     -14
+    ],
+    [
+     12,
+     -13
+    ]
+   ]
+  },
+  "recording_studio": {
+   "depth": 20,
+   "processes": [
+    "lizenz_prüfung",
+    "urheber_kontaktaufnahme",
+    "eigenes_medium_einreichen",
+    "lizenz_erteilen"
+   ],
+   "cells": [
+    [
+     12,
+     -11
+    ],
+    [
+     12,
+     -10
+    ],
+    [
+     12,
+     -9
+    ],
+    [
+     13,
+     -12
+    ],
+    [
+     13,
+     -11
+    ],
+    [
+     13,
+     -10
+    ],
+    [
+     13,
+     -9
+    ],
+    [
+     14,
+     -13
+    ],
+    [
+     14,
+     -12
+    ],
+    [
+     14,
+     -11
+    ],
+    [
+     14,
+     -10
+    ],
+    [
+     14,
+     -9
+    ],
+    [
+     15,
+     -13
+    ],
+    [
+     15,
+     -12
+    ],
+    [
+     15,
+     -11
+    ],
+    [
+     15,
+     -10
+    ],
+    [
+     16,
+     -13
+    ],
+    [
+     16,
+     -12
+    ],
+    [
+     16,
+     -11
+    ]
+   ]
+  },
+  "coding_room": {
+   "depth": 20,
+   "processes": [
+    "werkzeug_entwickeln",
+    "adapter_entwickeln"
+   ],
+   "cells": [
+    [
+     -12,
+     5
+    ],
+    [
+     -12,
+     6
+    ],
+    [
+     -12,
+     7
+    ],
+    [
+     -11,
+     4
+    ],
+    [
+     -11,
+     5
+    ],
+    [
+     -11,
+     6
+    ],
+    [
+     -11,
+     7
+    ],
+    [
+     -10,
+     3
+    ],
+    [
+     -10,
+     4
+    ],
+    [
+     -10,
+     5
+    ],
+    [
+     -10,
+     6
+    ],
+    [
+     -10,
+     7
+    ],
+    [
+     -9,
+     3
+    ],
+    [
+     -9,
+     4
+    ],
+    [
+     -9,
+     5
+    ],
+    [
+     -9,
+     6
+    ],
+    [
+     -8,
+     3
+    ],
+    [
+     -8,
+     4
+    ],
+    [
+     -8,
+     5
+    ],
+    [
+     -11,
+     3
+    ],
+    [
+     -12,
+     4
+    ],
+    [
+     -13,
+     5
+    ],
+    [
+     -13,
+     6
+    ],
+    [
+     -13,
+     7
+    ],
+    [
+     -12,
+     8
+    ],
+    [
+     -11,
+     8
+    ],
+    [
+     -13,
+     8
+    ],
+    [
+     -13,
+     4
+    ],
+    [
+     -12,
+     3
+    ],
+    [
+     -13,
+     3
+    ],
+    [
+     -14,
+     4
+    ],
+    [
+     -14,
+     3
+    ],
+    [
+     -14,
+     5
+    ],
+    [
+     -14,
+     6
+    ],
+    [
+     -14,
+     7
+    ],
+    [
+     -14,
+     9
+    ],
+    [
+     -14,
+     8
+    ],
+    [
+     -13,
+     9
+    ],
+    [
+     -12,
+     9
+    ],
+    [
+     -13,
+     10
+    ],
+    [
+     -14,
+     10
+    ],
+    [
+     -14,
+     11
+    ],
+    [
+     -7,
+     4
+    ],
+    [
+     -7,
+     3
+    ],
+    [
+     -6,
+     3
+    ]
+   ]
+  },
+  "server_hall": {
+   "depth": 40,
+   "processes": [
+    "datenverarbeitung",
+    "vorverarbeitung",
+    "transkription",
+    "wiki_bot_schreibvorgang",
+    "snapshot_schreiben",
+    "snapshot_rotation",
+    "snapshot_wiederherstellung",
+    "vorstufe_anlage",
+    "vorstufen_bestandsabgleich",
+    "vorstufen_entscheidung"
+   ],
+   "cells": [
+    [
+     -11,
+     18
+    ],
+    [
+     -11,
+     19
+    ],
+    [
+     -11,
+     20
+    ],
+    [
+     -10,
+     17
+    ],
+    [
+     -10,
+     18
+    ],
+    [
+     -10,
+     19
+    ],
+    [
+     -10,
+     20
+    ],
+    [
+     -9,
+     16
+    ],
+    [
+     -9,
+     17
+    ],
+    [
+     -9,
+     18
+    ],
+    [
+     -9,
+     19
+    ],
+    [
+     -9,
+     20
+    ],
+    [
+     -8,
+     16
+    ],
+    [
+     -8,
+     17
+    ],
+    [
+     -8,
+     18
+    ],
+    [
+     -8,
+     19
+    ],
+    [
+     -7,
+     16
+    ],
+    [
+     -7,
+     17
+    ],
+    [
+     -7,
+     18
+    ]
+   ]
+  },
+  "meeting_rooms": {
+   "depth": 20,
+   "processes": [
+    "vokabular_pflegen",
+    "datenmodell_ändern",
+    "modellierungsentscheidung"
+   ],
+   "cells": [
+    [
+     1,
+     5
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     4,
+     4
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     5,
+     5
+    ]
+   ]
+  },
+  "reading_room": {
+   "depth": 20,
+   "processes": [
+    "semantische_ähnlichkeit",
+    "volltext_lesen",
+    "zitieren"
+   ],
+   "cells": [
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     3,
+     2
+    ]
+   ]
+  },
+  "hall_of_memories": {
+   "depth": 30,
+   "processes": [
+    "lehre_festhalten",
+    "lehre_nachschlagen",
+    "verschwundenes_medium_festhalten"
+   ],
+   "cells": [
+    [
+     -19,
+     14
+    ],
+    [
+     -19,
+     15
+    ],
+    [
+     -19,
+     16
+    ],
+    [
+     -18,
+     13
+    ],
+    [
+     -18,
+     14
+    ],
+    [
+     -18,
+     15
+    ],
+    [
+     -18,
+     16
+    ],
+    [
+     -17,
+     12
+    ],
+    [
+     -17,
+     13
+    ],
+    [
+     -17,
+     14
+    ],
+    [
+     -17,
+     15
+    ],
+    [
+     -17,
+     16
+    ],
+    [
+     -16,
+     12
+    ],
+    [
+     -16,
+     13
+    ],
+    [
+     -16,
+     14
+    ],
+    [
+     -16,
+     15
+    ],
+    [
+     -15,
+     12
+    ],
+    [
+     -15,
+     13
+    ],
+    [
+     -15,
+     14
+    ]
+   ]
+  },
+  "transmitter": {
+   "depth": 40,
+   "processes": [
+    "beobachtungsrechte_prüfung",
+    "wikidata_anreicherung",
+    "forschungsfeld_zuordnung",
+    "orkg_csv_generierung",
+    "orkg_api_schreibzugriff"
+   ],
+   "cells": [
+    [
+     3,
+     -2
+    ],
+    [
+     3,
+     -1
+    ],
+    [
+     4,
+     -3
+    ],
+    [
+     4,
+     -2
+    ],
+    [
+     4,
+     -1
+    ],
+    [
+     5,
+     -3
+    ],
+    [
+     5,
+     -2
+    ]
+   ]
+  },
+  "industry": {
+   "depth": 60,
+   "processes": [
+    "derivat_erstellung",
+    "wiki_seiten_generierung"
+   ],
+   "cells": [
+    [
+     -20,
+     1
+    ]
+   ],
+   "removed": "2026-11-02T18:14"
+  }
+ },
+ "rooms": {}
+}

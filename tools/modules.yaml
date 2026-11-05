@@ -1,0 +1,183 @@
+# How the built station is cut into modules (as modular as possible, so parts can be reused).
+# One .blend per module, inside one collection per element; station.blend links all modules.
+# match: regular expressions on object names (the scene was built with German names); first match wins, order matters.
+# If an object does not match, its parents' names count; whatever is left goes to "unassigned" (listed in the manifest).
+# Objects whose name starts with a Poly Haven asset id are not exported but replaced by an empty with a link.
+
+modules:
+  - id: environment
+    title: "Sun, scattered light, star field"
+    description: "The sun, a soft light from the shadow side and about 1,200 stars around the station. Link it into any scene for the same light and sky."
+    alt: "Dark sky with faint stars"
+    elements:
+      - {id: sun, match: ["^Sonne", "^Streulicht"]}
+      - {id: stars, match: ["^Stern"]}
+
+  - id: station_structure
+    title: "Station structure: ring shell, spokes, axis, collector, hub hull"
+    description: "The structure of the rotating station: the ring with its floor, ceiling and ribbed glass roof, six spokes with ladders and the bearing collar, the axis tube with the distribution mirror, the collector of honeycomb cells that faces the sun, the outer hull of the hub with windows, radiators and antennas, and the docking area with the hangar band."
+    alt: "The station from outside: a drum-shaped ring with a honeycomb collector on top"
+    elements:
+      - {id: ring_shell, match: ["^Ring$", "^Ringboden", "^Ringdecke", "^Ringdach"]}
+      - {id: spokes, match: ["^Speiche", "^Lagerkranz", "^Leitern"]}
+      - {id: axis, match: ["^Achsrohr", "^Verteilspiegel"]}
+      - {id: collector, match: ["^Kollektor", "^Wabenrahmen$", "^Spiegel"]}
+      - {id: hub_hull, match: ["^Gang-Module", "^Modulfenster", "^Aufbauten", "^Radiatoren", "^Antennen"]}
+      - {id: docking, match: ["^Hangar", "^Andockmodul"]}
+
+  - id: ships
+    title: "Ships with engine glow"
+    description: "Simple ships with wings and engine glow that arrive from the sun side."
+    alt: "Four small ships seen from afar"
+    elements:
+      - {id: ships, match: ["^Schiffe", "^Triebwerke"]}
+
+  - id: elevator
+    title: "Spoke elevator: tower, hall, cabin, doors, sign"
+    description: "The lift that runs up a spoke from the ring to the hub: tower, hall, cabin with glass doors and its sign."
+    alt: "The lift tower with its hall at the bottom"
+    elements:
+      - {id: elevator, match: ["^Aufzug", "^Kabinentür"]}
+
+  - id: ring_city
+    title: "Ring city: streets, houses, trees, people, fields, homes, bar"
+    description: "The city on the inside of the ring: streets, houses with lit windows, trees, people for scale, fields, terraced homes at the feet of the spokes and a bar."
+    alt: "Houses and streets standing on the inside of the ring, seen from the axis"
+    elements:
+      - {id: streets, match: ["^Straßen"]}
+      - {id: houses, match: ["^Häuser", "^Fenster der Häuser"]}
+      - {id: trees_people, match: ["^Bäume", "^Menschen"]}
+      - {id: fields, match: ["^Felder"]}
+      - {id: homes, match: ["^Wohnen", "^Fenster der Wohnungen"]}
+      - {id: bar, match: ["^Bar$", "^Fensterfront der Bar"]}
+
+  # withheld: the objects are claimed by this module (so they land in no other module), but the module is not exported;
+  # the manifest lists it under withheld_modules
+  - id: knowledge_globe
+    withheld: "built after an illustration by someone else; not part of this repository for now"
+    title: "Globes in the museum's centre room and in the map room, light pillar"
+    elements:
+      - {id: globe, match: ["^Wissenskugel", "^Datenbaum", "^DB2", "^Kugelsäule", "^Fäden zur Kugel", "^Faden zum Hub",
+                            "^Kugelring", "^Lichtsäule"]}
+
+  # Museum rooms: exhibits carry the room in their name (r1_ to r7_, making-of mo_ in room 6)
+  - id: museum_room_1
+    title: "Museum room 1: opening"
+    description: "Opening: the first room after the entrance, with the title of the exhibition on a fabric banner."
+    alt: "Corridor of the first room with a banner over a door and a panel on the wall"
+    elements: [{id: room_1, match: ["\\br1_"]}]
+  - id: museum_room_2
+    title: "Museum room 2: where I come from"
+    description: "Where I come from: a timeline wall with earlier talks of this series, each with a still and its date. Its main exhibit, the timeline wall, shows stills of recordings published by others and is not included, so the room looks empty here."
+    alt: "Floor of room 2 seen from above with the roof cut away; its timeline wall is not included"
+    elements: [{id: room_2, match: ["\\br2_"]}]
+  - id: museum_room_3
+    title: "Museum room 3: three screens"
+    description: "Three screens: three lecterns, each showing a video that inspired the talk (data analysis of YouTube, a graph of Wikipedia, which channels people watch), with a short card that connects it to this work."
+    alt: "Three large screens on the wall with lecterns in front"
+    elements: [{id: room_3, match: ["\\br3_"]}]
+  - id: museum_room_4
+    title: "Museum room 4: vision"
+    description: "Vision: the wall of proposals and partners that led to the project, as a timeline. Its main exhibit, the wall of proposals, shows logos of partners and is not included, so the room looks empty here."
+    alt: "Room 4 seen from above with the roof cut away; its wall of proposals is not included"
+    elements: [{id: room_4, match: ["\\br4_"]}]
+  - id: museum_room_5
+    title: "Museum room 5: lessons learned"
+    description: "Lessons learned: a library with the book of AI incidents on a lectern, shelves, a reading table, a chair station with a video, a tablet, a room divider about the reverse centaur, a window onto a crowd of agents and a terminal. The text on the wall quotes Joseph Browning verbatim, from his post of 10 July 2024 (https://twitter.com/Joseph_Browning/status/1811022092176933325): \"The underlying purpose of AI is to allow wealth to access skill while removing from skill the ability to access wealth.\""
+    alt: "Curved bookshelves along the wall, a round table with stools and a screen"
+    elements: [{id: room_5, match: ["\\br5_"]}]
+  - id: museum_room_6
+    title: "Museum room 6: making of"
+    description: "Making of: easels with early and late states of the station, a board of decisions, the numbers behind the talk (rendering hours, dictated words, prompts), a stack of fanfold paper, a screen with the Blender window, the plans as they changed, what went wrong, and a door that carries the rebound graphic."
+    alt: "Walls with panels of numbers and plans, a counter of rendering hours, a round table"
+    elements: [{id: room_6, match: ["\\br6_", "\\bmo_"]}]
+  - id: museum_room_7
+    title: "Museum centre room (the hall between the rooms): the better curve"
+    description: "The centre room of the museum: the better curve, where a focused effort is followed by open reuse. The globe that stood in the middle of this room in the talk is not included. The \"better curve\" is the second half of the rebound graphic: a short, focused peak of effort followed by open reuse, instead of a permanent rise."
+    alt: "A chart on an easel: resources and entertainment over the years"
+    elements: [{id: room_7, match: ["\\br7_"]}]
+
+  # after the rooms: museum parts without a room id (walls and floors are one object across all rooms)
+  - id: museum_building
+    title: "Museum building: walls, floors, gates, doors, sign, lights"
+    description: "The round museum building in the ring: walls and floors of all rooms (one object across the rooms), the window band, the entrance gate, inner doors, the sign and the lights."
+    alt: "Floor plan of the round museum seen from above with the roof cut away"
+    elements:
+      - {id: shell, match: ["^Museum( |$)", "^Museum Böden", "^Museum Wände", "^Museum Innenwand", "^Museum Fensterband", "^Museum Mittelraum"]}
+      - {id: gates_doors, match: ["^Museum .*(Tor|Tür)", "^Raum 6 Tür"]}
+      - {id: sign, match: ["^Museumsschild", "^Platzhalter(text)? sign_"]}
+      - {id: lights, match: ["^Museum Licht", "^Licht Mittelraum"]}
+
+  - id: hub_lobby
+    title: "Hub lobby, space bar, job board"
+    description: "The lobby at the hub where the lift arrives, with handrails for zero gravity, the space bar and a job board."
+    alt: "Outline of the lobby, a cluster of honeycomb cells, seen from above"
+    elements:
+      - {id: lobby, match: ["^Lobby"]}
+      - {id: space_bar, match: ["^Space Bar"]}
+      - {id: job_board, match: ["^Job Board"]}
+
+  - id: hub_map_room
+    title: "Map room: funnel, star map"
+    description: "The map room of the hub: a funnel of galleries under a glass roof and a star map where channels are suns and videos and podcasts are planets. The glowing globe above the star map in the talk is not included; only a hidden helper sphere marks its place."
+    alt: "The map room cut open: galleries stacked inside a tall honeycomb dome"
+    elements:
+      - {id: room, match: ["^Kartenraum"]}
+      - {id: globe, match: ["^Kugel im Kartenraum", "^Icosphere"]}
+      - {id: star_map, match: ["^Sternkarte"]}
+
+  - id: hub_modules
+    title: "Hub modules (one collection per module)"
+    description: "The modules of the hub, one collection each: archive, coding room, event log, hall of memories, knowledge cluster, lab, meeting rooms, portal, reading room, recording studio, screening room, server hall, text chamber, transmitter, user interface, viewing room, workshop. Each module stands for one function of WissKomm Wiki."
+    alt: "Clusters of honeycomb cells, one cluster per hub module"
+    # one element per hub module: an object named "Modul <id>" becomes the collection <id>
+    per_object: "^Modul (\\w+)$"
+    elements: []
+
+  - id: tube_railway
+    title: "Tube railway with car"
+    description: "The tube railway that connects the hub modules, with its car."
+    alt: "Six thin tubes running out from the centre"
+    elements:
+      - {id: tubes, match: ["^Röhrenbahn"]}
+      - {id: car, match: ["^Wagen der Röhrenbahn"]}
+
+  - id: borgis
+    title: "Borgis (characters by Gerrit Hansen)"
+    description: "Borgis are illustrations by Gerrit Hansen and are not part of this repository."
+    elements:
+      - {id: borgis, match: ["^Borgi"]}
+
+# Empties that only carry the rotation of ring and hub: not exported
+transform_roots: ["^Rotor$", "^Hub \\(steht\\)$"]
+
+# Objects that are not exported (name matches): replaced by an empty "Withheld <name>" at the same place, reason in the manifest
+withhold_objects:
+  - {match: "^Borgi", reason: "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"}
+
+# Images that are not packed (path or name contains the pattern, case-insensitive): the material keeps its slot, the file is
+# missing, the manifest gives the reason. Illustrations by Gerrit Hansen are never part of this repository.
+withhold_images:
+  - {match: "/media/visual_design/", reason: "illustration by Gerrit Hansen, which we cannot license"}
+  - {match: "/media/logos/", reason: "logo by Gerrit Hansen for BorgNetzWerk, which we cannot license"}
+  - {match: "borgi", reason: "Borgi figure by Gerrit Hansen, which we cannot license"}
+  - {match: "/media/reverse_centaur/", reason: "third-party work (book cover, Cory Doctorow)"}
+  - {match: "/media/videos/", reason: "still from a third-party video"}
+  - {match: "/book/", reason: "book page with photos by others"}
+  # checked by eye on the contact sheet of the build from 4 November 2026
+  - {match: "title_slide", reason: "shows a Borgi figure by Gerrit Hansen"}
+  - {match: "foyer_banner", reason: "shows the WissKomm Wiki logo by Gerrit Hansen"}
+  - {match: "entrance_logo", reason: "WissKomm Wiki logo (Gerrit Hansen)"}
+  - {match: "proposal_wall", reason: "shows logos of partners and of BorgNetzWerk"}
+  - {match: "credits.png", reason: "shows the Blender and Poly Haven logos (trademarks)"}
+  - {match: "centaur_", reason: "third-party work (image and book cover, Cory Doctorow)"}
+  - {match: "adumb_", reason: "still of a third-party video"}
+  - {match: "not_david_", reason: "still of a third-party video"}
+  - {match: "ultralativ_", reason: "still of a third-party video"}
+  - {match: "kreil_", reason: "still of a third-party video"}
+  - {match: "video_middle", reason: "still of a third-party video"}
+  - {match: "video_tablet", reason: "still of a third-party video"}
+  - {match: "timeline_wall", reason: "stills of talk recordings published by others, left out until cleared"}
+  - {match: "first_ride", reason: "small renders, one of them may show Borgi figures, left out until cleared"}
+  - {match: "mistakes_story", reason: "small renders, one of them may show Borgi figures, left out until cleared"}
+  - {match: "plan_story", reason: "contains a small photograph by others (inset in the first floor plan)"}

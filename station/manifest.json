@@ -1,0 +1,3843 @@
+{
+ "source": "station.blend",
+ "frame": 1,
+ "units": "m",
+ "modules": [
+  {
+   "id": "environment",
+   "title": "Sun, scattered light, star field",
+   "description": "The sun, a soft light from the shadow side and about 1,200 stars around the station. Link it into any scene for the same light and sky.",
+   "alt": "Dark sky with faint stars",
+   "file": "environment/environment.blend",
+   "bytes": 536905,
+   "glb": "environment/environment.glb",
+   "glb_bytes": 2539756,
+   "glb_error": null,
+   "elements": {
+    "sun": [
+     "Sonne",
+     "Streulicht Schattenseite"
+    ],
+    "stars": [
+     "Stern",
+     "Stern.001",
+     "Stern.002",
+     "Stern.003",
+     "Stern.004",
+     "Stern.005",
+     "Stern.006",
+     "Stern.007",
+     "Stern.008",
+     "Stern.009",
+     "Stern.010",
+     "Stern.011",
+     "Stern.012",
+     "Stern.013",
+     "Stern.014",
+     "Stern.015",
+     "Stern.016",
+     "Stern.017",
+     "Stern.018",
+     "Stern.019",
+     "Stern.020",
+     "Stern.021",
+     "Stern.022",
+     "Stern.023",
+     "Stern.024",
+     "Stern.025",
+     "Stern.026",
+     "Stern.027",
+     "Stern.028",
+     "Stern.029",
+     "Stern.030",
+     "Stern.031",
+     "Stern.032",
+     "Stern.033",
+     "Stern.034",
+     "Stern.035",
+     "Stern.036",
+     "Stern.037",
+     "Stern.038",
+     "Stern.039",
+     "Stern.040",
+     "Stern.041",
+     "Stern.042",
+     "Stern.043",
+     "Stern.044",
+     "Stern.045",
+     "Stern.046",
+     "Stern.047",
+     "Stern.048",
+     "Stern.049",
+     "Stern.050",
+     "Stern.051",
+     "Stern.052",
+     "Stern.053",
+     "Stern.054",
+     "Stern.055",
+     "Stern.056",
+     "Stern.057",
+     "Stern.058",
+     "Stern.059",
+     "Stern.060",
+     "Stern.061",
+     "Stern.062",
+     "Stern.063",
+     "Stern.064",
+     "Stern.065",
+     "Stern.066",
+     "Stern.067",
+     "Stern.068",
+     "Stern.069",
+     "Stern.070",
+     "Stern.071",
+     "Stern.072",
+     "Stern.073",
+     "Stern.074",
+     "Stern.075",
+     "Stern.076",
+     "Stern.077",
+     "Stern.078",
+     "Stern.079",
+     "Stern.080",
+     "Stern.081",
+     "Stern.082",
+     "Stern.083",
+     "Stern.084",
+     "Stern.085",
+     "Stern.086",
+     "Stern.087",
+     "Stern.088",
+     "Stern.089",
+     "Stern.090",
+     "Stern.091",
+     "Stern.092",
+     "Stern.093",
+     "Stern.094",
+     "Stern.095",
+     "Stern.096",
+     "Stern.097",
+     "Stern.098",
+     "Stern.099",
+     "Stern.100",
+     "Stern.1000",
+     "Stern.1001",
+     "Stern.1002",
+     "Stern.1003",
+     "Stern.1004",
+     "Stern.1005",
+     "Stern.1006",
+     "Stern.1007",
+     "Stern.1008",
+     "Stern.1009",
+     "Stern.101",
+     "Stern.1010",
+     "Stern.1011",
+     "Stern.1012",
+     "Stern.1013",
+     "Stern.1014",
+     "Stern.1015",
+     "Stern.1016",
+     "Stern.1017",
+     "Stern.1018",
+     "Stern.1019",
+     "Stern.102",
+     "Stern.1020",
+     "Stern.1021",
+     "Stern.1022",
+     "Stern.1023",
+     "Stern.1024",
+     "Stern.1025",
+     "Stern.1026",
+     "Stern.1027",
+     "Stern.1028",
+     "Stern.1029",
+     "Stern.103",
+     "Stern.1030",
+     "Stern.1031",
+     "Stern.1032",
+     "Stern.1033",
+     "Stern.1034",
+     "Stern.1035",
+     "Stern.1036",
+     "Stern.1037",
+     "Stern.1038",
+     "Stern.1039",
+     "Stern.104",
+     "Stern.1040",
+     "Stern.1041",
+     "Stern.1042",
+     "Stern.1043",
+     "Stern.1044",
+     "Stern.1045",
+     "Stern.1046",
+     "Stern.1047",
+     "Stern.1048",
+     "Stern.1049",
+     "Stern.105",
+     "Stern.1050",
+     "Stern.1051",
+     "Stern.1052",
+     "Stern.1053",
+     "Stern.1054",
+     "Stern.1055",
+     "Stern.1056",
+     "Stern.1057",
+     "Stern.1058",
+     "Stern.1059",
+     "Stern.106",
+     "Stern.1060",
+     "Stern.1061",
+     "Stern.1062",
+     "Stern.1063",
+     "Stern.1064",
+     "Stern.1065",
+     "Stern.1066",
+     "Stern.1067",
+     "Stern.1068",
+     "Stern.1069",
+     "Stern.107",
+     "Stern.1070",
+     "Stern.1071",
+     "Stern.1072",
+     "Stern.1073",
+     "Stern.1074",
+     "Stern.1075",
+     "Stern.1076",
+     "Stern.1077",
+     "Stern.1078",
+     "Stern.1079",
+     "Stern.108",
+     "Stern.1080",
+     "Stern.1081",
+     "Stern.1082",
+     "Stern.1083",
+     "Stern.1084",
+     "Stern.1085",
+     "Stern.1086",
+     "Stern.1087",
+     "Stern.1088",
+     "Stern.1089",
+     "Stern.109",
+     "Stern.1090",
+     "Stern.1091",
+     "Stern.1092",
+     "Stern.1093",
+     "Stern.1094",
+     "Stern.1095",
+     "Stern.1096",
+     "Stern.1097",
+     "Stern.1098",
+     "Stern.1099",
+     "Stern.110",
+     "Stern.1100",
+     "Stern.1101",
+     "Stern.1102",
+     "Stern.1103",
+     "Stern.1104",
+     "Stern.1105",
+     "Stern.1106",
+     "Stern.1107",
+     "Stern.1108",
+     "Stern.1109",
+     "Stern.111",
+     "Stern.1110",
+     "Stern.1111",
+     "Stern.1112",
+     "Stern.1113",
+     "Stern.1114",
+     "Stern.1115",
+     "Stern.1116",
+     "Stern.1117",
+     "Stern.1118",
+     "Stern.1119",
+     "Stern.112",
+     "Stern.1120",
+     "Stern.1121",
+     "Stern.1122",
+     "Stern.1123",
+     "Stern.1124",
+     "Stern.1125",
+     "Stern.1126",
+     "Stern.1127",
+     "Stern.1128",
+     "Stern.1129",
+     "Stern.113",
+     "Stern.1130",
+     "Stern.1131",
+     "Stern.1132",
+     "Stern.1133",
+     "Stern.1134",
+     "Stern.1135",
+     "Stern.1136",
+     "Stern.1137",
+     "Stern.1138",
+     "Stern.1139",
+     "Stern.114",
+     "Stern.1140",
+     "Stern.1141",
+     "Stern.1142",
+     "Stern.1143",
+     "Stern.1144",
+     "Stern.1145",
+     "Stern.1146",
+     "Stern.1147",
+     "Stern.1148",
+     "Stern.1149",
+     "Stern.115",
+     "Stern.1150",
+     "Stern.1151",
+     "Stern.1152",
+     "Stern.1153",
+     "Stern.1154",
+     "Stern.1155",
+     "Stern.1156",
+     "Stern.1157",
+     "Stern.1158",
+     "Stern.1159",
+     "Stern.116",
+     "Stern.1160",
+     "Stern.1161",
+     "Stern.1162",
+     "Stern.1163",
+     "Stern.1164",
+     "Stern.1165",
+     "Stern.1166",
+     "Stern.1167",
+     "Stern.1168",
+     "Stern.1169",
+     "Stern.117",
+     "Stern.1170",
+     "Stern.1171",
+     "Stern.1172",
+     "Stern.1173",
+     "Stern.1174",
+     "Stern.1175",
+     "Stern.1176",
+     "Stern.1177",
+     "Stern.1178",
+     "Stern.1179",
+     "Stern.118",
+     "Stern.1180",
+     "Stern.1181",
+     "Stern.1182",
+     "Stern.1183",
+     "Stern.1184",
+     "Stern.1185",
+     "Stern.1186",
+     "Stern.1187",
+     "Stern.1188",
+     "Stern.1189",
+     "Stern.119",
+     "Stern.1190",
+     "Stern.1191",
+     "Stern.1192",
+     "Stern.1193",
+     "Stern.1194",
+     "Stern.1195",
+     "Stern.1196",
+     "Stern.1197",
+     "Stern.1198",
+     "Stern.1199",
+     "Stern.120",
+     "Stern.1200",
+     "Stern.1201",
+     "Stern.121",
+     "Stern.122",
+     "Stern.123",
+     "Stern.124",
+     "Stern.125",
+     "Stern.126",
+     "Stern.127",
+     "Stern.128",
+     "Stern.129",
+     "Stern.130",
+     "Stern.131",
+     "Stern.132",
+     "Stern.133",
+     "Stern.134",
+     "Stern.135",
+     "Stern.136",
+     "Stern.137",
+     "Stern.138",
+     "Stern.139",
+     "Stern.140",
+     "Stern.141",
+     "Stern.142",
+     "Stern.143",
+     "Stern.144",
+     "Stern.145",
+     "Stern.146",
+     "Stern.147",
+     "Stern.148",
+     "Stern.149",
+     "Stern.150",
+     "Stern.151",
+     "Stern.152",
+     "Stern.153",
+     "Stern.154",
+     "Stern.155",
+     "Stern.156",
+     "Stern.157",
+     "Stern.158",
+     "Stern.159",
+     "Stern.160",
+     "Stern.161",
+     "Stern.162",
+     "Stern.163",
+     "Stern.164",
+     "Stern.165",
+     "Stern.166",
+     "Stern.167",
+     "Stern.168",
+     "Stern.169",
+     "Stern.170",
+     "Stern.171",
+     "Stern.172",
+     "Stern.173",
+     "Stern.174",
+     "Stern.175",
+     "Stern.176",
+     "Stern.177",
+     "Stern.178",
+     "Stern.179",
+     "Stern.180",
+     "Stern.181",
+     "Stern.182",
+     "Stern.183",
+     "Stern.184",
+     "Stern.185",
+     "Stern.186",
+     "Stern.187",
+     "Stern.188",
+     "Stern.189",
+     "Stern.190",
+     "Stern.191",
+     "Stern.192",
+     "Stern.193",
+     "Stern.194",
+     "Stern.195",
+     "Stern.196",
+     "Stern.197",
+     "Stern.198",
+     "Stern.199",
+     "Stern.200",
+     "Stern.201",
+     "Stern.202",
+     "Stern.203",
+     "Stern.204",
+     "Stern.205",
+     "Stern.206",
+     "Stern.207",
+     "Stern.208",
+     "Stern.209",
+     "Stern.210",
+     "Stern.211",
+     "Stern.212",
+     "Stern.213",
+     "Stern.214",
+     "Stern.215",
+     "Stern.216",
+     "Stern.217",
+     "Stern.218",
+     "Stern.219",
+     "Stern.220",
+     "Stern.221",
+     "Stern.222",
+     "Stern.223",
+     "Stern.224",
+     "Stern.225",
+     "Stern.226",
+     "Stern.227",
+     "Stern.228",
+     "Stern.229",
+     "Stern.230",
+     "Stern.231",
+     "Stern.232",
+     "Stern.233",
+     "Stern.234",
+     "Stern.235",
+     "Stern.236",
+     "Stern.237",
+     "Stern.238",
+     "Stern.239",
+     "Stern.240",
+     "Stern.241",
+     "Stern.242",
+     "Stern.243",
+     "Stern.244",
+     "Stern.245",
+     "Stern.246",
+     "Stern.247",
+     "Stern.248",
+     "Stern.249",
+     "Stern.250",
+     "Stern.251",
+     "Stern.252",
+     "Stern.253",
+     "Stern.254",
+     "Stern.255",
+     "Stern.256",
+     "Stern.257",
+     "Stern.258",
+     "Stern.259",
+     "Stern.260",
+     "Stern.261",
+     "Stern.262",
+     "Stern.263",
+     "Stern.264",
+     "Stern.265",
+     "Stern.266",
+     "Stern.267",
+     "Stern.268",
+     "Stern.269",
+     "Stern.270",
+     "Stern.271",
+     "Stern.272",
+     "Stern.273",
+     "Stern.274",
+     "Stern.275",
+     "Stern.276",
+     "Stern.277",
+     "Stern.278",
+     "Stern.279",
+     "Stern.280",
+     "Stern.281",
+     "Stern.282",
+     "Stern.283",
+     "Stern.284",
+     "Stern.285",
+     "Stern.286",
+     "Stern.287",
+     "Stern.288",
+     "Stern.289",
+     "Stern.290",
+     "Stern.291",
+     "Stern.292",
+     "Stern.293",
+     "Stern.294",
+     "Stern.295",
+     "Stern.296",
+     "Stern.297",
+     "Stern.298",
+     "Stern.299",
+     "Stern.300",
+     "Stern.301",
+     "Stern.302",
+     "Stern.303",
+     "Stern.304",
+     "Stern.305",
+     "Stern.306",
+     "Stern.307",
+     "Stern.308",
+     "Stern.309",
+     "Stern.310",
+     "Stern.311",
+     "Stern.312",
+     "Stern.313",
+     "Stern.314",
+     "Stern.315",
+     "Stern.316",
+     "Stern.317",
+     "Stern.318",
+     "Stern.319",
+     "Stern.320",
+     "Stern.321",
+     "Stern.322",
+     "Stern.323",
+     "Stern.324",
+     "Stern.325",
+     "Stern.326",
+     "Stern.327",
+     "Stern.328",
+     "Stern.329",
+     "Stern.330",
+     "Stern.331",
+     "Stern.332",
+     "Stern.333",
+     "Stern.334",
+     "Stern.335",
+     "Stern.336",
+     "Stern.337",
+     "Stern.338",
+     "Stern.339",
+     "Stern.340",
+     "Stern.341",
+     "Stern.342",
+     "Stern.343",
+     "Stern.344",
+     "Stern.345",
+     "Stern.346",
+     "Stern.347",
+     "Stern.348",
+     "Stern.349",
+     "Stern.350",
+     "Stern.351",
+     "Stern.352",
+     "Stern.353",
+     "Stern.354",
+     "Stern.355",
+     "Stern.356",
+     "Stern.357",
+     "Stern.358",
+     "Stern.359",
+     "Stern.360",
+     "Stern.361",
+     "Stern.362",
+     "Stern.363",
+     "Stern.364",
+     "Stern.365",
+     "Stern.366",
+     "Stern.367",
+     "Stern.368",
+     "Stern.369",
+     "Stern.370",
+     "Stern.371",
+     "Stern.372",
+     "Stern.373",
+     "Stern.374",
+     "Stern.375",
+     "Stern.376",
+     "Stern.377",
+     "Stern.378",
+     "Stern.379",
+     "Stern.380",
+     "Stern.381",
+     "Stern.382",
+     "Stern.383",
+     "Stern.384",
+     "Stern.385",
+     "Stern.386",
+     "Stern.387",
+     "Stern.388",
+     "Stern.389",
+     "Stern.390",
+     "Stern.391",
+     "Stern.392",
+     "Stern.393",
+     "Stern.394",
+     "Stern.395",
+     "Stern.396",
+     "Stern.397",
+     "Stern.398",
+     "Stern.399",
+     "Stern.400",
+     "Stern.401",
+     "Stern.402",
+     "Stern.403",
+     "Stern.404",
+     "Stern.405",
+     "Stern.406",
+     "Stern.407",
+     "Stern.408",
+     "Stern.409",
+     "Stern.410",
+     "Stern.411",
+     "Stern.412",
+     "Stern.413",
+     "Stern.414",
+     "Stern.415",
+     "Stern.416",
+     "Stern.417",
+     "Stern.418",
+     "Stern.419",
+     "Stern.420",
+     "Stern.421",
+     "Stern.422",
+     "Stern.423",
+     "Stern.424",
+     "Stern.425",
+     "Stern.426",
+     "Stern.427",
+     "Stern.428",
+     "Stern.429",
+     "Stern.430",
+     "Stern.431",
+     "Stern.432",
+     "Stern.433",
+     "Stern.434",
+     "Stern.435",
+     "Stern.436",
+     "Stern.437",
+     "Stern.438",
+     "Stern.439",
+     "Stern.440",
+     "Stern.441",
+     "Stern.442",
+     "Stern.443",
+     "Stern.444",
+     "Stern.445",
+     "Stern.446",
+     "Stern.447",
+     "Stern.448",
+     "Stern.449",
+     "Stern.450",
+     "Stern.451",
+     "Stern.452",
+     "Stern.453",
+     "Stern.454",
+     "Stern.455",
+     "Stern.456",
+     "Stern.457",
+     "Stern.458",
+     "Stern.459",
+     "Stern.460",
+     "Stern.461",
+     "Stern.462",
+     "Stern.463",
+     "Stern.464",
+     "Stern.465",
+     "Stern.466",
+     "Stern.467",
+     "Stern.468",
+     "Stern.469",
+     "Stern.470",
+     "Stern.471",
+     "Stern.472",
+     "Stern.473",
+     "Stern.474",
+     "Stern.475",
+     "Stern.476",
+     "Stern.477",
+     "Stern.478",
+     "Stern.479",
+     "Stern.480",
+     "Stern.481",
+     "Stern.482",
+     "Stern.483",
+     "Stern.484",
+     "Stern.485",
+     "Stern.486",
+     "Stern.487",
+     "Stern.488",
+     "Stern.489",
+     "Stern.490",
+     "Stern.491",
+     "Stern.492",
+     "Stern.493",
+     "Stern.494",
+     "Stern.495",
+     "Stern.496",
+     "Stern.497",
+     "Stern.498",
+     "Stern.499",
+     "Stern.500",
+     "Stern.501",
+     "Stern.502",
+     "Stern.503",
+     "Stern.504",
+     "Stern.505",
+     "Stern.506",
+     "Stern.507",
+     "Stern.508",
+     "Stern.509",
+     "Stern.510",
+     "Stern.511",
+     "Stern.512",
+     "Stern.513",
+     "Stern.514",
+     "Stern.515",
+     "Stern.516",
+     "Stern.517",
+     "Stern.518",
+     "Stern.519",
+     "Stern.520",
+     "Stern.521",
+     "Stern.522",
+     "Stern.523",
+     "Stern.524",
+     "Stern.525",
+     "Stern.526",
+     "Stern.527",
+     "Stern.528",
+     "Stern.529",
+     "Stern.530",
+     "Stern.531",
+     "Stern.532",
+     "Stern.533",
+     "Stern.534",
+     "Stern.535",
+     "Stern.536",
+     "Stern.537",
+     "Stern.538",
+     "Stern.539",
+     "Stern.540",
+     "Stern.541",
+     "Stern.542",
+     "Stern.543",
+     "Stern.544",
+     "Stern.545",
+     "Stern.546",
+     "Stern.547",
+     "Stern.548",
+     "Stern.549",
+     "Stern.550",
+     "Stern.551",
+     "Stern.552",
+     "Stern.553",
+     "Stern.554",
+     "Stern.555",
+     "Stern.556",
+     "Stern.557",
+     "Stern.558",
+     "Stern.559",
+     "Stern.560",
+     "Stern.561",
+     "Stern.562",
+     "Stern.563",
+     "Stern.564",
+     "Stern.565",
+     "Stern.566",
+     "Stern.567",
+     "Stern.568",
+     "Stern.569",
+     "Stern.570",
+     "Stern.571",
+     "Stern.572",
+     "Stern.573",
+     "Stern.574",
+     "Stern.575",
+     "Stern.576",
+     "Stern.577",
+     "Stern.578",
+     "Stern.579",
+     "Stern.580",
+     "Stern.581",
+     "Stern.582",
+     "Stern.583",
+     "Stern.584",
+     "Stern.585",
+     "Stern.586",
+     "Stern.587",
+     "Stern.588",
+     "Stern.589",
+     "Stern.590",
+     "Stern.591",
+     "Stern.592",
+     "Stern.593",
+     "Stern.594",
+     "Stern.595",
+     "Stern.596",
+     "Stern.597",
+     "Stern.598",
+     "Stern.599",
+     "Stern.600",
+     "Stern.601",
+     "Stern.602",
+     "Stern.603",
+     "Stern.604",
+     "Stern.605",
+     "Stern.606",
+     "Stern.607",
+     "Stern.608",
+     "Stern.609",
+     "Stern.610",
+     "Stern.611",
+     "Stern.612",
+     "Stern.613",
+     "Stern.614",
+     "Stern.615",
+     "Stern.616",
+     "Stern.617",
+     "Stern.618",
+     "Stern.619",
+     "Stern.620",
+     "Stern.621",
+     "Stern.622",
+     "Stern.623",
+     "Stern.624",
+     "Stern.625",
+     "Stern.626",
+     "Stern.627",
+     "Stern.628",
+     "Stern.629",
+     "Stern.630",
+     "Stern.631",
+     "Stern.632",
+     "Stern.633",
+     "Stern.634",
+     "Stern.635",
+     "Stern.636",
+     "Stern.637",
+     "Stern.638",
+     "Stern.639",
+     "Stern.640",
+     "Stern.641",
+     "Stern.642",
+     "Stern.643",
+     "Stern.644",
+     "Stern.645",
+     "Stern.646",
+     "Stern.647",
+     "Stern.648",
+     "Stern.649",
+     "Stern.650",
+     "Stern.651",
+     "Stern.652",
+     "Stern.653",
+     "Stern.654",
+     "Stern.655",
+     "Stern.656",
+     "Stern.657",
+     "Stern.658",
+     "Stern.659",
+     "Stern.660",
+     "Stern.661",
+     "Stern.662",
+     "Stern.663",
+     "Stern.664",
+     "Stern.665",
+     "Stern.666",
+     "Stern.667",
+     "Stern.668",
+     "Stern.669",
+     "Stern.670",
+     "Stern.671",
+     "Stern.672",
+     "Stern.673",
+     "Stern.674",
+     "Stern.675",
+     "Stern.676",
+     "Stern.677",
+     "Stern.678",
+     "Stern.679",
+     "Stern.680",
+     "Stern.681",
+     "Stern.682",
+     "Stern.683",
+     "Stern.684",
+     "Stern.685",
+     "Stern.686",
+     "Stern.687",
+     "Stern.688",
+     "Stern.689",
+     "Stern.690",
+     "Stern.691",
+     "Stern.692",
+     "Stern.693",
+     "Stern.694",
+     "Stern.695",
+     "Stern.696",
+     "Stern.697",
+     "Stern.698",
+     "Stern.699",
+     "Stern.700",
+     "Stern.701",
+     "Stern.702",
+     "Stern.703",
+     "Stern.704",
+     "Stern.705",
+     "Stern.706",
+     "Stern.707",
+     "Stern.708",
+     "Stern.709",
+     "Stern.710",
+     "Stern.711",
+     "Stern.712",
+     "Stern.713",
+     "Stern.714",
+     "Stern.715",
+     "Stern.716",
+     "Stern.717",
+     "Stern.718",
+     "Stern.719",
+     "Stern.720",
+     "Stern.721",
+     "Stern.722",
+     "Stern.723",
+     "Stern.724",
+     "Stern.725",
+     "Stern.726",
+     "Stern.727",
+     "Stern.728",
+     "Stern.729",
+     "Stern.730",
+     "Stern.731",
+     "Stern.732",
+     "Stern.733",
+     "Stern.734",
+     "Stern.735",
+     "Stern.736",
+     "Stern.737",
+     "Stern.738",
+     "Stern.739",
+     "Stern.740",
+     "Stern.741",
+     "Stern.742",
+     "Stern.743",
+     "Stern.744",
+     "Stern.745",
+     "Stern.746",
+     "Stern.747",
+     "Stern.748",
+     "Stern.749",
+     "Stern.750",
+     "Stern.751",
+     "Stern.752",
+     "Stern.753",
+     "Stern.754",
+     "Stern.755",
+     "Stern.756",
+     "Stern.757",
+     "Stern.758",
+     "Stern.759",
+     "Stern.760",
+     "Stern.761",
+     "Stern.762",
+     "Stern.763",
+     "Stern.764",
+     "Stern.765",
+     "Stern.766",
+     "Stern.767",
+     "Stern.768",
+     "Stern.769",
+     "Stern.770",
+     "Stern.771",
+     "Stern.772",
+     "Stern.773",
+     "Stern.774",
+     "Stern.775",
+     "Stern.776",
+     "Stern.777",
+     "Stern.778",
+     "Stern.779",
+     "Stern.780",
+     "Stern.781",
+     "Stern.782",
+     "Stern.783",
+     "Stern.784",
+     "Stern.785",
+     "Stern.786",
+     "Stern.787",
+     "Stern.788",
+     "Stern.789",
+     "Stern.790",
+     "Stern.791",
+     "Stern.792",
+     "Stern.793",
+     "Stern.794",
+     "Stern.795",
+     "Stern.796",
+     "Stern.797",
+     "Stern.798",
+     "Stern.799",
+     "Stern.800",
+     "Stern.801",
+     "Stern.802",
+     "Stern.803",
+     "Stern.804",
+     "Stern.805",
+     "Stern.806",
+     "Stern.807",
+     "Stern.808",
+     "Stern.809",
+     "Stern.810",
+     "Stern.811",
+     "Stern.812",
+     "Stern.813",
+     "Stern.814",
+     "Stern.815",
+     "Stern.816",
+     "Stern.817",
+     "Stern.818",
+     "Stern.819",
+     "Stern.820",
+     "Stern.821",
+     "Stern.822",
+     "Stern.823",
+     "Stern.824",
+     "Stern.825",
+     "Stern.826",
+     "Stern.827",
+     "Stern.828",
+     "Stern.829",
+     "Stern.830",
+     "Stern.831",
+     "Stern.832",
+     "Stern.833",
+     "Stern.834",
+     "Stern.835",
+     "Stern.836",
+     "Stern.837",
+     "Stern.838",
+     "Stern.839",
+     "Stern.840",
+     "Stern.841",
+     "Stern.842",
+     "Stern.843",
+     "Stern.844",
+     "Stern.845",
+     "Stern.846",
+     "Stern.847",
+     "Stern.848",
+     "Stern.849",
+     "Stern.850",
+     "Stern.851",
+     "Stern.852",
+     "Stern.853",
+     "Stern.854",
+     "Stern.855",
+     "Stern.856",
+     "Stern.857",
+     "Stern.858",
+     "Stern.859",
+     "Stern.860",
+     "Stern.861",
+     "Stern.862",
+     "Stern.863",
+     "Stern.864",
+     "Stern.865",
+     "Stern.866",
+     "Stern.867",
+     "Stern.868",
+     "Stern.869",
+     "Stern.870",
+     "Stern.871",
+     "Stern.872",
+     "Stern.873",
+     "Stern.874",
+     "Stern.875",
+     "Stern.876",
+     "Stern.877",
+     "Stern.878",
+     "Stern.879",
+     "Stern.880",
+     "Stern.881",
+     "Stern.882",
+     "Stern.883",
+     "Stern.884",
+     "Stern.885",
+     "Stern.886",
+     "Stern.887",
+     "Stern.888",
+     "Stern.889",
+     "Stern.890",
+     "Stern.891",
+     "Stern.892",
+     "Stern.893",
+     "Stern.894",
+     "Stern.895",
+     "Stern.896",
+     "Stern.897",
+     "Stern.898",
+     "Stern.899",
+     "Stern.900",
+     "Stern.901",
+     "Stern.902",
+     "Stern.903",
+     "Stern.904",
+     "Stern.905",
+     "Stern.906",
+     "Stern.907",
+     "Stern.908",
+     "Stern.909",
+     "Stern.910",
+     "Stern.911",
+     "Stern.912",
+     "Stern.913",
+     "Stern.914",
+     "Stern.915",
+     "Stern.916",
+     "Stern.917",
+     "Stern.918",
+     "Stern.919",
+     "Stern.920",
+     "Stern.921",
+     "Stern.922",
+     "Stern.923",
+     "Stern.924",
+     "Stern.925",
+     "Stern.926",
+     "Stern.927",
+     "Stern.928",
+     "Stern.929",
+     "Stern.930",
+     "Stern.931",
+     "Stern.932",
+     "Stern.933",
+     "Stern.934",
+     "Stern.935",
+     "Stern.936",
+     "Stern.937",
+     "Stern.938",
+     "Stern.939",
+     "Stern.940",
+     "Stern.941",
+     "Stern.942",
+     "Stern.943",
+     "Stern.944",
+     "Stern.945",
+     "Stern.946",
+     "Stern.947",
+     "Stern.948",
+     "Stern.949",
+     "Stern.950",
+     "Stern.951",
+     "Stern.952",
+     "Stern.953",
+     "Stern.954",
+     "Stern.955",
+     "Stern.956",
+     "Stern.957",
+     "Stern.958",
+     "Stern.959",
+     "Stern.960",
+     "Stern.961",
+     "Stern.962",
+     "Stern.963",
+     "Stern.964",
+     "Stern.965",
+     "Stern.966",
+     "Stern.967",
+     "Stern.968",
+     "Stern.969",
+     "Stern.970",
+     "Stern.971",
+     "Stern.972",
+     "Stern.973",
+     "Stern.974",
+     "Stern.975",
+     "Stern.976",
+     "Stern.977",
+     "Stern.978",
+     "Stern.979",
+     "Stern.980",
+     "Stern.981",
+     "Stern.982",
+     "Stern.983",
+     "Stern.984",
+     "Stern.985",
+     "Stern.986",
+     "Stern.987",
+     "Stern.988",
+     "Stern.989",
+     "Stern.990",
+     "Stern.991",
+     "Stern.992",
+     "Stern.993",
+     "Stern.994",
+     "Stern.995",
+     "Stern.996",
+     "Stern.997",
+     "Stern.998",
+     "Stern.999",
+     "Sternkarte Bahnen",
+     "Sternkarte Planeten (Videos, Podcasts)",
+     "Sternkarte Sonnen (Kanäle)",
+     "Sternkarte Staub der Galaxien",
+     "Sternkarte, erste Einträge"
+    ]
+   },
+   "objects": 1209,
+   "images": [
+    {
+     "name": "Render Result",
+     "file": "Render Result",
+     "kind": "internal"
+    },
+    {
+     "name": "Viewer Node",
+     "file": "Viewer Node",
+     "kind": "internal"
+    }
+   ],
+   "polyhaven": [],
+   "withheld_objects": [],
+   "fonts": []
+  },
+  {
+   "id": "station_structure",
+   "title": "Station structure: ring shell, spokes, axis, collector, hub hull",
+   "description": "The structure of the rotating station: the ring with its floor, ceiling and ribbed glass roof, six spokes with ladders and the bearing collar, the axis tube with the distribution mirror, the collector of honeycomb cells that faces the sun, the outer hull of the hub with windows, radiators and antennas, and the docking area with the hangar band.",
+   "alt": "The station from outside: a drum-shaped ring with a honeycomb collector on top",
+   "file": "station_structure/station_structure.blend",
+   "bytes": 1522190,
+   "glb": "station_structure/station_structure.glb",
+   "glb_bytes": 8176056,
+   "glb_error": null,
+   "elements": {
+    "axis": [
+     "Achsrohr",
+     "Achsrohr aus Glas",
+     "Verteilspiegel"
+    ],
+    "docking": [
+     "Andockmodul an der Achse",
+     "Hangar am Rand"
+    ],
+    "hub_hull": [
+     "Antennen und Industrie",
+     "Aufbauten der Module",
+     "Gang-Module",
+     "Modulfenster",
+     "Radiatoren der Module"
+    ],
+    "collector": [
+     "Kollektor",
+     "Spiegel",
+     "Wabenrahmen"
+    ],
+    "spokes": [
+     "Lagerkranz",
+     "Leitern",
+     "Speiche 0",
+     "Speiche 1",
+     "Speiche 2",
+     "Speiche 3",
+     "Speiche 4",
+     "Speiche 5"
+    ],
+    "ring_shell": [
+     "Ring",
+     "Ringboden",
+     "Ringdach Rand",
+     "Ringdach Rippen",
+     "Ringdecke"
+    ]
+   },
+   "objects": 26,
+   "images": [
+    {
+     "name": "metal_plate_02_nor_gl_1k.jpg",
+     "file": "metal_plate_02_nor_gl_1k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "metal_plate_02",
+     "url": "https://polyhaven.com/a/metal_plate_02"
+    },
+    {
+     "name": "metal_plate_02_rough_1k.jpg",
+     "file": "metal_plate_02_rough_1k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "metal_plate_02",
+     "url": "https://polyhaven.com/a/metal_plate_02"
+    },
+    {
+     "name": "Render Result",
+     "file": "Render Result",
+     "kind": "internal"
+    },
+    {
+     "name": "Viewer Node",
+     "file": "Viewer Node",
+     "kind": "internal"
+    }
+   ],
+   "polyhaven": [],
+   "withheld_objects": [],
+   "fonts": []
+  },
+  {
+   "id": "ships",
+   "title": "Ships with engine glow",
+   "description": "Simple ships with wings and engine glow that arrive from the sun side.",
+   "alt": "Four small ships seen from afar",
+   "file": "ships/ships.blend",
+   "bytes": 101437,
+   "glb": "ships/ships.glb",
+   "glb_bytes": 26920,
+   "glb_error": null,
+   "elements": {
+    "ships": [
+     "Schiffe",
+     "Triebwerke"
+    ]
+   },
+   "objects": 2,
+   "images": [
+    {
+     "name": "Render Result",
+     "file": "Render Result",
+     "kind": "internal"
+    },
+    {
+     "name": "Viewer Node",
+     "file": "Viewer Node",
+     "kind": "internal"
+    }
+   ],
+   "polyhaven": [],
+   "withheld_objects": [],
+   "fonts": []
+  },
+  {
+   "id": "elevator",
+   "title": "Spoke elevator: tower, hall, cabin, doors, sign",
+   "description": "The lift that runs up a spoke from the ring to the hub: tower, hall, cabin with glass doors and its sign.",
+   "alt": "The lift tower with its hall at the bottom",
+   "file": "elevator/elevator.blend",
+   "bytes": 158865,
+   "glb": "elevator/elevator.glb",
+   "glb_bytes": 240300,
+   "glb_error": null,
+   "elements": {
+    "elevator": [
+     "Aufzug 0",
+     "Aufzug 1",
+     "Aufzug 2",
+     "Aufzug 3",
+     "Aufzug 4",
+     "Aufzug 5",
+     "Aufzugshalle",
+     "Aufzugskabine",
+     "Aufzugskabine Boden",
+     "Aufzugsrahmen",
+     "Aufzugsturm",
+     "Kabinentür Glas",
+     "Kabinentür Rahmen"
+    ]
+   },
+   "objects": 13,
+   "images": [
+    {
+     "name": "Render Result",
+     "file": "Render Result",
+     "kind": "internal"
+    },
+    {
+     "name": "Viewer Node",
+     "file": "Viewer Node",
+     "kind": "internal"
+    }
+   ],
+   "polyhaven": [],
+   "withheld_objects": [],
+   "fonts": []
+  },
+  {
+   "id": "ring_city",
+   "title": "Ring city: streets, houses, trees, people, fields, homes, bar",
+   "description": "The city on the inside of the ring: streets, houses with lit windows, trees, people for scale, fields, terraced homes at the feet of the spokes and a bar.",
+   "alt": "Houses and streets standing on the inside of the ring, seen from the axis",
+   "file": "ring_city/ring_city.blend",
+   "bytes": 425093,
+   "glb": "ring_city/ring_city.glb",
+   "glb_bytes": 1612964,
+   "glb_error": null,
+   "elements": {
+    "bar": [
+     "Bar",
+     "Fensterfront der Bar"
+    ],
+    "trees_people": [
+     "Bäume",
+     "Menschen"
+    ],
+    "fields": [
+     "Felder 1 (Vorschlag)",
+     "Felder 2 (Vorschlag)",
+     "Felder 3 (Vorschlag)"
+    ],
+    "houses": [
+     "Fenster der Häuser",
+     "Häuser"
+    ],
+    "homes": [
+     "Fenster der Wohnungen",
+     "Wohnen an den Speichen"
+    ],
+    "streets": [
+     "Straßen"
+    ]
+   },
+   "objects": 12,
+   "images": [
+    {
+     "name": "Render Result",
+     "file": "Render Result",
+     "kind": "internal"
+    },
+    {
+     "name": "Viewer Node",
+     "file": "Viewer Node",
+     "kind": "internal"
+    }
+   ],
+   "polyhaven": [],
+   "withheld_objects": [],
+   "fonts": []
+  },
+  {
+   "id": "museum_room_1",
+   "title": "Museum room 1: opening",
+   "description": "Opening: the first room after the entrance, with the title of the exhibition on a fabric banner.",
+   "alt": "Corridor of the first room with a banner over a door and a panel on the wall",
+   "file": "museum_room_1/museum_room_1.blend",
+   "bytes": 133841,
+   "glb": "museum_room_1/museum_room_1.glb",
+   "glb_bytes": 63344,
+   "glb_error": null,
+   "elements": {
+    "room_1": [
+     "Bannerstange r1_banner",
+     "Kabel Technik r1_title",
+     "Kabel r1_title",
+     "Platzhalter r1_banner",
+     "Platzhalter r1_title",
+     "Rückseite r1_title"
+    ]
+   },
+   "objects": 6,
+   "images": [
+    {
+     "name": "foyer_banner.png",
+     "file": "foyer_banner.png",
+     "kind": "withheld",
+     "packed": false,
+     "reason": "shows the WissKomm Wiki logo by Gerrit Hansen"
+    },
+    {
+     "name": "Render Result",
+     "file": "Render Result",
+     "kind": "internal"
+    },
+    {
+     "name": "rough_linen_nor_gl_1k.jpg",
+     "file": "rough_linen_nor_gl_1k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "rough_linen",
+     "url": "https://polyhaven.com/a/rough_linen"
+    },
+    {
+     "name": "rough_linen_rough_1k.jpg",
+     "file": "rough_linen_rough_1k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "rough_linen",
+     "url": "https://polyhaven.com/a/rough_linen"
+    },
+    {
+     "name": "title_slide.png",
+     "file": "title_slide.png",
+     "kind": "withheld",
+     "packed": false,
+     "reason": "shows a Borgi figure by Gerrit Hansen"
+    },
+    {
+     "name": "Viewer Node",
+     "file": "Viewer Node",
+     "kind": "internal"
+    }
+   ],
+   "polyhaven": [],
+   "withheld_objects": [],
+   "fonts": []
+  },
+  {
+   "id": "museum_room_2",
+   "title": "Museum room 2: where I come from",
+   "description": "Where I come from: a timeline wall with earlier talks of this series, each with a still and its date. Its main exhibit, the timeline wall, shows stills of recordings published by others and is not included, so the room looks empty here.",
+   "alt": "Floor of room 2 seen from above with the roof cut away; its timeline wall is not included",
+   "file": "museum_room_2/museum_room_2.blend",
+   "bytes": 110210,
+   "glb": "museum_room_2/museum_room_2.glb",
+   "glb_bytes": 34772,
+   "glb_error": null,
+   "elements": {
+    "room_2": [
+     "Kabel Technik r2_timeline 4",
+     "Kabel r2_timeline 0",
+     "Kabel r2_timeline 1",
+     "Kabel r2_timeline 2",
+     "Kabel r2_timeline 3",
+     "Kabel r2_timeline 4",
+     "Kabel r2_timeline 5",
+     "Kabel r2_timeline 6",
+     "Kabel r2_timeline 7",
+     "Platzhalter r2_timeline 0",
+     "Platzhalter r2_timeline 1",
+     "Platzhalter r2_timeline 2",
+     "Platzhalter r2_timeline 3",
+     "Platzhalter r2_timeline 4",
+     "Platzhalter r2_timeline 5",
+     "Platzhalter r2_timeline 6",
+     "Platzhalter r2_timeline 7",
+     "Rückseite r2_timeline 0",
+     "Rückseite r2_timeline 1",
+     "Rückseite r2_timeline 2",
+     "Rückseite r2_timeline 3",
+     "Rückseite r2_timeline 4",
+     "Rückseite r2_timeline 5",
+     "Rückseite r2_timeline 6",
+     "Rückseite r2_timeline 7"
+    ]
+   },
+   "objects": 25,
+   "images": [
+    {
+     "name": "Render Result",
+     "file": "Render Result",
+     "kind": "internal"
+    },
+    {
+     "name": "timeline_wall.png",
+     "file": "timeline_wall.png",
+     "kind": "withheld",
+     "packed": false,
+     "reason": "stills of talk recordings published by others, left out until cleared"
+    },
+    {
+     "name": "Viewer Node",
+     "file": "Viewer Node",
+     "kind": "internal"
+    }
+   ],
+   "polyhaven": [],
+   "withheld_objects": [],
+   "fonts": []
+  },
+  {
+   "id": "museum_room_3",
+   "title": "Museum room 3: three screens",
+   "description": "Three screens: three lecterns, each showing a video that inspired the talk (data analysis of YouTube, a graph of Wikipedia, which channels people watch), with a short card that connects it to this work.",
+   "alt": "Three large screens on the wall with lecterns in front",
+   "file": "museum_room_3/museum_room_3.blend",
+   "bytes": 110593,
+   "glb": "museum_room_3/museum_room_3.glb",
+   "glb_bytes": 37116,
+   "glb_error": null,
+   "elements": {
+    "room_3": [
+     "Kabel Technik r3_s1",
+     "Kabel Technik r3_s2",
+     "Kabel Technik r3_s3",
+     "Kabel r3_s1",
+     "Kabel r3_s2",
+     "Kabel r3_s3",
+     "Lesepult r3_s1_plate",
+     "Lesepult r3_s2_plate",
+     "Lesepult r3_s3_plate",
+     "Lesepultgestell r3_s1_plate",
+     "Lesepultgestell r3_s2_plate",
+     "Lesepultgestell r3_s3_plate",
+     "Lesepultplatte r3_s1_plate",
+     "Lesepultplatte r3_s2_plate",
+     "Lesepultplatte r3_s3_plate",
+     "Platzhalter r3_s1",
+     "Platzhalter r3_s2",
+     "Platzhalter r3_s3",
+     "Rückseite r3_s1",
+     "Rückseite r3_s2",
+     "Rückseite r3_s3"
+    ]
+   },
+   "objects": 21,
+   "images": [
+    {
+     "name": "adumb_wikipedia_graph.jpg",
+     "file": "adumb_wikipedia_graph.jpg",
+     "kind": "withheld",
+     "packed": false,
+     "reason": "still of a third-party video"
+    },
+    {
+     "name": "adumb_wikipedia_graph_lectern.png",
+     "file": "adumb_wikipedia_graph_lectern.png",
+     "kind": "withheld",
+     "packed": false,
+     "reason": "still of a third-party video"
+    },
+    {
+     "name": "not_david_nerds.jpg",
+     "file": "not_david_nerds.jpg",
+     "kind": "withheld",
+     "packed": false,
+     "reason": "still of a third-party video"
+    },
+    {
+     "name": "not_david_nerds_lectern.png",
+     "file": "not_david_nerds_lectern.png",
+     "kind": "withheld",
+     "packed": false,
+     "reason": "still of a third-party video"
+    },
+    {
+     "name": "Render Result",
+     "file": "Render Result",
+     "kind": "internal"
+    },
+    {
+     "name": "ultralativ_youtube_de.jpg",
+     "file": "ultralativ_youtube_de.jpg",
+     "kind": "withheld",
+     "packed": false,
+     "reason": "still of a third-party video"
+    },
+    {
+     "name": "ultralativ_youtube_de_lectern.png",
+     "file": "ultralativ_youtube_de_lectern.png",
+     "kind": "withheld",
+     "packed": false,
+     "reason": "still of a third-party video"
+    },
+    {
+     "name": "Viewer Node",
+     "file": "Viewer Node",
+     "kind": "internal"
+    }
+   ],
+   "polyhaven": [],
+   "withheld_objects": [],
+   "fonts": []
+  },
+  {
+   "id": "museum_room_4",
+   "title": "Museum room 4: vision",
+   "description": "Vision: the wall of proposals and partners that led to the project, as a timeline. Its main exhibit, the wall of proposals, shows logos of partners and is not included, so the room looks empty here.",
+   "alt": "Room 4 seen from above with the roof cut away; its wall of proposals is not included",
+   "file": "museum_room_4/museum_room_4.blend",
+   "bytes": 110468,
+   "glb": "museum_room_4/museum_room_4.glb",
+   "glb_bytes": 38948,
+   "glb_error": null,
+   "elements": {
+    "room_4": [
+     "Kabel Technik r4_timeline 4",
+     "Kabel r4_timeline 0",
+     "Kabel r4_timeline 1",
+     "Kabel r4_timeline 2",
+     "Kabel r4_timeline 3",
+     "Kabel r4_timeline 4",
+     "Kabel r4_timeline 5",
+     "Kabel r4_timeline 6",
+     "Kabel r4_timeline 7",
+     "Kabel r4_timeline 8",
+     "Platzhalter r4_timeline 0",
+     "Platzhalter r4_timeline 1",
+     "Platzhalter r4_timeline 2",
+     "Platzhalter r4_timeline 3",
+     "Platzhalter r4_timeline 4",
+     "Platzhalter r4_timeline 5",
+     "Platzhalter r4_timeline 6",
+     "Platzhalter r4_timeline 7",
+     "Platzhalter r4_timeline 8",
+     "Rückseite r4_timeline 0",
+     "Rückseite r4_timeline 1",
+     "Rückseite r4_timeline 2",
+     "Rückseite r4_timeline 3",
+     "Rückseite r4_timeline 4",
+     "Rückseite r4_timeline 5",
+     "Rückseite r4_timeline 6",
+     "Rückseite r4_timeline 7",
+     "Rückseite r4_timeline 8"
+    ]
+   },
+   "objects": 28,
+   "images": [
+    {
+     "name": "proposal_wall.png",
+     "file": "proposal_wall.png",
+     "kind": "withheld",
+     "packed": false,
+     "reason": "shows logos of partners and of BorgNetzWerk"
+    },
+    {
+     "name": "Render Result",
+     "file": "Render Result",
+     "kind": "internal"
+    },
+    {
+     "name": "Viewer Node",
+     "file": "Viewer Node",
+     "kind": "internal"
+    }
+   ],
+   "polyhaven": [],
+   "withheld_objects": [],
+   "fonts": []
+  },
+  {
+   "id": "museum_room_5",
+   "title": "Museum room 5: lessons learned",
+   "description": "Lessons learned: a library with the book of AI incidents on a lectern, shelves, a reading table, a chair station with a video, a tablet, a room divider about the reverse centaur, a window onto a crowd of agents and a terminal. The text on the wall quotes Joseph Browning verbatim, from his post of 10 July 2024 (https://twitter.com/Joseph_Browning/status/1811022092176933325): \"The underlying purpose of AI is to allow wealth to access skill while removing from skill the ability to access wealth.\"",
+   "alt": "Curved bookshelves along the wall, a round table with stools and a screen",
+   "file": "museum_room_5/museum_room_5.blend",
+   "bytes": 506732,
+   "glb": "museum_room_5/museum_room_5.glb",
+   "glb_bytes": 2171544,
+   "glb_error": null,
+   "elements": {
+    "room_5": [
+     "Bildschirm left r5_station",
+     "Bildschirm right r5_station",
+     "Bildschirmrahmen image r5_station",
+     "Bildschirmrahmen left r5_station",
+     "Bildschirmrahmen right r5_station",
+     "Buchblock r5_lectern",
+     "Buchseite links r5_lectern",
+     "Buchseite rechts r5_lectern",
+     "Bücher r5_shelves 0",
+     "Bücher r5_shelves 1",
+     "Bücher r5_shelves 2",
+     "Bücher r5_shelves 3",
+     "Bücher r5_shelves 4",
+     "Bücher r5_shelves 5",
+     "Bücher r5_shelves 6",
+     "Einband r5_lectern",
+     "Fuß r5_borgi_1",
+     "Fuß r5_borgi_2",
+     "Fuß r5_borgi_3",
+     "Fuß r5_borgi_4",
+     "Platzhalter r5_station",
+     "Platzhalter r5_tablet",
+     "Pult r5_lectern",
+     "Raumteiler Körper r5_divider",
+     "Raumteiler Rückseite r5_divider",
+     "Raumteiler r5_divider",
+     "Regale r5_shelves",
+     "Stuhlstation Gestell r5_station",
+     "Stuhlstation Polster r5_station",
+     "Stuhlstation Sessel r5_station",
+     "Stuhlstation Tastenfeld r5_station",
+     "Stuhlstation Trackball r5_station",
+     "Stütze r5_borgi_1",
+     "Stütze r5_borgi_2",
+     "Stütze r5_borgi_3",
+     "Stütze r5_borgi_4",
+     "Tablet r5_tablet",
+     "Tisch r5_table_1",
+     "Tisch r5_table_2",
+     "Tischgestell r5_table_1",
+     "Tischgestell r5_table_2",
+     "Wandschrift r5_wall_text",
+     "Withheld Borgi Pappe 1 r5_borgi_1",
+     "Withheld Borgi Pappe 1 r5_borgi_2",
+     "Withheld Borgi Pappe 1 r5_borgi_3",
+     "Withheld Borgi Pappe 1 r5_borgi_4",
+     "Withheld Borgi Pappe 10 r5_borgi_1",
+     "Withheld Borgi Pappe 10 r5_borgi_2",
+     "Withheld Borgi Pappe 10 r5_borgi_3",
+     "Withheld Borgi Pappe 10 r5_borgi_4",
+     "Withheld Borgi Pappe 2 r5_borgi_1",
+     "Withheld Borgi Pappe 2 r5_borgi_2",
+     "Withheld Borgi Pappe 2 r5_borgi_3",
+     "Withheld Borgi Pappe 2 r5_borgi_4",
+     "Withheld Borgi Pappe 3 r5_borgi_1",
+     "Withheld Borgi Pappe 3 r5_borgi_2",
+     "Withheld Borgi Pappe 3 r5_borgi_3",
+     "Withheld Borgi Pappe 3 r5_borgi_4",
+     "Withheld Borgi Pappe 4 r5_borgi_1",
+     "Withheld Borgi Pappe 4 r5_borgi_2",
+     "Withheld Borgi Pappe 4 r5_borgi_3",
+     "Withheld Borgi Pappe 4 r5_borgi_4",
+     "Withheld Borgi Pappe 5 r5_borgi_1",
+     "Withheld Borgi Pappe 5 r5_borgi_2",
+     "Withheld Borgi Pappe 5 r5_borgi_3",
+     "Withheld Borgi Pappe 5 r5_borgi_4",
+     "Withheld Borgi Pappe 6 r5_borgi_1",
+     "Withheld Borgi Pappe 6 r5_borgi_2",
+     "Withheld Borgi Pappe 6 r5_borgi_3",
+     "Withheld Borgi Pappe 6 r5_borgi_4",
+     "Withheld Borgi Pappe 7 r5_borgi_1",
+     "Withheld Borgi Pappe 7 r5_borgi_2",
+     "Withheld Borgi Pappe 7 r5_borgi_3",
+     "Withheld Borgi Pappe 7 r5_borgi_4",
+     "Withheld Borgi Pappe 8 r5_borgi_1",
+     "Withheld Borgi Pappe 8 r5_borgi_2",
+     "Withheld Borgi Pappe 8 r5_borgi_3",
+     "Withheld Borgi Pappe 8 r5_borgi_4",
+     "Withheld Borgi Pappe 9 r5_borgi_1",
+     "Withheld Borgi Pappe 9 r5_borgi_2",
+     "Withheld Borgi Pappe 9 r5_borgi_3",
+     "Withheld Borgi Pappe 9 r5_borgi_4",
+     "Withheld Borgi r5_borgi_1",
+     "Withheld Borgi r5_borgi_2",
+     "Withheld Borgi r5_borgi_3",
+     "Withheld Borgi r5_borgi_4"
+    ]
+   },
+   "objects": 86,
+   "images": [
+    {
+     "name": "ai_window.png",
+     "file": "ai_window.png",
+     "kind": "own",
+     "packed": true
+    },
+    {
+     "name": "centaur_back.png",
+     "file": "centaur_back.png",
+     "kind": "withheld",
+     "packed": false,
+     "reason": "third-party work (image and book cover, Cory Doctorow)"
+    },
+    {
+     "name": "centaur_front.png",
+     "file": "centaur_front.png",
+     "kind": "withheld",
+     "packed": false,
+     "reason": "third-party work (image and book cover, Cory Doctorow)"
+    },
+    {
+     "name": "Render Result",
+     "file": "Render Result",
+     "kind": "internal"
+    },
+    {
+     "name": "spread_title_left.png",
+     "file": "spread_title_left.png",
+     "kind": "withheld",
+     "packed": false,
+     "reason": "book page with photos by others"
+    },
+    {
+     "name": "spread_title_right.png",
+     "file": "spread_title_right.png",
+     "kind": "withheld",
+     "packed": false,
+     "reason": "book page with photos by others"
+    },
+    {
+     "name": "terminal.png",
+     "file": "terminal.png",
+     "kind": "own",
+     "packed": true
+    },
+    {
+     "name": "video_middle.png",
+     "file": "video_middle.png",
+     "kind": "withheld",
+     "packed": false,
+     "reason": "still of a third-party video"
+    },
+    {
+     "name": "video_tablet.png",
+     "file": "video_tablet.png",
+     "kind": "withheld",
+     "packed": false,
+     "reason": "still of a third-party video"
+    },
+    {
+     "name": "Viewer Node",
+     "file": "Viewer Node",
+     "kind": "internal"
+    }
+   ],
+   "polyhaven": [],
+   "withheld_objects": [
+    {
+     "name": "Borgi Pappe 1 r5_borgi_1",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 1 r5_borgi_2",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 1 r5_borgi_3",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 1 r5_borgi_4",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 10 r5_borgi_1",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 10 r5_borgi_2",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 10 r5_borgi_3",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 10 r5_borgi_4",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 2 r5_borgi_1",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 2 r5_borgi_2",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 2 r5_borgi_3",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 2 r5_borgi_4",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 3 r5_borgi_1",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 3 r5_borgi_2",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 3 r5_borgi_3",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 3 r5_borgi_4",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 4 r5_borgi_1",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 4 r5_borgi_2",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 4 r5_borgi_3",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 4 r5_borgi_4",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 5 r5_borgi_1",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 5 r5_borgi_2",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 5 r5_borgi_3",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 5 r5_borgi_4",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 6 r5_borgi_1",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 6 r5_borgi_2",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 6 r5_borgi_3",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 6 r5_borgi_4",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 7 r5_borgi_1",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 7 r5_borgi_2",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 7 r5_borgi_3",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 7 r5_borgi_4",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 8 r5_borgi_1",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 8 r5_borgi_2",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 8 r5_borgi_3",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 8 r5_borgi_4",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 9 r5_borgi_1",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 9 r5_borgi_2",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 9 r5_borgi_3",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 9 r5_borgi_4",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi r5_borgi_1",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi r5_borgi_2",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi r5_borgi_3",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi r5_borgi_4",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    }
+   ],
+   "fonts": [
+    "Bfont Regular"
+   ]
+  },
+  {
+   "id": "museum_room_6",
+   "title": "Museum room 6: making of",
+   "description": "Making of: easels with early and late states of the station, a board of decisions, the numbers behind the talk (rendering hours, dictated words, prompts), a stack of fanfold paper, a screen with the Blender window, the plans as they changed, what went wrong, and a door that carries the rebound graphic.",
+   "alt": "Walls with panels of numbers and plans, a counter of rendering hours, a round table",
+   "file": "museum_room_6/museum_room_6.blend",
+   "bytes": 3389816,
+   "glb": "museum_room_6/museum_room_6.glb",
+   "glb_bytes": 3795884,
+   "glb_error": null,
+   "elements": {
+    "room_6": [
+     "Bücher r6_shelf 0",
+     "Bücher r6_shelf 1",
+     "Bücher r6_shelf 2",
+     "Bücher r6_shelf 3",
+     "Bücher r6_shelf 4",
+     "Bücher r6_shelf 5",
+     "Bücher r6_shelf 6",
+     "Deckblatt r6_book",
+     "Endlosbahn 0 r6_book",
+     "Endlosbahn 1 r6_book",
+     "Endlosbahn 10 r6_book",
+     "Endlosbahn 2 r6_book",
+     "Endlosbahn 3 r6_book",
+     "Endlosbahn 4 r6_book",
+     "Endlosbahn 5 r6_book",
+     "Endlosbahn 6 r6_book",
+     "Endlosbahn 7 r6_book",
+     "Endlosbahn 8 r6_book",
+     "Endlosbahn 9 r6_book",
+     "Endlosbahn Boden r6_book",
+     "Fuß r6_borgi",
+     "Kabel Technik r6_blender_screen",
+     "Kabel Technik r6_gpu_meter",
+     "Kabel Technik r6_mistakes 4",
+     "Kabel Technik r6_plans 3",
+     "Kabel r6_blender_screen",
+     "Kabel r6_gpu_meter",
+     "Kabel r6_mistakes 0",
+     "Kabel r6_mistakes 1",
+     "Kabel r6_mistakes 2",
+     "Kabel r6_mistakes 3",
+     "Kabel r6_mistakes 4",
+     "Kabel r6_mistakes 5",
+     "Kabel r6_mistakes 6",
+     "Kabel r6_mistakes 7",
+     "Kabel r6_plans 0",
+     "Kabel r6_plans 1",
+     "Kabel r6_plans 2",
+     "Kabel r6_plans 3",
+     "Kabel r6_plans 4",
+     "Kabel r6_plans 5",
+     "Papierstapel r6_book",
+     "Platzhalter mo_credits",
+     "Platzhalter mo_decisions",
+     "Platzhalter mo_numbers",
+     "Platzhalter mo_ride",
+     "Platzhalter r6_blender_screen",
+     "Platzhalter r6_door",
+     "Platzhalter r6_gpu_meter",
+     "Platzhalter r6_mistakes 0",
+     "Platzhalter r6_mistakes 1",
+     "Platzhalter r6_mistakes 2",
+     "Platzhalter r6_mistakes 3",
+     "Platzhalter r6_mistakes 4",
+     "Platzhalter r6_mistakes 5",
+     "Platzhalter r6_mistakes 6",
+     "Platzhalter r6_mistakes 7",
+     "Platzhalter r6_plans 0",
+     "Platzhalter r6_plans 1",
+     "Platzhalter r6_plans 2",
+     "Platzhalter r6_plans 3",
+     "Platzhalter r6_plans 4",
+     "Platzhalter r6_plans 5",
+     "Pult r6_book",
+     "Raum 6 Tür Strich über r6_door",
+     "Regale r6_shelf",
+     "Rückseite r6_blender_screen",
+     "Rückseite r6_gpu_meter",
+     "Rückseite r6_mistakes 0",
+     "Rückseite r6_mistakes 1",
+     "Rückseite r6_mistakes 2",
+     "Rückseite r6_mistakes 3",
+     "Rückseite r6_mistakes 4",
+     "Rückseite r6_mistakes 5",
+     "Rückseite r6_mistakes 6",
+     "Rückseite r6_mistakes 7",
+     "Rückseite r6_plans 0",
+     "Rückseite r6_plans 1",
+     "Rückseite r6_plans 2",
+     "Rückseite r6_plans 3",
+     "Rückseite r6_plans 4",
+     "Rückseite r6_plans 5",
+     "Staffelei mo_credits",
+     "Staffelei mo_decisions",
+     "Staffelei mo_numbers",
+     "Staffelei mo_ride",
+     "Stütze r6_borgi",
+     "Tisch r6_table",
+     "Tischgestell r6_table",
+     "Träger mo_credits",
+     "Träger mo_decisions",
+     "Träger mo_numbers",
+     "Träger mo_ride",
+     "Withheld Borgi Pappe 1 r6_borgi",
+     "Withheld Borgi Pappe 10 r6_borgi",
+     "Withheld Borgi Pappe 2 r6_borgi",
+     "Withheld Borgi Pappe 3 r6_borgi",
+     "Withheld Borgi Pappe 4 r6_borgi",
+     "Withheld Borgi Pappe 5 r6_borgi",
+     "Withheld Borgi Pappe 6 r6_borgi",
+     "Withheld Borgi Pappe 7 r6_borgi",
+     "Withheld Borgi Pappe 8 r6_borgi",
+     "Withheld Borgi Pappe 9 r6_borgi",
+     "Withheld Borgi r6_borgi"
+    ]
+   },
+   "objects": 104,
+   "images": [
+    {
+     "name": "blender_window_cropped.png",
+     "file": "blender_window_cropped.png",
+     "kind": "own",
+     "packed": true
+    },
+    {
+     "name": "credits.png",
+     "file": "credits.png",
+     "kind": "withheld",
+     "packed": false,
+     "reason": "shows the Blender and Poly Haven logos (trademarks)"
+    },
+    {
+     "name": "decisions.png",
+     "file": "decisions.png",
+     "kind": "own",
+     "packed": true
+    },
+    {
+     "name": "fanfold_blank.png",
+     "file": "fanfold_blank.png",
+     "kind": "own",
+     "packed": true
+    },
+    {
+     "name": "fanfold_blank.png.001",
+     "file": "fanfold_blank.png",
+     "kind": "own",
+     "packed": true
+    },
+    {
+     "name": "fanfold_blank.png.002",
+     "file": "fanfold_blank.png",
+     "kind": "own",
+     "packed": true
+    },
+    {
+     "name": "fanfold_blank.png.003",
+     "file": "fanfold_blank.png",
+     "kind": "own",
+     "packed": true
+    },
+    {
+     "name": "fanfold_blank.png.004",
+     "file": "fanfold_blank.png",
+     "kind": "own",
+     "packed": true
+    },
+    {
+     "name": "fanfold_blank.png.005",
+     "file": "fanfold_blank.png",
+     "kind": "own",
+     "packed": true
+    },
+    {
+     "name": "fanfold_blank.png.006",
+     "file": "fanfold_blank.png",
+     "kind": "own",
+     "packed": true
+    },
+    {
+     "name": "fanfold_blank.png.007",
+     "file": "fanfold_blank.png",
+     "kind": "own",
+     "packed": true
+    },
+    {
+     "name": "fanfold_blank.png.008",
+     "file": "fanfold_blank.png",
+     "kind": "own",
+     "packed": true
+    },
+    {
+     "name": "fanfold_blank.png.009",
+     "file": "fanfold_blank.png",
+     "kind": "own",
+     "packed": true
+    },
+    {
+     "name": "fanfold_blank.png.010",
+     "file": "fanfold_blank.png",
+     "kind": "own",
+     "packed": true
+    },
+    {
+     "name": "first_ride.png",
+     "file": "first_ride.png",
+     "kind": "withheld",
+     "packed": false,
+     "reason": "small renders, one of them may show Borgi figures, left out until cleared"
+    },
+    {
+     "name": "gpu_meter.png",
+     "file": "gpu_meter.png",
+     "kind": "own",
+     "packed": true
+    },
+    {
+     "name": "mistakes_story.png",
+     "file": "mistakes_story.png",
+     "kind": "withheld",
+     "packed": false,
+     "reason": "small renders, one of them may show Borgi figures, left out until cleared"
+    },
+    {
+     "name": "numbers_room6.png",
+     "file": "numbers_room6.png",
+     "kind": "own",
+     "packed": true
+    },
+    {
+     "name": "plan_story.png",
+     "file": "plan_story.png",
+     "kind": "withheld",
+     "packed": false,
+     "reason": "contains a small photograph by others (inset in the first floor plan)"
+    },
+    {
+     "name": "prompts_sheet.png",
+     "file": "prompts_sheet.png",
+     "kind": "own",
+     "packed": true
+    },
+    {
+     "name": "rebound_years_door.png",
+     "file": "rebound_years_door.png",
+     "kind": "own",
+     "packed": true
+    },
+    {
+     "name": "rebound_years_door_above.png",
+     "file": "rebound_years_door_above.png",
+     "kind": "own",
+     "packed": true
+    },
+    {
+     "name": "Render Result",
+     "file": "Render Result",
+     "kind": "internal"
+    },
+    {
+     "name": "Viewer Node",
+     "file": "Viewer Node",
+     "kind": "internal"
+    }
+   ],
+   "polyhaven": [],
+   "withheld_objects": [
+    {
+     "name": "Borgi Pappe 1 r6_borgi",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 10 r6_borgi",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 2 r6_borgi",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 3 r6_borgi",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 4 r6_borgi",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 5 r6_borgi",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 6 r6_borgi",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 7 r6_borgi",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 8 r6_borgi",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi Pappe 9 r6_borgi",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    },
+    {
+     "name": "Borgi r6_borgi",
+     "reason": "Borgi cut-out figure: shape and image by Gerrit Hansen, which we cannot license"
+    }
+   ],
+   "fonts": []
+  },
+  {
+   "id": "museum_room_7",
+   "title": "Museum centre room (the hall between the rooms): the better curve",
+   "description": "The centre room of the museum: the better curve, where a focused effort is followed by open reuse. The globe that stood in the middle of this room in the talk is not included. The \"better curve\" is the second half of the rebound graphic: a short, focused peak of effort followed by open reuse, instead of a permanent rise.",
+   "alt": "A chart on an easel: resources and entertainment over the years",
+   "file": "museum_room_7/museum_room_7.blend",
+   "bytes": 293132,
+   "glb": "museum_room_7/museum_room_7.glb",
+   "glb_bytes": 222388,
+   "glb_error": null,
+   "elements": {
+    "room_7": [
+     "Platzhalter r7_open_curve",
+     "Staffelei r7_open_curve",
+     "Träger r7_open_curve"
+    ]
+   },
+   "objects": 3,
+   "images": [
+    {
+     "name": "rebound_years_hall.png",
+     "file": "rebound_years_hall.png",
+     "kind": "own",
+     "packed": true
+    },
+    {
+     "name": "Render Result",
+     "file": "Render Result",
+     "kind": "internal"
+    },
+    {
+     "name": "Viewer Node",
+     "file": "Viewer Node",
+     "kind": "internal"
+    }
+   ],
+   "polyhaven": [],
+   "withheld_objects": [],
+   "fonts": []
+  },
+  {
+   "id": "museum_building",
+   "title": "Museum building: walls, floors, gates, doors, sign, lights",
+   "description": "The round museum building in the ring: walls and floors of all rooms (one object across the rooms), the window band, the entrance gate, inner doors, the sign and the lights.",
+   "alt": "Floor plan of the round museum seen from above with the roof cut away",
+   "file": "museum_building/museum_building.blend",
+   "bytes": 212378,
+   "glb": "museum_building/museum_building.glb",
+   "glb_bytes": 365624,
+   "glb_error": null,
+   "elements": {
+    "lights": [
+     "Licht Mittelraum"
+    ],
+    "shell": [
+     "Museum",
+     "Museum Böden",
+     "Museum Center-Tür Angel a",
+     "Museum Center-Tür Angel b",
+     "Museum Center-Tür Flügel a",
+     "Museum Center-Tür Flügel b",
+     "Museum Center-Tür Portal",
+     "Museum Center-Tür Sturz",
+     "Museum Fensterband",
+     "Museum Innenwand",
+     "Museum Innenwand Glas",
+     "Museum Innenwand Rahmen",
+     "Museum Licht 0",
+     "Museum Licht 1",
+     "Museum Licht 2",
+     "Museum Licht 3",
+     "Museum Licht 4",
+     "Museum Licht 5",
+     "Museum Mittelraum",
+     "Museum Portal Tor",
+     "Museum Raum 6 Tür Angel",
+     "Museum Raum 6 Tür Flügel",
+     "Museum Raum 6 Tür Sturz",
+     "Museum Tor Flügel closed",
+     "Museum Tor Flügel half",
+     "Museum Torsturz Tor",
+     "Museum Wände mit Durchgang"
+    ],
+    "sign": [
+     "Museumsschild Logo",
+     "Museumsschild Logo Tiefe 0",
+     "Museumsschild Logo Tiefe 1",
+     "Museumsschild Logo Tiefe 2",
+     "Museumsschild Logo Tiefe 3",
+     "Museumsschild Logo Tiefe 4",
+     "Museumsschild Logo Tiefe 5",
+     "Museumsschild Logo Tiefe 6",
+     "Museumsschild Logo Tiefe 7"
+    ]
+   },
+   "objects": 37,
+   "images": [
+    {
+     "name": "entrance_logo.png",
+     "file": "entrance_logo.png",
+     "kind": "withheld",
+     "packed": false,
+     "reason": "WissKomm Wiki logo (Gerrit Hansen)"
+    },
+    {
+     "name": "entrance_logo_side.png",
+     "file": "entrance_logo_side.png",
+     "kind": "withheld",
+     "packed": false,
+     "reason": "WissKomm Wiki logo (Gerrit Hansen)"
+    },
+    {
+     "name": "painted_plaster_wall_diff_2k.jpg",
+     "file": "painted_plaster_wall_diff_2k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "painted_plaster_wall",
+     "url": "https://polyhaven.com/a/painted_plaster_wall"
+    },
+    {
+     "name": "painted_plaster_wall_nor_gl_2k.jpg",
+     "file": "painted_plaster_wall_nor_gl_2k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "painted_plaster_wall",
+     "url": "https://polyhaven.com/a/painted_plaster_wall"
+    },
+    {
+     "name": "painted_plaster_wall_rough_2k.jpg",
+     "file": "painted_plaster_wall_rough_2k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "painted_plaster_wall",
+     "url": "https://polyhaven.com/a/painted_plaster_wall"
+    },
+    {
+     "name": "Render Result",
+     "file": "Render Result",
+     "kind": "internal"
+    },
+    {
+     "name": "Viewer Node",
+     "file": "Viewer Node",
+     "kind": "internal"
+    },
+    {
+     "name": "white_plaster_02_diff_2k.jpg",
+     "file": "white_plaster_02_diff_2k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "white_plaster_02",
+     "url": "https://polyhaven.com/a/white_plaster_02"
+    },
+    {
+     "name": "white_plaster_02_nor_gl_2k.jpg",
+     "file": "white_plaster_02_nor_gl_2k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "white_plaster_02",
+     "url": "https://polyhaven.com/a/white_plaster_02"
+    },
+    {
+     "name": "white_plaster_02_rough_2k.jpg",
+     "file": "white_plaster_02_rough_2k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "white_plaster_02",
+     "url": "https://polyhaven.com/a/white_plaster_02"
+    }
+   ],
+   "polyhaven": [],
+   "withheld_objects": [],
+   "fonts": []
+  },
+  {
+   "id": "hub_lobby",
+   "title": "Hub lobby, space bar, job board",
+   "description": "The lobby at the hub where the lift arrives, with handrails for zero gravity, the space bar and a job board.",
+   "alt": "Outline of the lobby, a cluster of honeycomb cells, seen from above",
+   "file": "hub_lobby/hub_lobby.blend",
+   "bytes": 320272,
+   "glb": "hub_lobby/hub_lobby.glb",
+   "glb_bytes": 840048,
+   "glb_error": null,
+   "elements": {
+    "job_board": [
+     "Job Board",
+     "Job Board Zettel"
+    ],
+    "lobby": [
+     "Lobby Boden",
+     "Lobby Decke",
+     "Lobby Geländer",
+     "Lobby Handläufe und Schlaufen",
+     "Lobby Licht",
+     "Lobby Licht.001",
+     "Lobby Licht.002",
+     "Lobby Licht.003",
+     "Lobby Licht.004",
+     "Lobby Licht.005",
+     "Lobby Licht.006",
+     "Lobby Licht.007",
+     "Lobby Licht.008",
+     "Lobby Licht.009",
+     "Lobby Licht.010",
+     "Lobby Licht.011",
+     "Lobby Licht.012",
+     "Lobby Licht.013",
+     "Lobby Licht.014",
+     "Lobby Licht.015",
+     "Lobby Licht.016",
+     "Lobby Licht.017",
+     "Lobby Licht.018",
+     "Lobby Licht.019",
+     "Lobby Licht.020",
+     "Lobby Licht.021",
+     "Lobby Licht.022",
+     "Lobby Licht.023",
+     "Lobby Wände"
+    ],
+    "space_bar": [
+     "Space Bar Licht und Flaschen",
+     "Space Bar Regal",
+     "Space Bar Tresen"
+    ]
+   },
+   "objects": 34,
+   "images": [
+    {
+     "name": "granite_tile_diff_2k.jpg",
+     "file": "granite_tile_diff_2k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "granite_tile",
+     "url": "https://polyhaven.com/a/granite_tile"
+    },
+    {
+     "name": "granite_tile_nor_gl_2k.jpg",
+     "file": "granite_tile_nor_gl_2k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "granite_tile",
+     "url": "https://polyhaven.com/a/granite_tile"
+    },
+    {
+     "name": "granite_tile_rough_2k.jpg",
+     "file": "granite_tile_rough_2k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "granite_tile",
+     "url": "https://polyhaven.com/a/granite_tile"
+    },
+    {
+     "name": "painted_plaster_wall_diff_2k.jpg",
+     "file": "painted_plaster_wall_diff_2k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "painted_plaster_wall",
+     "url": "https://polyhaven.com/a/painted_plaster_wall"
+    },
+    {
+     "name": "painted_plaster_wall_nor_gl_2k.jpg",
+     "file": "painted_plaster_wall_nor_gl_2k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "painted_plaster_wall",
+     "url": "https://polyhaven.com/a/painted_plaster_wall"
+    },
+    {
+     "name": "painted_plaster_wall_rough_2k.jpg",
+     "file": "painted_plaster_wall_rough_2k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "painted_plaster_wall",
+     "url": "https://polyhaven.com/a/painted_plaster_wall"
+    },
+    {
+     "name": "Render Result",
+     "file": "Render Result",
+     "kind": "internal"
+    },
+    {
+     "name": "Viewer Node",
+     "file": "Viewer Node",
+     "kind": "internal"
+    }
+   ],
+   "polyhaven": [],
+   "withheld_objects": [],
+   "fonts": []
+  },
+  {
+   "id": "hub_map_room",
+   "title": "Map room: funnel, star map",
+   "description": "The map room of the hub: a funnel of galleries under a glass roof and a star map where channels are suns and videos and podcasts are planets. The glowing globe above the star map in the talk is not included; only a hidden helper sphere marks its place.",
+   "alt": "The map room cut open: galleries stacked inside a tall honeycomb dome",
+   "file": "hub_map_room/hub_map_room.blend",
+   "bytes": 1505216,
+   "glb": "hub_map_room/hub_map_room.glb",
+   "glb_bytes": 7115188,
+   "glb_error": null,
+   "elements": {
+    "globe": [
+     "Icosphere",
+     "Kugel im Kartenraum"
+    ],
+    "room": [
+     "Kartenraum Außenwaben",
+     "Kartenraum Dachrahmen",
+     "Kartenraum Deckenrahmen",
+     "Kartenraum Decklinien",
+     "Kartenraum Fenster",
+     "Kartenraum Geländer und Leuchtkanten",
+     "Kartenraum Glasdach",
+     "Kartenraum Handlauf",
+     "Kartenraum Handlaufpfosten",
+     "Kartenraum Lichtstrahlen",
+     "Kartenraum Plattformen",
+     "Kartenraum Plattformränder",
+     "Kartenraum Ränge",
+     "Kartenraum Sternkarte",
+     "Kartenraum Trichter",
+     "Kartenraum Wabendecke",
+     "Kartenraum Wabenrahmen",
+     "Kartenraum Wandlicht",
+     "Kartenraum Wände"
+    ]
+   },
+   "objects": 21,
+   "images": [
+    {
+     "name": "metal_plate_02_nor_gl_1k.jpg",
+     "file": "metal_plate_02_nor_gl_1k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "metal_plate_02",
+     "url": "https://polyhaven.com/a/metal_plate_02"
+    },
+    {
+     "name": "metal_plate_02_rough_1k.jpg",
+     "file": "metal_plate_02_rough_1k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "metal_plate_02",
+     "url": "https://polyhaven.com/a/metal_plate_02"
+    },
+    {
+     "name": "painted_plaster_wall_diff_2k.jpg",
+     "file": "painted_plaster_wall_diff_2k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "painted_plaster_wall",
+     "url": "https://polyhaven.com/a/painted_plaster_wall"
+    },
+    {
+     "name": "painted_plaster_wall_nor_gl_2k.jpg",
+     "file": "painted_plaster_wall_nor_gl_2k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "painted_plaster_wall",
+     "url": "https://polyhaven.com/a/painted_plaster_wall"
+    },
+    {
+     "name": "painted_plaster_wall_rough_2k.jpg",
+     "file": "painted_plaster_wall_rough_2k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "painted_plaster_wall",
+     "url": "https://polyhaven.com/a/painted_plaster_wall"
+    },
+    {
+     "name": "Render Result",
+     "file": "Render Result",
+     "kind": "internal"
+    },
+    {
+     "name": "Viewer Node",
+     "file": "Viewer Node",
+     "kind": "internal"
+    },
+    {
+     "name": "wood_floor_diff_2k.jpg",
+     "file": "wood_floor_diff_2k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "wood_floor",
+     "url": "https://polyhaven.com/a/wood_floor"
+    },
+    {
+     "name": "wood_floor_nor_gl_2k.jpg",
+     "file": "wood_floor_nor_gl_2k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "wood_floor",
+     "url": "https://polyhaven.com/a/wood_floor"
+    },
+    {
+     "name": "wood_floor_rough_2k.jpg",
+     "file": "wood_floor_rough_2k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "wood_floor",
+     "url": "https://polyhaven.com/a/wood_floor"
+    }
+   ],
+   "polyhaven": [],
+   "withheld_objects": [],
+   "fonts": []
+  },
+  {
+   "id": "hub_modules",
+   "title": "Hub modules (one collection per module)",
+   "description": "The modules of the hub, one collection each: archive, coding room, event log, hall of memories, knowledge cluster, lab, meeting rooms, portal, reading room, recording studio, screening room, server hall, text chamber, transmitter, user interface, viewing room, workshop. Each module stands for one function of WissKomm Wiki.",
+   "alt": "Clusters of honeycomb cells, one cluster per hub module",
+   "file": "hub_modules/hub_modules.blend",
+   "bytes": 118634,
+   "glb": "hub_modules/hub_modules.glb",
+   "glb_bytes": 281424,
+   "glb_error": null,
+   "elements": {
+    "archive": [
+     "Modul archive"
+    ],
+    "coding_room": [
+     "Modul coding_room"
+    ],
+    "event_log": [
+     "Modul event_log"
+    ],
+    "hall_of_memories": [
+     "Modul hall_of_memories"
+    ],
+    "knowledge_cluster": [
+     "Modul knowledge_cluster"
+    ],
+    "lab": [
+     "Modul lab"
+    ],
+    "meeting_rooms": [
+     "Modul meeting_rooms"
+    ],
+    "portal": [
+     "Modul portal"
+    ],
+    "reading_room": [
+     "Modul reading_room"
+    ],
+    "recording_studio": [
+     "Modul recording_studio"
+    ],
+    "screening_room": [
+     "Modul screening_room"
+    ],
+    "server_hall": [
+     "Modul server_hall"
+    ],
+    "text_chamber": [
+     "Modul text_chamber"
+    ],
+    "transmitter": [
+     "Modul transmitter"
+    ],
+    "user_interface": [
+     "Modul user_interface"
+    ],
+    "viewing_room": [
+     "Modul viewing_room"
+    ],
+    "workshop": [
+     "Modul workshop"
+    ]
+   },
+   "objects": 17,
+   "images": [
+    {
+     "name": "metal_plate_02_nor_gl_1k.jpg",
+     "file": "metal_plate_02_nor_gl_1k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "metal_plate_02",
+     "url": "https://polyhaven.com/a/metal_plate_02"
+    },
+    {
+     "name": "metal_plate_02_rough_1k.jpg",
+     "file": "metal_plate_02_rough_1k.jpg",
+     "kind": "polyhaven",
+     "packed": false,
+     "polyhaven_id": "metal_plate_02",
+     "url": "https://polyhaven.com/a/metal_plate_02"
+    },
+    {
+     "name": "Render Result",
+     "file": "Render Result",
+     "kind": "internal"
+    },
+    {
+     "name": "Viewer Node",
+     "file": "Viewer Node",
+     "kind": "internal"
+    }
+   ],
+   "polyhaven": [],
+   "withheld_objects": [],
+   "fonts": []
+  },
+  {
+   "id": "tube_railway",
+   "title": "Tube railway with car",
+   "description": "The tube railway that connects the hub modules, with its car.",
+   "alt": "Six thin tubes running out from the centre",
+   "file": "tube_railway/tube_railway.blend",
+   "bytes": 149304,
+   "glb": "tube_railway/tube_railway.glb",
+   "glb_bytes": 394096,
+   "glb_error": null,
+   "elements": {
+    "tubes": [
+     "Röhrenbahn",
+     "Röhrenbahn.001",
+     "Röhrenbahn.002",
+     "Röhrenbahn.003",
+     "Röhrenbahn.004",
+     "Röhrenbahn.005",
+     "Röhrenbahn.006",
+     "Röhrenbahn.007",
+     "Röhrenbahn.008",
+     "Röhrenbahn.009",
+     "Röhrenbahn.010",
+     "Röhrenbahn.011",
+     "Röhrenbahn.012",
+     "Röhrenbahn.013",
+     "Röhrenbahn.014",
+     "Röhrenbahn.015",
+     "Röhrenbahn.016",
+     "Röhrenbahn.017",
+     "Röhrenbahn.018",
+     "Röhrenbahn.019",
+     "Röhrenbahn.020",
+     "Röhrenbahn.021",
+     "Röhrenbahn.022",
+     "Röhrenbahn.023",
+     "Röhrenbahn.024",
+     "Röhrenbahn.025",
+     "Röhrenbahn.026",
+     "Röhrenbahn.027",
+     "Röhrenbahn.028",
+     "Röhrenbahn.029",
+     "Röhrenbahn.030",
+     "Röhrenbahn.031",
+     "Röhrenbahn.032",
+     "Röhrenbahn.033",
+     "Röhrenbahn.034",
+     "Röhrenbahn.035",
+     "Röhrenbahn.036",
+     "Röhrenbahn.037",
+     "Röhrenbahn.038",
+     "Röhrenbahn.039",
+     "Röhrenbahn.040",
+     "Röhrenbahn.041",
+     "Röhrenbahn.042",
+     "Röhrenbahn.043",
+     "Röhrenbahn.044",
+     "Röhrenbahn.045",
+     "Röhrenbahn.046",
+     "Röhrenbahn.047",
+     "Röhrenbahn.048",
+     "Röhrenbahn.049",
+     "Röhrenbahn.050",
+     "Röhrenbahn.051",
+     "Röhrenbahn.052",
+     "Röhrenbahn.053",
+     "Röhrenbahn.054",
+     "Röhrenbahn.055",
+     "Röhrenbahn.056",
+     "Röhrenbahn.057",
+     "Röhrenbahn.058",
+     "Röhrenbahn.059",
+     "Röhrenbahn.060",
+     "Röhrenbahn.061",
+     "Röhrenbahn.062",
+     "Röhrenbahn.063",
+     "Röhrenbahn.064",
+     "Röhrenbahn.065",
+     "Röhrenbahn.066",
+     "Röhrenbahn.067",
+     "Röhrenbahn.068",
+     "Röhrenbahn.069",
+     "Röhrenbahn.070",
+     "Röhrenbahn.071",
+     "Röhrenbahn.072",
+     "Röhrenbahn.073",
+     "Röhrenbahn.074",
+     "Röhrenbahn.075",
+     "Röhrenbahn.076",
+     "Röhrenbahn.077",
+     "Röhrenbahn.078",
+     "Röhrenbahn.079",
+     "Röhrenbahn.080",
+     "Röhrenbahn.081",
+     "Röhrenbahn.082",
+     "Röhrenbahn.083",
+     "Röhrenbahn.084",
+     "Röhrenbahn.085",
+     "Röhrenbahn.086",
+     "Röhrenbahn.087",
+     "Röhrenbahn.088",
+     "Röhrenbahn.089",
+     "Röhrenbahn.090",
+     "Röhrenbahn.091",
+     "Röhrenbahn.092",
+     "Röhrenbahn.093",
+     "Röhrenbahn.094",
+     "Röhrenbahn.095",
+     "Röhrenbahn.096",
+     "Röhrenbahn.097",
+     "Röhrenbahn.098",
+     "Röhrenbahn.099",
+     "Röhrenbahn.100",
+     "Röhrenbahn.101",
+     "Röhrenbahn.102",
+     "Röhrenbahn.103",
+     "Röhrenbahn.104",
+     "Röhrenbahn.105",
+     "Röhrenbahn.106",
+     "Röhrenbahn.107",
+     "Röhrenbahn.108",
+     "Röhrenbahn.109",
+     "Röhrenbahn.110",
+     "Röhrenbahn.111",
+     "Röhrenbahn.112",
+     "Röhrenbahn.113",
+     "Röhrenbahn.114",
+     "Röhrenbahn.115",
+     "Röhrenbahn.116",
+     "Röhrenbahn.117",
+     "Röhrenbahn.118",
+     "Röhrenbahn.119"
+    ],
+    "car": [
+     "Wagen der Röhrenbahn"
+    ]
+   },
+   "objects": 121,
+   "images": [
+    {
+     "name": "Render Result",
+     "file": "Render Result",
+     "kind": "internal"
+    },
+    {
+     "name": "Viewer Node",
+     "file": "Viewer Node",
+     "kind": "internal"
+    }
+   ],
+   "polyhaven": [],
+   "withheld_objects": [],
+   "fonts": []
+  },
+  {
+   "id": "polyhaven_placements",
+   "title": "Where Poly Haven models stood (empties with links, no files)",
+   "description": "Where furniture and plants from Poly Haven stood. Each place is an empty named after the asset, with its link; download the asset and parent it to the empty.",
+   "alt": "",
+   "file": "polyhaven_placements/polyhaven_placements.blend",
+   "bytes": 101691,
+   "glb": "polyhaven_placements/polyhaven_placements.glb",
+   "glb_bytes": 25956,
+   "glb_error": null,
+   "elements": {
+    "polyhaven_markers": [
+     "PolyHaven potted_plant_02",
+     "PolyHaven potted_plant_02.001",
+     "PolyHaven potted_plant_02.002",
+     "PolyHaven potted_plant_02.003",
+     "PolyHaven potted_plant_02.004",
+     "PolyHaven potted_plant_02.005",
+     "PolyHaven potted_plant_02.006",
+     "PolyHaven potted_plant_02.007",
+     "PolyHaven potted_plant_02.008",
+     "PolyHaven potted_plant_02.009",
+     "PolyHaven potted_plant_02.010",
+     "PolyHaven potted_plant_02.011",
+     "PolyHaven potted_plant_02.012",
+     "PolyHaven potted_plant_02.013",
+     "PolyHaven potted_plant_02.014",
+     "PolyHaven potted_plant_02.015",
+     "PolyHaven potted_plant_02.016",
+     "PolyHaven potted_plant_02.017",
+     "PolyHaven potted_plant_02.018",
+     "PolyHaven potted_plant_02.019",
+     "PolyHaven potted_plant_02.020",
+     "PolyHaven potted_plant_02.021",
+     "PolyHaven potted_plant_02.022",
+     "PolyHaven potted_plant_02.023",
+     "PolyHaven potted_plant_02.024",
+     "PolyHaven potted_plant_02.025",
+     "PolyHaven potted_plant_02.026",
+     "PolyHaven potted_plant_02.027",
+     "PolyHaven potted_plant_02.028",
+     "PolyHaven potted_plant_02.029",
+     "PolyHaven potted_plant_02.030",
+     "PolyHaven potted_plant_02.031",
+     "PolyHaven potted_plant_02.032",
+     "PolyHaven potted_plant_02.033",
+     "PolyHaven potted_plant_02.034",
+     "PolyHaven potted_plant_02.035",
+     "PolyHaven potted_plant_02.036",
+     "PolyHaven potted_plant_02.037",
+     "PolyHaven potted_plant_02.038",
+     "PolyHaven potted_plant_02.039",
+     "PolyHaven potted_plant_02.040",
+     "PolyHaven potted_plant_02.041",
+     "PolyHaven potted_plant_02.042",
+     "PolyHaven potted_plant_02.043",
+     "PolyHaven potted_plant_02.044",
+     "PolyHaven potted_plant_02.045",
+     "PolyHaven potted_plant_02.046",
+     "PolyHaven potted_plant_02.047",
+     "PolyHaven potted_plant_02.048",
+     "PolyHaven potted_plant_02.049",
+     "PolyHaven potted_plant_02.050",
+     "PolyHaven potted_plant_02.051",
+     "PolyHaven potted_plant_02.052",
+     "PolyHaven potted_plant_02.053",
+     "PolyHaven potted_plant_02.054",
+     "PolyHaven potted_plant_02.055",
+     "PolyHaven potted_plant_02.056",
+     "PolyHaven potted_plant_02.057",
+     "PolyHaven potted_plant_02.058",
+     "PolyHaven potted_plant_02.059",
+     "PolyHaven potted_plant_02.060",
+     "PolyHaven potted_plant_02.061",
+     "PolyHaven potted_plant_02.062",
+     "PolyHaven potted_plant_02.063",
+     "PolyHaven potted_plant_02.064",
+     "PolyHaven potted_plant_02.065",
+     "PolyHaven potted_plant_02.066",
+     "PolyHaven potted_plant_02.067",
+     "PolyHaven potted_plant_02.068",
+     "PolyHaven potted_plant_02.069",
+     "PolyHaven potted_plant_02.070",
+     "PolyHaven potted_plant_02.071",
+     "PolyHaven potted_plant_02.072",
+     "PolyHaven potted_plant_02.073",
+     "PolyHaven potted_plant_02.074",
+     "PolyHaven potted_plant_02.075",
+     "PolyHaven potted_plant_02.076",
+     "PolyHaven potted_plant_02.077",
+     "PolyHaven potted_plant_02.078",
+     "PolyHaven potted_plant_02.079"
+    ]
+   },
+   "objects": 80,
+   "images": [
+    {
+     "name": "Render Result",
+     "file": "Render Result",
+     "kind": "internal"
+    },
+    {
+     "name": "Viewer Node",
+     "file": "Viewer Node",
+     "kind": "internal"
+    }
+   ],
+   "polyhaven": [
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -28.618,
+      63.481,
+      -11.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -16.134,
+      44.944,
+      -11.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      5.801,
+      40.664,
+      -11.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      24.338,
+      53.148,
+      -11.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      28.618,
+      75.083,
+      -11.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      16.134,
+      93.62,
+      -11.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -5.801,
+      97.9,
+      -11.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -24.338,
+      85.416,
+      -11.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -32.514,
+      47.385,
+      -21.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -7.507,
+      30.808,
+      -21.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      21.897,
+      36.768,
+      -21.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      38.474,
+      61.775,
+      -21.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      32.514,
+      91.179,
+      -21.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      7.507,
+      107.756,
+      -21.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -21.897,
+      101.796,
+      -21.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -38.474,
+      76.789,
+      -21.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -39.399,
+      61.296,
+      -31.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -22.212,
+      35.776,
+      -31.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      7.987,
+      29.883,
+      -31.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      33.506,
+      47.07,
+      -31.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      39.399,
+      77.269,
+      -31.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      22.212,
+      102.788,
+      -31.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -7.987,
+      108.681,
+      -31.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -33.506,
+      91.494,
+      -31.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -34.173,
+      46.268,
+      -41.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -7.89,
+      28.845,
+      -41.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      23.014,
+      35.109,
+      -41.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      40.437,
+      61.392,
+      -41.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      34.173,
+      92.296,
+      -41.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      7.89,
+      109.719,
+      -41.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -23.014,
+      103.455,
+      -41.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -40.437,
+      77.172,
+      -41.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -40.379,
+      61.097,
+      -51.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -22.764,
+      34.942,
+      -51.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      8.185,
+      28.903,
+      -51.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      34.34,
+      46.518,
+      -51.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      40.379,
+      77.467,
+      -51.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      22.764,
+      103.622,
+      -51.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -8.185,
+      109.661,
+      -51.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -34.34,
+      92.046,
+      -51.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -34.173,
+      46.268,
+      -61.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -7.89,
+      28.845,
+      -61.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      23.014,
+      35.109,
+      -61.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      40.437,
+      61.392,
+      -61.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      34.173,
+      92.296,
+      -61.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      7.89,
+      109.719,
+      -61.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -23.014,
+      103.455,
+      -61.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -40.437,
+      77.172,
+      -61.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -40.379,
+      61.097,
+      -71.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -22.764,
+      34.942,
+      -71.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      8.185,
+      28.903,
+      -71.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      34.34,
+      46.518,
+      -71.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      40.379,
+      77.467,
+      -71.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      22.764,
+      103.622,
+      -71.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -8.185,
+      109.661,
+      -71.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -34.34,
+      92.046,
+      -71.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -34.173,
+      46.268,
+      -81.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -7.89,
+      28.845,
+      -81.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      23.014,
+      35.109,
+      -81.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      40.437,
+      61.392,
+      -81.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      34.173,
+      92.296,
+      -81.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      7.89,
+      109.719,
+      -81.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -23.014,
+      103.455,
+      -81.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -40.437,
+      77.172,
+      -81.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -40.379,
+      61.097,
+      -91.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -22.764,
+      34.942,
+      -91.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      8.185,
+      28.903,
+      -91.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      34.34,
+      46.518,
+      -91.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      40.379,
+      77.467,
+      -91.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      22.764,
+      103.622,
+      -91.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -8.185,
+      109.661,
+      -91.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -34.34,
+      92.046,
+      -91.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -34.173,
+      46.268,
+      -101.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -7.89,
+      28.845,
+      -101.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      23.014,
+      35.109,
+      -101.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      40.437,
+      61.392,
+      -101.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      34.173,
+      92.296,
+      -101.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      7.89,
+      109.719,
+      -101.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -23.014,
+      103.455,
+      -101.25
+     ]
+    },
+    {
+     "id": "potted_plant_02",
+     "location": [
+      -40.437,
+      77.172,
+      -101.25
+     ]
+    }
+   ],
+   "withheld_objects": [],
+   "fonts": []
+  }
+ ],
+ "unassigned": [],
+ "transform_roots": [
+  "Hub (steht)",
+  "Rotor"
+ ],
+ "withheld_modules": [
+  {
+   "id": "knowledge_globe",
+   "title": "Globes in the museum's centre room and in the map room, light pillar",
+   "reason": "built after an illustration by someone else; not part of this repository for now",
+   "objects": 900
+  }
+ ],
+ "note": "Note: the current station.blend was saved before these parts were taken out and still links `knowledge_globe/knowledge_globe.blend`; Blender reports that link as missing and shows the rest. A new station.blend follows with the next build."
+}
