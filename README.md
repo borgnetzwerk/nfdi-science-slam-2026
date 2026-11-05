@@ -1,8 +1,8 @@
 # Let's Structure the Universe of Videos and Podcasts
 
-![The space station seen from the sun: a ring with a honeycomb roof among the stars](making-of/images/2026-10-29_S06.jpg)
+![During the lift ride along the axis of the station: the hub with its honeycomb modules](making-of/images/2026-11-04_F6_ascent.jpg)
 
-Material of the talk by **Tim Wittenborg**, project lead of the WissKomm Wiki, at the **NFDI Science Slam 2026** (5 November 2026): a camera ride through a space station that an AI agent built in Blender, step by step, under human direction. Motto: *My agent built this station. Going wild with AI. Carefully.*
+Material of the talk by **Tim Wittenborg**, project lead of the WissKomm Wiki, at the **NFDI Science Slam 2026** (5 November 2026): a camera ride through a space station that an AI agent built in Blender, step by step, under human direction. Subtitle of the talk: *by going wild with AI? Let's see.*, after the motto of this year's slam, "Going Wild with AI".
 
 The talk is part of [WissKomm Wiki](https://wisskomm.wiki), a library for scientific videos and podcasts. This repository keeps everything the talk produced, so others can look inside and learn from it.
 
