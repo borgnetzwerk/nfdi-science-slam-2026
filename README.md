@@ -11,6 +11,7 @@ The talk is part of [WissKomm Wiki](https://wisskomm.wiki), a library for scient
 - [What went wrong with AI, and what we learned](lessons-learned/README.md): the book from museum room 5, our own rules for building with an agent, and what we kept forgetting
 - [How the station was built](making-of/README.md): early grey boxes next to the final look, decisions, numbers
 - [Explore the station room by room](station/README.md): every room and part with a picture, a Blender file and a glTF file
+- [PowerPoint tricks](process/powerpoint.md): how the videos stay on their last frame, and how the 3D book turns, by hand and by script
 - [How we worked](process/README.md): the pipeline from story to rendered deck, the camera rules, the on-screen credits and how we worked with an AI agent, written so you can reproduce the workflow
 
 ## Contents
@@ -22,6 +23,7 @@ The talk is part of [WissKomm Wiki](https://wisskomm.wiki), a library for scient
 | [videos/](videos/README.md) | Recommended videos (links only) and earlier talks of this series |
 | [station/](station/README.md) | The objects we built: one folder per room and part of the station, each with a README, a preview, a Blender file (`.blend`) and a glTF file (`.glb`), plus the whole station in one file; a few parts are left out for now (listed there) |
 | [process/](process/README.md) | How the talk was made: pipeline, camera rules, credits overlay, working with an agent |
+| [skills/](skills/README.md) | What we learned about PowerPoint and Blender as skills for people and AI agents: videos that hold their last frame, animated 3D models on slides, glTF export |
 | [scripts/](scripts/README.md) | The Python scripts that generate the scene inside Blender, and their settings and layout data |
 | [assets/](assets/README.md) | Third-party assets used while building (Poly Haven, linked) and references |
 | [tools/](tools/README.md) | Small tools that made this repository (cutting the scene into modules, previews, link lists, checks) and the tools of the render and deck pipeline |
